@@ -8,13 +8,17 @@ import black.bracken.picsorter.ui.BaseView
  */
 object SettingBehind {
 
-    interface View : BaseView<View, Presenter>
+    interface View : BaseView<View, Presenter> {
+
+        fun enableObserverButton()
+
+        fun disableObserverButton()
+
+    }
 
     interface Presenter : BasePresenter<Presenter, View> {
 
-        fun enableObserverService()
-
-        fun disableObserverService()
+        fun onToggleObserverService(isChecked: Boolean)
 
     }
 

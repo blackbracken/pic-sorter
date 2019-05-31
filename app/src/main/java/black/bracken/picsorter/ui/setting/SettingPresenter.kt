@@ -7,14 +7,34 @@ import black.bracken.picsorter.observer.DirectoryObserverService
 /**
  * @author BlackBracken
  */
-class SettingPresenter(private val context: Context) : SettingBehind.Presenter {
+class SettingPresenter(
+    private val view: SettingBehind.View,
+    private val context: Context
+) : SettingBehind.Presenter {
 
-    override fun enableObserverService() {
+    override fun start() {
+        if (tryStopObserverService()) {
+            view.enableObserverButton()
+            startObserverService()
+        } else {
+            view.disableObserverButton()
+        }
+    }
+
+    override fun onToggleObserverService(isChecked: Boolean) {
+        if (isChecked) {
+            startObserverService()
+        } else {
+            tryStopObserverService()
+        }
+    }
+
+    private fun startObserverService() {
         context.startForegroundService(Intent(context, DirectoryObserverService::class.java))
     }
 
-    override fun disableObserverService() {
-        context.stopService(Intent(context, DirectoryObserverService::class.java))
+    private fun tryStopObserverService(): Boolean {
+        return context.stopService(Intent(context, DirectoryObserverService::class.java))
     }
 
 }

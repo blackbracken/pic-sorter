@@ -10,20 +10,24 @@ import kotlinx.android.synthetic.main.activity_setting.*
  */
 class SettingActivity : AppCompatActivity(), SettingBehind.View {
 
-    override val presenter by lazy { SettingPresenter(this) }
+    override val presenter by lazy { SettingPresenter(this, this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
         setSupportActionBar(toolbar)
 
-        toggleButtonRunning.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                presenter.enableObserverService()
-            } else {
-                presenter.disableObserverService()
-            }
-        }
+        presenter.start()
+
+        toggleButtonRunning.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleObserverService(isChecked) }
+    }
+
+    override fun enableObserverButton() {
+        toggleButtonRunning.isChecked = true
+    }
+
+    override fun disableObserverButton() {
+        toggleButtonRunning.isChecked = false
     }
 
 }
