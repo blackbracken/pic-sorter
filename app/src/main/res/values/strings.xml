@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name" translatable="false">PicSorter</string>
-    <string name="name_observe_channel" translatable="false">ObserveChannel</string>
-    <string name="notification_message_observing">observes updating the specified directories</string>
+    <string name="observer_name" translatable="false">ObserverChannel</string>
+    <string name="observer_text">observes updating the specified directories</string>
 </resources>
