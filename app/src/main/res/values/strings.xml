@@ -2,4 +2,8 @@
     <string name="app_name" translatable="false">PicSorter</string>
     <string name="observer_name" translatable="false">ObserverChannel</string>
     <string name="observer_text">observes updating the specified directories</string>
+    <string name="layout_setting_switch_enable">Enable PicSorter</string>
+    <string name="layout_setting_switch_enables_description">This app observes updating images in the specified
+        directories.
+    </string>
 </resources>

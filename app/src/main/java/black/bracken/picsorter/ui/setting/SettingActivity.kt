@@ -19,15 +19,15 @@ class SettingActivity : AppCompatActivity(), SettingBehind.View {
 
         presenter.start()
 
-        toggleButtonRunning.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleObserverService(isChecked) }
+        switchEnables.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleObserverService(isChecked) }
     }
 
     override fun enableObserverButton() {
-        toggleButtonRunning.isChecked = true
+        switchEnables.isChecked = true
     }
 
     override fun disableObserverButton() {
-        toggleButtonRunning.isChecked = false
+        switchEnables.isChecked = false
     }
 
 }

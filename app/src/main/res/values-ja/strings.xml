@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="observer_text">指定されたディレクトリの更新を監視しています</string>
+    <string name="layout_setting_switch_enable">PicSorterを有効にする</string>
+    <string name="layout_setting_switch_enables_description">"指定されたディレクトリ内の画像ファイル更新を監視します"</string>
 </resources>
