@@ -1,4 +1,4 @@
-package black.bracken.picsorter.service
+package black.bracken.picsorter.service.observer
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -10,6 +10,7 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import black.bracken.picsorter.R
 import black.bracken.picsorter.ext.notificationManager
+import black.bracken.picsorter.repository.setting.SettingRepository
 
 /**
  * @author BlackBracken
@@ -32,6 +33,10 @@ class DirectoryObserverService : Service() {
             }
     }
 
+    private val observer by lazy { DirectoriesObserver(SettingRepository(this).observedPathList) }
+
+    override fun onBind(intent: Intent): IBinder? = null
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         intent ?: throw IllegalStateException("unreachable because this always returns START_NOT_STICKY")
 
@@ -47,13 +52,15 @@ class DirectoryObserverService : Service() {
                 setContentText(getString(R.string.observer_text))
             }
             .build()
-            .also { notification ->
-                startForeground(NOTIFICATION_ID, notification)
-            }
+            .also { notification -> startForeground(NOTIFICATION_ID, notification) }
+
+        observer.startWatching()
 
         return START_NOT_STICKY
     }
 
-    override fun onBind(intent: Intent): IBinder? = null
+    override fun onDestroy() {
+        observer.stopWatching()
+    }
 
 }

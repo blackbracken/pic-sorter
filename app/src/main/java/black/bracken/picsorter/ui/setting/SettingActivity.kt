@@ -1,7 +1,9 @@
 package black.bracken.picsorter.ui.setting
 
+import android.Manifest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import black.bracken.picsorter.R
 import kotlinx.android.synthetic.main.activity_setting.*
 
@@ -18,6 +20,8 @@ class SettingActivity : AppCompatActivity(), SettingBehind.View {
         setSupportActionBar(toolbar)
 
         presenter.start()
+
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
 
         switchEnables.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleObserverService(isChecked) }
         switchRunOnBoot.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleRunOnBoot(isChecked) }

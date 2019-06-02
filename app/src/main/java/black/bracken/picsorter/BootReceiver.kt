@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import black.bracken.picsorter.repository.setting.SettingRepository
-import black.bracken.picsorter.service.DirectoryObserverService
+import black.bracken.picsorter.service.observer.DirectoryObserverService
 
 /**
  * @author BlackBracken

@@ -7,6 +7,7 @@
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
             android:allowBackup="true"
@@ -26,7 +27,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.DirectoryObserverService"/>
+        <service android:name=".service.observer.DirectoryObserverService"/>
 
         <receiver android:name=".BootReceiver"
                   android:exported="false">

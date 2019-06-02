@@ -15,4 +15,9 @@ class SettingRepository(context: Context) : SettingDataSource {
             dataSource.shouldRunOnBoot = value
         }
 
+    override val observedPathList: List<String>
+        get() = dataSource.observedPathList
+
+    override fun removeObservedPath(path: String) = dataSource.removeObservedPath(path)
+
 }

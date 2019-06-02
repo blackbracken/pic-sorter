@@ -7,4 +7,8 @@ interface SettingDataSource {
 
     var shouldRunOnBoot: Boolean
 
+    val observedPathList: List<String>
+
+    fun removeObservedPath(path: String)
+
 }
