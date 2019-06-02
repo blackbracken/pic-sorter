@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".observer.DirectoryObserverService"/>
+        <service android:name=".service.DirectoryObserverService"/>
 
         <receiver android:name=".BootReceiver"
                   android:exported="false">

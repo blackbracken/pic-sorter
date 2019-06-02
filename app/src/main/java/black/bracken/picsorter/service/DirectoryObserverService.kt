@@ -1,4 +1,4 @@
-package black.bracken.picsorter.observer
+package black.bracken.picsorter.service
 
 import android.app.Notification
 import android.app.NotificationChannel

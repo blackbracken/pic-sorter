@@ -2,8 +2,8 @@ package black.bracken.picsorter.ui.setting
 
 import android.content.Context
 import android.content.Intent
-import black.bracken.picsorter.observer.DirectoryObserverService
 import black.bracken.picsorter.repository.setting.SettingRepository
+import black.bracken.picsorter.service.DirectoryObserverService
 
 /**
  * @author BlackBracken
