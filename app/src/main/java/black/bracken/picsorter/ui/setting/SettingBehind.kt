@@ -10,15 +10,21 @@ object SettingBehind {
 
     interface View : BaseView<View, Presenter> {
 
-        fun enableObserverButton()
+        fun switchOnToEnableObserver()
 
-        fun disableObserverButton()
+        fun switchOffToEnableObserver()
+
+        fun switchOnToRunOnBoot()
+
+        fun switchOffToRunOnBoot()
 
     }
 
     interface Presenter : BasePresenter<Presenter, View> {
 
         fun onToggleObserverService(isChecked: Boolean)
+
+        fun onToggleRunOnBoot(isChecked: Boolean)
 
     }
 

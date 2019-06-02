@@ -51,7 +51,7 @@
             <Switch
                     android:text="@string/layout_setting_switch_autostart"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/switchAutoStart"
+                    android:layout_height="wrap_content" android:id="@+id/switchRunOnBoot"
                     android:padding="10dp"/>
         </LinearLayout>
     </LinearLayout>
