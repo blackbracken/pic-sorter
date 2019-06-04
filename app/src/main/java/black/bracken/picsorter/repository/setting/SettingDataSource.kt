@@ -9,6 +9,8 @@ interface SettingDataSource {
 
     val observedPathList: List<String>
 
-    fun removeObservedPath(path: String)
+    fun addObservedDirectoryPath(path: String)
+
+    fun removeObservedDirectoryPath(path: String)
 
 }

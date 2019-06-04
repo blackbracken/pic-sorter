@@ -18,6 +18,8 @@ class SettingRepository(context: Context) : SettingDataSource {
     override val observedPathList: List<String>
         get() = dataSource.observedPathList
 
-    override fun removeObservedPath(path: String) = dataSource.removeObservedPath(path)
+    override fun addObservedDirectoryPath(path: String) = dataSource.addObservedDirectoryPath(path)
+
+    override fun removeObservedDirectoryPath(path: String) = dataSource.removeObservedDirectoryPath(path)
 
 }

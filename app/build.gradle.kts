@@ -33,4 +33,7 @@ dependencies {
     testImplementation("junit:junit:4.12")
     androidTestImplementation("androidx.test:runner:1.2.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+
+    implementation("net.rdrei.android.dirchooser:library:3.2@aar")
+    implementation("com.github.guardian:Option:-SNAPSHOT")
 }

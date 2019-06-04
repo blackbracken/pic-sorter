@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:dist="http://schemas.android.com/apk/distribution"
+          xmlns:dist="http://schemas.android.com/apk/distribution" xmlns:tools="http://schemas.android.com/tools"
           package="black.bracken.picsorter">
 
     <dist:module dist:instant="true"/>
@@ -17,7 +17,9 @@
             android:supportsRtl="true"
             android:fullBackupOnly="false"
             android:fullBackupContent="false"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            tools:replace="android:theme">
+
         <activity android:name=".ui.setting.SettingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -36,6 +38,9 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </receiver>
+
+        <activity android:name="net.rdrei.android.dirchooser.DirectoryChooserActivity"/>
+
     </application>
 
 </manifest>

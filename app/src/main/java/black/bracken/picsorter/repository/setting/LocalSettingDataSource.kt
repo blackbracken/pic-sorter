@@ -22,8 +22,12 @@ class LocalSettingDataSource(context: Context) : SettingDataSource {
     override val observedPathList: List<String>
         get() = preferences.getStringSet(KEY_OBSERVED_PATH_LIST, setOf())?.toList() ?: listOf()
 
-    override fun removeObservedPath(path: String) {
+    override fun addObservedDirectoryPath(path: String) {
         preferences.write { putStringSet(KEY_OBSERVED_PATH_LIST, observedPathList.plus(path).toSet()) }
+    }
+
+    override fun removeObservedDirectoryPath(path: String) {
+        preferences.write { putStringSet(KEY_OBSERVED_PATH_LIST, observedPathList.minus(path).toSet()) }
     }
 
 }
