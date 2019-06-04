@@ -4,12 +4,12 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
     <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent" android:id="@+id/textObservedPath" android:layout_weight="1"
             android:gravity="center_vertical"/>
     <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/baseline_clear_black_36"
-            android:id="@+id/buttonObservedRemove" android:layout_weight="0.05"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/baseline_clear_black_24"
+            android:id="@+id/buttonObservedRemove" android:layout_weight="0"
             android:contentDescription="@string/layout_setting_observed_button_remove_description"/>
 </LinearLayout>
