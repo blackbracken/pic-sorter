@@ -58,8 +58,12 @@ class SettingPresenter(
     }
 
     override fun onAddObserved(path: DirectoryPath) {
-        settingRepository.addObservedDirectoryPath(path)
-        view.addObservedPath(path)
+        if (settingRepository.containsObservedDirectoryPath(path)) {
+            view.showErrorDueToDuplication()
+        } else {
+            settingRepository.addObservedDirectoryPath(path)
+            view.addObservedPath(path)
+        }
     }
 
     override fun onRemoveObserved(path: DirectoryPath) {

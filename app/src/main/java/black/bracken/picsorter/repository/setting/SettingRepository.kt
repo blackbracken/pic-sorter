@@ -23,4 +23,6 @@ class SettingRepository(context: Context) : SettingDataSource {
 
     override fun removeObservedDirectoryPath(path: DirectoryPath) = dataSource.removeObservedDirectoryPath(path)
 
+    override fun containsObservedDirectoryPath(path: DirectoryPath) = dataSource.containsObservedDirectoryPath(path)
+
 }

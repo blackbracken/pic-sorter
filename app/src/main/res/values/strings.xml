@@ -10,4 +10,5 @@
     <string name="layout_setting_observed_list_text">List of observed directories</string>
     <string name="layout_setting_observed_list_button_add_description">Add observed directory</string>
     <string name="layout_setting_observed_button_remove_description">Exclude from observed list</string>
+    <string name="error_duplication">Error: The specified path is already registered</string>
 </resources>

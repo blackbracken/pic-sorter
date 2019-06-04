@@ -15,4 +15,6 @@ interface SettingDataSource {
 
     fun removeObservedDirectoryPath(path: DirectoryPath)
 
+    fun containsObservedDirectoryPath(path: DirectoryPath): Boolean
+
 }

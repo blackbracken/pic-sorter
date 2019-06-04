@@ -7,4 +7,5 @@
     <string name="layout_setting_observed_list_text">監視するディレクトリ一覧</string>
     <string name="layout_setting_observed_list_button_add_description">監視対象となるディレクトリを追加します</string>
     <string name="layout_setting_observed_button_remove_description">監視対象からこのディレクトリを外します</string>
+    <string name="error_duplication">エラー: 指定されたパスは既に登録されています</string>
 </resources>

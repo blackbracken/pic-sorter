@@ -23,6 +23,8 @@ object SettingBehind {
 
         fun addObservedPath(path: DirectoryPath)
 
+        fun showErrorDueToDuplication()
+
         fun removeObservedPath(path: DirectoryPath)
 
         fun showConfirmDialogToRemoveObserved(path: DirectoryPath)

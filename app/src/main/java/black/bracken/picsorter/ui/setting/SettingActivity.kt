@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import black.bracken.picsorter.R
@@ -82,6 +83,12 @@ class SettingActivity : AppCompatActivity(), SettingBehind.View {
     override fun removeObservedPath(path: DirectoryPath) {
         observedPathListAdapter.observedPathList -= path
         observedPathListAdapter.notifyDataSetChanged()
+    }
+
+    override fun showErrorDueToDuplication() {
+        Toast
+            .makeText(this, R.string.error_duplication, Toast.LENGTH_SHORT)
+            .show()
     }
 
     override fun showConfirmDialogToRemoveObserved(path: DirectoryPath) {

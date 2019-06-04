@@ -31,4 +31,6 @@ class LocalSettingDataSource(context: Context) : SettingDataSource {
         preferences.write { putStringSet(KEY_OBSERVED_PATH_LIST, observedDirectoryPathList.minus(path).toSet()) }
     }
 
+    override fun containsObservedDirectoryPath(path: DirectoryPath): Boolean = path in observedDirectoryPathList
+
 }
