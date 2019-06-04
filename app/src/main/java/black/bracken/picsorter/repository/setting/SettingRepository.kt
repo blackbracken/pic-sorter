@@ -1,6 +1,7 @@
 package black.bracken.picsorter.repository.setting
 
 import android.content.Context
+import black.bracken.picsorter.entity.DirectoryPath
 
 /**
  * @author BlackBracken
@@ -15,11 +16,11 @@ class SettingRepository(context: Context) : SettingDataSource {
             dataSource.shouldRunOnBoot = value
         }
 
-    override val observedPathList: List<String>
-        get() = dataSource.observedPathList
+    override val observedDirectoryPathList: List<DirectoryPath>
+        get() = dataSource.observedDirectoryPathList
 
-    override fun addObservedDirectoryPath(path: String) = dataSource.addObservedDirectoryPath(path)
+    override fun addObservedDirectoryPath(path: DirectoryPath) = dataSource.addObservedDirectoryPath(path)
 
-    override fun removeObservedDirectoryPath(path: String) = dataSource.removeObservedDirectoryPath(path)
+    override fun removeObservedDirectoryPath(path: DirectoryPath) = dataSource.removeObservedDirectoryPath(path)
 
 }

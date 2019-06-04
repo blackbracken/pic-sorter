@@ -33,7 +33,7 @@ class DirectoryObserverService : Service() {
             }
     }
 
-    private val observer by lazy { DirectoriesObserver(SettingRepository(this).observedPathList) }
+    private val observer by lazy { DirectoriesObserver(SettingRepository(this).observedDirectoryPathList) }
 
     override fun onBind(intent: Intent): IBinder? = null
 

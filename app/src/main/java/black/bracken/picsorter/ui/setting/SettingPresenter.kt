@@ -2,7 +2,7 @@ package black.bracken.picsorter.ui.setting
 
 import android.content.Context
 import android.content.Intent
-import black.bracken.picsorter.model.ObservedDirectoryPath
+import black.bracken.picsorter.entity.DirectoryPath
 import black.bracken.picsorter.repository.setting.SettingRepository
 import black.bracken.picsorter.service.observer.DirectoryObserverService
 
@@ -34,8 +34,15 @@ class SettingPresenter(
             }
         }
 
+        fun addObservedPathsToListView() {
+            settingRepository
+                .observedDirectoryPathList
+                .forEach(view::addObservedPath)
+        }
+
         setSwitchToEnableObserver()
         setSwitchToRunOnBoot()
+        addObservedPathsToListView()
     }
 
     override fun onToggleObserverService(isChecked: Boolean) {
@@ -50,18 +57,18 @@ class SettingPresenter(
         settingRepository.shouldRunOnBoot = isChecked
     }
 
-    override fun onSucceedToAddObservedDirectoryPath(path: ObservedDirectoryPath) {
-        settingRepository.addObservedDirectoryPath(path.path)
+    override fun onAddObserved(path: DirectoryPath) {
+        settingRepository.addObservedDirectoryPath(path)
         view.addObservedPath(path)
     }
 
-    override fun onFailToAddObservedDirectoryPath() {
-        // do nothing
+    override fun onRemoveObserved(path: DirectoryPath) {
+        settingRepository.removeObservedDirectoryPath(path)
+        view.removeObservedPath(path)
     }
 
-    override fun onRemoveObservedDirectoryPath(path: ObservedDirectoryPath) {
-        settingRepository.removeObservedDirectoryPath(path.path)
-        view.removeObservedPath(path)
+    override fun onConfirmToRemoveObserved(path: DirectoryPath) {
+        view.showConfirmDialogToRemoveObserved(path)
     }
 
     private fun startObserverService() {

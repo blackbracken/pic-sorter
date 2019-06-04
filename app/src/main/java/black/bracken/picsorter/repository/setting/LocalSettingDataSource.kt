@@ -1,6 +1,7 @@
 package black.bracken.picsorter.repository.setting
 
 import android.content.Context
+import black.bracken.picsorter.entity.DirectoryPath
 import black.bracken.picsorter.ext.write
 
 /**
@@ -19,15 +20,15 @@ class LocalSettingDataSource(context: Context) : SettingDataSource {
         get() = preferences.getBoolean(KEY_RUN_ON_BOOT, false)
         set(value) = preferences.write { putBoolean(KEY_RUN_ON_BOOT, value) }
 
-    override val observedPathList: List<String>
+    override val observedDirectoryPathList: List<DirectoryPath>
         get() = preferences.getStringSet(KEY_OBSERVED_PATH_LIST, setOf())?.toList() ?: listOf()
 
-    override fun addObservedDirectoryPath(path: String) {
-        preferences.write { putStringSet(KEY_OBSERVED_PATH_LIST, observedPathList.plus(path).toSet()) }
+    override fun addObservedDirectoryPath(path: DirectoryPath) {
+        preferences.write { putStringSet(KEY_OBSERVED_PATH_LIST, observedDirectoryPathList.plus(path).toSet()) }
     }
 
-    override fun removeObservedDirectoryPath(path: String) {
-        preferences.write { putStringSet(KEY_OBSERVED_PATH_LIST, observedPathList.minus(path).toSet()) }
+    override fun removeObservedDirectoryPath(path: DirectoryPath) {
+        preferences.write { putStringSet(KEY_OBSERVED_PATH_LIST, observedDirectoryPathList.minus(path).toSet()) }
     }
 
 }

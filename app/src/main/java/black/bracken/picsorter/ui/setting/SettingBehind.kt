@@ -1,6 +1,6 @@
 package black.bracken.picsorter.ui.setting
 
-import black.bracken.picsorter.model.ObservedDirectoryPath
+import black.bracken.picsorter.entity.DirectoryPath
 import black.bracken.picsorter.ui.BasePresenter
 import black.bracken.picsorter.ui.BaseView
 
@@ -21,9 +21,11 @@ object SettingBehind {
 
         fun openObservedPathSelector()
 
-        fun addObservedPath(path: ObservedDirectoryPath)
+        fun addObservedPath(path: DirectoryPath)
 
-        fun removeObservedPath(path: ObservedDirectoryPath)
+        fun removeObservedPath(path: DirectoryPath)
+
+        fun showConfirmDialogToRemoveObserved(path: DirectoryPath)
 
     }
 
@@ -33,11 +35,11 @@ object SettingBehind {
 
         fun onToggleRunOnBoot(isChecked: Boolean)
 
-        fun onSucceedToAddObservedDirectoryPath(path: ObservedDirectoryPath)
+        fun onAddObserved(path: DirectoryPath)
 
-        fun onFailToAddObservedDirectoryPath()
+        fun onRemoveObserved(path: DirectoryPath)
 
-        fun onRemoveObservedDirectoryPath(path: ObservedDirectoryPath)
+        fun onConfirmToRemoveObserved(path: DirectoryPath)
 
     }
 
