@@ -8,4 +8,7 @@
     <string name="layout_setting_observed_list_button_add_description">監視対象となるディレクトリを追加します</string>
     <string name="layout_setting_observed_button_remove_description">監視対象からこのディレクトリを外します</string>
     <string name="error_duplication">エラー: 指定されたパスは既に登録されています</string>
+    <string name="dialog_confirm_remove">本当に削除しますか?</string>
+    <string name="dialog_do_remove">削除する</string>
+    <string name="dialog_cancel">キャンセル</string>
 </resources>

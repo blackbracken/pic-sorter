@@ -92,11 +92,10 @@ class SettingActivity : AppCompatActivity(), SettingBehind.View {
     }
 
     override fun showConfirmDialogToRemoveObserved(path: DirectoryPath) {
-        // TODO: write messages in string.xml
         AlertDialog.Builder(this)
-            .setMessage("Do you remove really?")
-            .setPositiveButton("YES") { _, _ -> presenter.onRemoveObserved(path) }
-            .setNegativeButton("NO") { _, _ -> /* do nothing */ }
+            .setMessage(R.string.dialog_confirm_remove)
+            .setPositiveButton(R.string.dialog_do_remove) { _, _ -> presenter.onRemoveObserved(path) }
+            .setNegativeButton(R.string.dialog_cancel) { _, _ -> /* do nothing */ }
             .create()
             .show()
     }
