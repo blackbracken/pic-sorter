@@ -7,7 +7,7 @@ import black.bracken.picsorter.ui.BaseView
 /**
  * @author BlackBracken
  */
-object SettingBehind {
+object SettingContract {
 
     interface View : BaseView<View, Presenter> {
 

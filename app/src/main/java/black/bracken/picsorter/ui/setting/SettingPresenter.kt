@@ -10,9 +10,9 @@ import black.bracken.picsorter.service.observer.DirectoryObserverService
  * @author BlackBracken
  */
 class SettingPresenter(
-    private val view: SettingBehind.View,
+    private val view: SettingContract.View,
     private val context: Context
-) : SettingBehind.Presenter {
+) : SettingContract.Presenter {
 
     private val settingRepository = SettingRepository(context)
 

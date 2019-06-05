@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.layout_observed.view.*
 class ObservedDirectoryPathListAdapter(
     private val context: Context,
     private val root: ListView,
-    private val presenter: SettingBehind.Presenter
+    private val presenter: SettingContract.Presenter
 ) : BaseAdapter() {
 
     val observedPathList = mutableListOf<DirectoryPath>()

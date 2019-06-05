@@ -16,13 +16,13 @@ import net.rdrei.android.dirchooser.DirectoryChooserConfig
 /**
  * @author BlackBracken
  */
-class SettingActivity : AppCompatActivity(), SettingBehind.View {
+class SettingActivity : AppCompatActivity(), SettingContract.View {
 
     companion object {
         private const val CALLBACK_OPEN_SELECTOR = 1945
     }
 
-    override val presenter: SettingBehind.Presenter by lazy { SettingPresenter(this, this) }
+    override val presenter: SettingContract.Presenter by lazy { SettingPresenter(this, this) }
 
     private val observedPathListAdapter by lazy { ObservedDirectoryPathListAdapter(this, listObserved, presenter) }
 
