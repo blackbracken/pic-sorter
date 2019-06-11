@@ -29,6 +29,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.manipulating.ManipulatingActivity"/>
+
         <service android:name=".service.observer.DirectoryObserverService"/>
 
         <receiver android:name=".BootReceiver"
