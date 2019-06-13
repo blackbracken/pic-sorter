@@ -14,19 +14,15 @@ object ObserverContract {
 
         fun clearNotification()
 
-        fun showDetectionBanner()
-
-        fun openManipulator(imagePath: String)
-
-        fun openSetting()
+        fun showDetectionHeadsUpNotification()
 
     }
 
     interface Presenter : BasePresenter<Presenter, View> {
 
-        fun onOpenManipulator(imagePath: String)
+        fun onClickToOpenManipulator(imagePath: String)
 
-        fun onOpenSetting()
+        fun onClickToOpenSettings()
 
     }
 

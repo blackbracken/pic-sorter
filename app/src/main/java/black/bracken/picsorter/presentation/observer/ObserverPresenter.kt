@@ -1,6 +1,9 @@
 package black.bracken.picsorter.presentation.observer
 
 import android.app.Service
+import android.content.Intent
+import black.bracken.picsorter.presentation.manipulating.ManipulatingActivity
+import black.bracken.picsorter.presentation.setting.SettingActivity
 
 /**
  * @author BlackBracken
@@ -18,12 +21,21 @@ class ObserverPresenter(
         view.clearNotification()
     }
 
-    override fun onOpenManipulator(imagePath: String) {
-        view.openManipulator(imagePath)
+    override fun onClickToOpenManipulator(imagePath: String) {
+        Intent(service, ManipulatingActivity::class.java)
+            .apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                putExtra(ManipulatingActivity.EXTRA_PICTURE_PATH, imagePath)
+            }
+            .also { intent -> service.startActivity(intent) }
     }
 
-    override fun onOpenSetting() {
-        view.openSetting()
+    override fun onClickToOpenSettings() {
+        Intent(service, SettingActivity::class.java)
+            .apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            .also { intent -> service.startActivity(intent) }
     }
 
 }

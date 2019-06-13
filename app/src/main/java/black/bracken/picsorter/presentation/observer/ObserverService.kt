@@ -10,8 +10,6 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import black.bracken.picsorter.R
 import black.bracken.picsorter.ext.notificationManager
-import black.bracken.picsorter.presentation.manipulating.ManipulatingActivity
-import black.bracken.picsorter.presentation.setting.SettingActivity
 import black.bracken.picsorter.repository.setting.SettingRepository
 
 /**
@@ -49,25 +47,26 @@ class ObserverService : Service(), ObserverContract.View {
     private val observer by lazy {
         DirectoriesObserver(
             SettingRepository(this).observedDirectoryPathList,
-            presenter::onOpenManipulator
+            presenter::onClickToOpenManipulator
         )
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        notificationManager.createNotificationChannels(listOf(stationedChannel, detectionChannel))
-        observer.startWatching()
+        super.onStartCommand(intent, flags, startId)
 
+        notificationManager.createNotificationChannels(listOf(stationedChannel, detectionChannel))
         presenter.onStart()
+        observer.startWatching()
 
         return START_NOT_STICKY
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.onDestroy()
 
+        presenter.onDestroy()
         observer.stopWatching()
     }
 
@@ -89,7 +88,7 @@ class ObserverService : Service(), ObserverContract.View {
         notificationManager.cancel(STATIONED_NOTIFICATION_ID)
     }
 
-    override fun showDetectionBanner() {
+    override fun showDetectionHeadsUpNotification() {
         NotificationCompat
             .Builder(this, DETECTION_CHANNEL_ID)
             .apply {
@@ -101,20 +100,6 @@ class ObserverService : Service(), ObserverContract.View {
             }
             .build()
             .also { notification -> notificationManager.notify(DETECTION_NOTIFICATION_ID, notification) }
-    }
-
-    override fun openManipulator(imagePath: String) {
-        Intent(this, ManipulatingActivity::class.java)
-            .apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                putExtra(ManipulatingActivity.EXTRA_PICTURE_PATH, imagePath)
-            }
-            .also { intent -> startActivity(intent) }
-    }
-
-    override fun openSetting() {
-        Intent(this, SettingActivity::class.java)
-            .also { intent -> startActivity(intent) }
     }
 
 }
