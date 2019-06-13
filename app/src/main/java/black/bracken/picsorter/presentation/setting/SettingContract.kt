@@ -1,8 +1,7 @@
-package black.bracken.picsorter.ui.setting
+package black.bracken.picsorter.presentation.setting
 
-import black.bracken.picsorter.entity.DirectoryPath
-import black.bracken.picsorter.ui.BasePresenter
-import black.bracken.picsorter.ui.BaseView
+import black.bracken.picsorter.presentation.BasePresenter
+import black.bracken.picsorter.presentation.BaseView
 
 /**
  * @author BlackBracken
@@ -21,13 +20,13 @@ object SettingContract {
 
         fun openObservedPathSelector()
 
-        fun addObservedPath(path: DirectoryPath)
+        fun addObservedPath(path: String)
 
         fun showErrorDueToDuplication()
 
-        fun removeObservedPath(path: DirectoryPath)
+        fun removeObservedPath(path: String)
 
-        fun showConfirmDialogToRemoveObserved(path: DirectoryPath)
+        fun showConfirmDialogToRemoveObserved(path: String)
 
     }
 
@@ -37,11 +36,11 @@ object SettingContract {
 
         fun onToggleRunOnBoot(isChecked: Boolean)
 
-        fun onAddObserved(path: DirectoryPath)
+        fun onAddObserved(path: String)
 
-        fun onRemoveObserved(path: DirectoryPath)
+        fun onRemoveObserved(path: String)
 
-        fun onConfirmToRemoveObserved(path: DirectoryPath)
+        fun onConfirmToRemoveObserved(path: String)
 
     }
 

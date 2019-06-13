@@ -1,8 +1,7 @@
-package black.bracken.picsorter.ui.observer
+package black.bracken.picsorter.presentation.observer
 
-import black.bracken.picsorter.entity.DirectoryPath
-import black.bracken.picsorter.ui.BasePresenter
-import black.bracken.picsorter.ui.BaseView
+import black.bracken.picsorter.presentation.BasePresenter
+import black.bracken.picsorter.presentation.BaseView
 
 /**
  * @author BlackBracken
@@ -17,7 +16,7 @@ object ObserverContract {
 
         fun showDetectionBanner()
 
-        fun openManipulator(imagePath: DirectoryPath)
+        fun openManipulator(imagePath: String)
 
         fun openSetting()
 
@@ -25,7 +24,7 @@ object ObserverContract {
 
     interface Presenter : BasePresenter<Presenter, View> {
 
-        fun onOpenManipulator(imagePath: DirectoryPath)
+        fun onOpenManipulator(imagePath: String)
 
         fun onOpenSetting()
 

@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.observer
+package black.bracken.picsorter.presentation.observer
 
 import android.os.FileObserver
 

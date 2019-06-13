@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui
+package black.bracken.picsorter.presentation
 
 /**
  * @author BlackBracken

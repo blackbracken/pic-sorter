@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.setting
+package black.bracken.picsorter.presentation.setting
 
 import android.Manifest
 import android.app.AlertDialog
@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import black.bracken.picsorter.R
-import black.bracken.picsorter.entity.DirectoryPath
 import kotlinx.android.synthetic.main.activity_setting.*
 import net.rdrei.android.dirchooser.DirectoryChooserActivity
 import net.rdrei.android.dirchooser.DirectoryChooserConfig
@@ -75,12 +74,12 @@ class SettingActivity : AppCompatActivity(), SettingContract.View {
         startActivityForResult(intent, CALLBACK_OPEN_SELECTOR)
     }
 
-    override fun addObservedPath(path: DirectoryPath) {
+    override fun addObservedPath(path: String) {
         observedPathListAdapter.observedPathList += path
         observedPathListAdapter.notifyDataSetChanged()
     }
 
-    override fun removeObservedPath(path: DirectoryPath) {
+    override fun removeObservedPath(path: String) {
         observedPathListAdapter.observedPathList -= path
         observedPathListAdapter.notifyDataSetChanged()
     }
@@ -91,7 +90,7 @@ class SettingActivity : AppCompatActivity(), SettingContract.View {
             .show()
     }
 
-    override fun showConfirmDialogToRemoveObserved(path: DirectoryPath) {
+    override fun showConfirmDialogToRemoveObserved(path: String) {
         AlertDialog.Builder(this)
             .setMessage(R.string.dialog_confirm_remove)
             .setPositiveButton(R.string.dialog_do_remove) { _, _ -> presenter.onRemoveObserved(path) }

@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.setting
+package black.bracken.picsorter.presentation.setting
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ListView
 import black.bracken.picsorter.R
-import black.bracken.picsorter.entity.DirectoryPath
 import kotlinx.android.synthetic.main.layout_observed.view.*
 
 /**
@@ -19,11 +18,11 @@ class ObservedDirectoryPathListAdapter(
     private val presenter: SettingContract.Presenter
 ) : BaseAdapter() {
 
-    val observedPathList = mutableListOf<DirectoryPath>()
+    val observedPathList = mutableListOf<String>()
 
     override fun getCount() = observedPathList.size
 
-    override fun getItem(position: Int): DirectoryPath = observedPathList[position]
+    override fun getItem(position: Int): String = observedPathList[position]
 
     override fun getItemId(position: Int) = position.toLong()
 

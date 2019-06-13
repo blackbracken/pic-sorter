@@ -1,7 +1,7 @@
-package black.bracken.picsorter.ui.manipulating
+package black.bracken.picsorter.presentation.manipulating
 
-import black.bracken.picsorter.ui.BasePresenter
-import black.bracken.picsorter.ui.BaseView
+import black.bracken.picsorter.presentation.BasePresenter
+import black.bracken.picsorter.presentation.BaseView
 
 /**
  * @author BlackBracken

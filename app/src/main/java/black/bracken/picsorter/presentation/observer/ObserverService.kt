@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.observer
+package black.bracken.picsorter.presentation.observer
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -10,9 +10,9 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import black.bracken.picsorter.R
 import black.bracken.picsorter.ext.notificationManager
+import black.bracken.picsorter.presentation.manipulating.ManipulatingActivity
+import black.bracken.picsorter.presentation.setting.SettingActivity
 import black.bracken.picsorter.repository.setting.SettingRepository
-import black.bracken.picsorter.ui.manipulating.ManipulatingActivity
-import black.bracken.picsorter.ui.setting.SettingActivity
 
 /**
  * @author BlackBracken

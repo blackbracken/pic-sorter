@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.manipulating
+package black.bracken.picsorter.presentation.manipulating
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

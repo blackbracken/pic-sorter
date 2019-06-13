@@ -20,7 +20,7 @@
             android:theme="@style/AppTheme"
             tools:replace="android:theme">
 
-        <activity android:name=".ui.setting.SettingActivity">
+        <activity android:name=".presentation.setting.SettingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
@@ -29,9 +29,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.manipulating.ManipulatingActivity"/>
+        <activity android:name=".presentation.manipulating.ManipulatingActivity"/>
 
-        <service android:name=".ui.observer.ObserverService"/>
+        <service android:name=".presentation.observer.ObserverService"/>
 
         <receiver android:name=".BootReceiver"
                   android:exported="false">

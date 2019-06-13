@@ -1,7 +1,6 @@
-package black.bracken.picsorter.ui.observer
+package black.bracken.picsorter.presentation.observer
 
 import android.app.Service
-import black.bracken.picsorter.entity.DirectoryPath
 
 /**
  * @author BlackBracken
@@ -19,7 +18,7 @@ class ObserverPresenter(
         view.clearNotification()
     }
 
-    override fun onOpenManipulator(imagePath: DirectoryPath) {
+    override fun onOpenManipulator(imagePath: String) {
         view.openManipulator(imagePath)
     }
 

@@ -1,10 +1,9 @@
-package black.bracken.picsorter.ui.setting
+package black.bracken.picsorter.presentation.setting
 
 import android.content.Context
 import android.content.Intent
-import black.bracken.picsorter.entity.DirectoryPath
+import black.bracken.picsorter.presentation.observer.ObserverService
 import black.bracken.picsorter.repository.setting.SettingRepository
-import black.bracken.picsorter.ui.observer.ObserverService
 
 /**
  * @author BlackBracken
@@ -57,7 +56,7 @@ class SettingPresenter(
         settingRepository.shouldRunOnBoot = isChecked
     }
 
-    override fun onAddObserved(path: DirectoryPath) {
+    override fun onAddObserved(path: String) {
         if (settingRepository.containsObservedDirectoryPath(path)) {
             view.showErrorDueToDuplication()
         } else {
@@ -66,12 +65,12 @@ class SettingPresenter(
         }
     }
 
-    override fun onRemoveObserved(path: DirectoryPath) {
+    override fun onRemoveObserved(path: String) {
         settingRepository.removeObservedDirectoryPath(path)
         view.removeObservedPath(path)
     }
 
-    override fun onConfirmToRemoveObserved(path: DirectoryPath) {
+    override fun onConfirmToRemoveObserved(path: String) {
         view.showConfirmDialogToRemoveObserved(path)
     }
 

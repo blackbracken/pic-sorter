@@ -3,8 +3,8 @@ package black.bracken.picsorter
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import black.bracken.picsorter.presentation.observer.ObserverService
 import black.bracken.picsorter.repository.setting.SettingRepository
-import black.bracken.picsorter.ui.observer.ObserverService
 
 /**
  * @author BlackBracken
