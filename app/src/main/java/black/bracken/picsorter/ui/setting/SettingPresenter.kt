@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import black.bracken.picsorter.entity.DirectoryPath
 import black.bracken.picsorter.repository.setting.SettingRepository
-import black.bracken.picsorter.service.observer.DirectoryObserverService
+import black.bracken.picsorter.ui.observer.ObserverService
 
 /**
  * @author BlackBracken
@@ -16,7 +16,7 @@ class SettingPresenter(
 
     private val settingRepository = SettingRepository(context)
 
-    override fun start() {
+    override fun onStart() {
         fun setSwitchToEnableObserver() {
             if (tryStopObserverService()) {
                 view.switchOnToEnableObserver()
@@ -76,11 +76,11 @@ class SettingPresenter(
     }
 
     private fun startObserverService() {
-        context.startForegroundService(Intent(context, DirectoryObserverService::class.java))
+        context.startForegroundService(Intent(context, ObserverService::class.java))
     }
 
     private fun tryStopObserverService(): Boolean {
-        return context.stopService(Intent(context, DirectoryObserverService::class.java))
+        return context.stopService(Intent(context, ObserverService::class.java))
     }
 
 }

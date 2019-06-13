@@ -40,7 +40,7 @@ class SettingActivity : AppCompatActivity(), SettingContract.View {
 
         listObserved.adapter = observedPathListAdapter
 
-        presenter.start()
+        presenter.onStart()
     }
 
     override fun switchOnToEnableObserver() {

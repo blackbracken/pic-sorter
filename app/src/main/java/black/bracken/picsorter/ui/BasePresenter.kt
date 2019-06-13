@@ -5,6 +5,8 @@ package black.bracken.picsorter.ui
  */
 interface BasePresenter<P : BasePresenter<P, V>, V : BaseView<V, P>> {
 
-    fun start() {}
+    fun onStart() {}
+
+    fun onDestroy() {}
 
 }
