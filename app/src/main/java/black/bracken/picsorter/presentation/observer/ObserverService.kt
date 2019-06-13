@@ -27,7 +27,7 @@ class ObserverService : Service(), ObserverContract.View {
         private const val DETECTION_CHANNEL_NAME = "DetectionChannel"
 
         private const val STATIONED_NOTIFICATION_ID = 7609
-        private const val BANNER_NOTIFICATION_ID = 7610
+        private const val DETECTION_NOTIFICATION_ID = 7610
 
         private val NOTIFICATION_COLOR = Color.argb(0, 80, 80, 80)
     }
@@ -100,7 +100,7 @@ class ObserverService : Service(), ObserverContract.View {
                 setContentText("Detect.") // TODO: write on strings.xml
             }
             .build()
-            .also { notification -> notificationManager.notify(BANNER_NOTIFICATION_ID, notification) }
+            .also { notification -> notificationManager.notify(DETECTION_NOTIFICATION_ID, notification) }
     }
 
     override fun openManipulator(imagePath: String) {

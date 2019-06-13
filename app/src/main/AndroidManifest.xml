@@ -33,7 +33,7 @@
 
         <service android:name=".presentation.observer.ObserverService"/>
 
-        <receiver android:name=".BootReceiver"
+        <receiver android:name=".receiver.BootReceiver"
                   android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

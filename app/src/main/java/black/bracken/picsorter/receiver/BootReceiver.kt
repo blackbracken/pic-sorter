@@ -1,4 +1,4 @@
-package black.bracken.picsorter
+package black.bracken.picsorter.receiver
 
 import android.content.BroadcastReceiver
 import android.content.Context
