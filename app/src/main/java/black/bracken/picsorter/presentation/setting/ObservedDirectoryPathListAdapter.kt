@@ -33,7 +33,7 @@ class ObservedDirectoryPathListAdapter(
             val path = observedPathList[position]
 
             textObservedPath.text = path
-            buttonObservedRemove.setOnClickListener { presenter.onConfirmToRemoveObserved(path) }
+            buttonRemoveObserved.setOnClickListener { presenter.onConfirmToRemoveObserved(path) }
         }
     }
 

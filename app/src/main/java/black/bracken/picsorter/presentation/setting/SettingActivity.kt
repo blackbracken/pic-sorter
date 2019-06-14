@@ -33,9 +33,9 @@ class SettingActivity : AppCompatActivity(), SettingContract.View {
         // TODO: notice to agree permission if not
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
 
-        switchEnables.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleObserverService(isChecked) }
+        switchEnable.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleObserverService(isChecked) }
         switchRunOnBoot.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleRunOnBoot(isChecked) }
-        buttonObservedAdd.setOnClickListener { openObservedPathSelector() }
+        buttonAddObserved.setOnClickListener { openObservedPathSelector() }
 
         listObserved.adapter = observedPathListAdapter
 
@@ -43,11 +43,11 @@ class SettingActivity : AppCompatActivity(), SettingContract.View {
     }
 
     override fun switchOnToEnableObserver() {
-        switchEnables.isChecked = true
+        switchEnable.isChecked = true
     }
 
     override fun switchOffToEnableObserver() {
-        switchEnables.isChecked = false
+        switchEnable.isChecked = false
     }
 
     override fun switchOnToRunOnBoot() {

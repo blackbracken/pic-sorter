@@ -10,6 +10,6 @@
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/baseline_clear_black_24"
-            android:id="@+id/buttonObservedRemove" android:layout_weight="0"
+            android:id="@+id/buttonRemoveObserved" android:layout_weight="0"
             android:contentDescription="@string/layout_setting_observed_button_remove_description"/>
 </LinearLayout>

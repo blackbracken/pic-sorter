@@ -34,7 +34,7 @@
             <Switch
                     android:text="@string/layout_setting_switch_enables"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/switchEnables"
+                    android:layout_height="wrap_content" android:id="@+id/switchEnable"
                     android:padding="10dp"/>
             <TextView
                     android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                 <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" app:srcCompat="@drawable/baseline_add_black_24"
-                        android:id="@+id/buttonObservedAdd"
+                        android:id="@+id/buttonAddObserved"
                         android:contentDescription="@string/layout_setting_observed_list_button_add_description"/>
             </LinearLayout>
             <ListView
