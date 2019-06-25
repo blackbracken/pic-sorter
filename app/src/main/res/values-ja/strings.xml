@@ -11,4 +11,9 @@
     <string name="dialog_confirm_remove">本当に削除しますか?</string>
     <string name="dialog_do_remove">削除する</string>
     <string name="dialog_cancel">キャンセル</string>
+    <string name="layout_manipulating_button_apply">適用する</string>
+    <string name="layout_manipulating_button_change">変更する</string>
+    <string name="layout_manipulating_description_directory">画像の保存場所を変更します</string>
+    <string name="layout_manipulating_content_description_image">操作される画像</string>
+    <string name="layout_manipulating_content_description_button_delete">画像を削除します</string>
 </resources>

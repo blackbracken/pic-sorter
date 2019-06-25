@@ -3,9 +3,6 @@
     <string name="observer_name" translatable="false">ObserverChannel</string>
     <string name="observer_text">observes updating the specified directories</string>
     <string name="layout_setting_switch_enables">Enable PicSorter</string>
-    <string name="layout_setting_switch_enables_description">This app observes updating images in the specified
-        directories.
-    </string>
     <string name="layout_setting_switch_autostart">Run PicSorter on booting</string>
     <string name="layout_setting_observed_list_text">List of observed directories</string>
     <string name="layout_setting_observed_list_button_add_description">Add observed directory</string>
@@ -14,4 +11,11 @@
     <string name="dialog_confirm_remove">Are you sure you want to delete?</string>
     <string name="dialog_do_remove">Remove</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="layout_manipulating_button_apply">APPLY</string>
+    <string name="layout_manipulating_button_change">CHANGE</string>
+    <string name="layout_manipulating_description_directory">Changes a directory where is saved the image.</string>
+    <string name="layout_setting_switch_enables_description">Changes whether to observe the specified directories.
+    </string>
+    <string name="layout_manipulating_content_description_image">A manipulated image</string>
+    <string name="layout_manipulating_content_description_button_delete">Deletes the image</string>
 </resources>

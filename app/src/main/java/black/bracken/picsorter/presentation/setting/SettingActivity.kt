@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import black.bracken.picsorter.R
+import black.bracken.picsorter.ext.startDirectoryChooserActivity
 import kotlinx.android.synthetic.main.activity_setting.*
 import net.rdrei.android.dirchooser.DirectoryChooserActivity
-import net.rdrei.android.dirchooser.DirectoryChooserConfig
 
 /**
  * @author BlackBracken
@@ -18,7 +18,7 @@ import net.rdrei.android.dirchooser.DirectoryChooserConfig
 class SettingActivity : AppCompatActivity(), SettingContract.View {
 
     companion object {
-        private const val CALLBACK_OPEN_SELECTOR = 1945
+        private const val CALLBACK_OPEN_DIR_SELECTOR = 1945
     }
 
     override val presenter: SettingContract.Presenter by lazy { SettingPresenter(this, this) }
@@ -35,7 +35,7 @@ class SettingActivity : AppCompatActivity(), SettingContract.View {
 
         switchEnable.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleObserverService(isChecked) }
         switchRunOnBoot.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleRunOnBoot(isChecked) }
-        buttonAddObserved.setOnClickListener { openObservedPathSelector() }
+        buttonAddObserved.setOnClickListener { presenter.onOpenObservedPathSelector() }
 
         listObserved.adapter = observedPathListAdapter
 
@@ -59,19 +59,7 @@ class SettingActivity : AppCompatActivity(), SettingContract.View {
     }
 
     override fun openObservedPathSelector() {
-        val intent = Intent(this, DirectoryChooserActivity::class.java)
-            .apply {
-                putExtra(
-                    DirectoryChooserActivity.EXTRA_CONFIG,
-                    DirectoryChooserConfig.builder()
-                        .newDirectoryName("NewDirectory")
-                        .allowReadOnlyDirectory(false)
-                        .allowNewDirectoryNameModification(false)
-                        .build()
-                )
-            }
-
-        startActivityForResult(intent, CALLBACK_OPEN_SELECTOR)
+        startDirectoryChooserActivity(CALLBACK_OPEN_DIR_SELECTOR)
     }
 
     override fun addObservedPath(path: String) {
@@ -103,7 +91,7 @@ class SettingActivity : AppCompatActivity(), SettingContract.View {
         super.onActivityResult(requestCode, resultCode, data)
 
         when (requestCode) {
-            CALLBACK_OPEN_SELECTOR -> {
+            CALLBACK_OPEN_DIR_SELECTOR -> {
                 data?.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR)
                     ?.run(presenter::onAddObserved)
             }

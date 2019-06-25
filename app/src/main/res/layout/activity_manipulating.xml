@@ -3,65 +3,92 @@
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    xmlns:tools="http://schemas.android.com/tools"
                                                    android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content"
+                                                   android:layout_height="match_parent"
                                                    tools:context=".presentation.manipulating.ManipulatingActivity"
-                                                   android:padding="16dp">
+                                                   android:id="@+id/constraintLayout"
+                                                   android:paddingHorizontal="0dp" android:paddingTop="18dp">
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" tools:srcCompat="@tools:sample/avatars"
             android:id="@+id/imageManipulated"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" android:adjustViewBounds="true" android:maxHeight="320dp"
-            android:contentDescription="image" android:background="#B4B4B4" android:padding="16dp"
-            android:elevation="10dp"/>
-    <ImageButton
+            android:background="#B4B4B4" android:padding="16dp"
+            android:elevation="2dp" android:layout_marginStart="12dp" android:layout_marginEnd="12dp"
+            android:contentDescription="@string/layout_manipulating_content_description_image"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="48dp" app:srcCompat="@drawable/baseline_delete_black_24"
-            android:id="@+id/buttonTrash"
-            android:backgroundTint="#CEA3A3"
-            app:layout_constraintTop_toBottomOf="@+id/imageManipulated" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="32dp" app:layout_constraintHorizontal_bias="0.218" android:layout_marginEnd="4dp"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineTopButtons"/>
-    <androidx.constraintlayout.widget.Guideline
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/guidelineTopButtons"
-            app:layout_constraintGuide_percent="0.3"/>
-    <Button
-            android:text="Apply"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:id="@+id/buttonApply" app:layout_constraintStart_toEndOf="@+id/buttonTrash"
-            android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toTopOf="@+id/buttonTrash"/>
-    <TextView
-            android:text="TextView"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:id="@+id/textDestination" app:layout_constraintStart_toStartOf="@+id/buttonTrash"
-            app:layout_constraintTop_toBottomOf="@+id/divider2"
-            android:layout_marginTop="24dp" android:gravity="center|left" android:paddingLeft="8dp"
-            android:layout_marginEnd="4dp" app:layout_constraintEnd_toStartOf="@+id/guideline"/>
-    <Button
-            android:text="Button"
+            android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@+id/imageManipulated"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="12dp" android:layout_marginStart="12dp" android:layout_marginTop="12dp"
+            android:paddingHorizontal="10dp" android:paddingVertical="8dp" android:background="#B4B4B4">
+
+        <androidx.constraintlayout.widget.Guideline
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/guideline"
+                app:layout_constraintGuide_percent="0.70"/>
+        <Button
+                android:text="@string/layout_manipulating_button_change"
+                android:layout_width="0dp"
+                android:layout_height="0dp" android:id="@+id/buttonChangeDirectory"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/guideline2"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp" android:id="@+id/textDirectoryPath"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center|start"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                android:textSize="18sp" android:breakStrategy="simple"
+                android:textColor="#000000" app:layout_constraintBottom_toTopOf="@+id/guideline2"/>
+        <androidx.constraintlayout.widget.Guideline
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/guideline2" app:layout_constraintGuide_percent="0.7"/>
+        <TextView
+                android:text="@string/layout_manipulating_description_directory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/textDescriptionDirectory"
+                app:layout_constraintTop_toTopOf="@+id/guideline2" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="4dp" android:gravity="center|start"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonChangeDestination"
-            app:layout_constraintTop_toTopOf="@+id/textDestination" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline" app:layout_constraintHorizontal_bias="1.0"
-            android:layout_marginStart="4dp"/>
-    <View
-            android:id="@+id/divider2"
-            android:layout_width="0dp"
-            android:layout_height="6dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintTop_toBottomOf="@+id/buttonTrash" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="24dp"/>
-    <androidx.constraintlayout.widget.Guideline
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/guideline"
-            app:layout_constraintGuide_percent="0.75"/>
+            android:paddingHorizontal="10dp" android:paddingVertical="4dp" android:background="#B4B4B4"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/guidelineTopButtons"
+                app:layout_constraintGuide_begin="130dp"/>
+        <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="48dp" app:srcCompat="@drawable/baseline_delete_black_24"
+                android:id="@+id/buttonTrash"
+                android:backgroundTint="#DD4646"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineTopButtons" android:layout_marginEnd="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintVertical_bias="0.0"
+                android:contentDescription="@string/layout_manipulating_content_description_button_delete"/>
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:id="@+id/buttonApply"
+                android:text="@string/layout_manipulating_button_apply"
+                app:layout_constraintStart_toStartOf="@+id/guidelineTopButtons"
+                android:layout_marginStart="4dp" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -56,6 +56,10 @@ class SettingPresenter(
         settingRepository.shouldRunOnBoot = isChecked
     }
 
+    override fun onOpenObservedPathSelector() {
+        view.openObservedPathSelector()
+    }
+
     override fun onAddObserved(path: String) {
         if (settingRepository.containsObservedDirectoryPath(path)) {
             view.showErrorDueToDuplication()

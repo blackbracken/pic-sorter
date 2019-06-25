@@ -36,6 +36,8 @@ object SettingContract {
 
         fun onToggleRunOnBoot(isChecked: Boolean)
 
+        fun onOpenObservedPathSelector()
+
         fun onAddObserved(path: String)
 
         fun onRemoveObserved(path: String)
