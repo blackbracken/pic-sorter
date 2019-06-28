@@ -24,8 +24,8 @@ class AndroidImage(file: File, private val context: Context) {
     fun rename(name: String) {
         val image = file ?: return
 
-        val extension = image.name.split(".").last()
-        val destination = File("${image.parent}/$name$extension")
+        val extension = image.extension
+        val destination = File("${image.parent}/$name.$extension")
 
         file = image.moveToCertainly(destination)
     }

@@ -13,11 +13,19 @@ object ManipulatingContract {
 
         var directoryPathText: String
 
+        var newNameHint: String
+
+        var imageExtension: String
+
         fun close()
 
         fun showManipulatedImage()
 
         fun openDirectorySelector()
+
+        fun enableToDeleteLater()
+
+        fun disableToDeleteLater()
 
     }
 
@@ -30,6 +38,12 @@ object ManipulatingContract {
         fun onOpenDirectorySelector()
 
         fun onChangeDirectory(directory: File)
+
+        fun onChangeNewName(newName: String)
+
+        fun onSwitchDeleteLater(deleteLater: Boolean)
+
+        fun onChangeDelayToDelete(delay: Int)
 
     }
 

@@ -16,4 +16,5 @@
     <string name="layout_manipulating_description_directory">画像の保存場所を変更します</string>
     <string name="layout_manipulating_content_description_image">操作される画像</string>
     <string name="layout_manipulating_content_description_button_delete">画像を削除します</string>
+    <string name="layout_manipulating_description_rename">対象の画像の名前を変更します</string>
 </resources>

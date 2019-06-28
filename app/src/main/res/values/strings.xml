@@ -18,4 +18,5 @@
     </string>
     <string name="layout_manipulating_content_description_image">A manipulated image</string>
     <string name="layout_manipulating_content_description_button_delete">Deletes the image</string>
+    <string name="layout_manipulating_description_rename">Renames the image.</string>
 </resources>
