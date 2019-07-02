@@ -17,4 +17,7 @@
     <string name="layout_manipulating_content_description_image">操作される画像</string>
     <string name="layout_manipulating_content_description_button_delete">画像を削除します</string>
     <string name="layout_manipulating_description_rename">対象の画像の名前を変更します</string>
+    <string name="layout_manipulating_description_delay">指定秒後に画像を自動で削除します</string>
+    <string name="layout_manipulating_switch_delay">指定時間後に画像を削除する</string>
+    <string name="layout_manipulating_text_delay_unit">遅延秒数:</string>
 </resources>

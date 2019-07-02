@@ -19,4 +19,8 @@
     <string name="layout_manipulating_content_description_image">A manipulated image</string>
     <string name="layout_manipulating_content_description_button_delete">Deletes the image</string>
     <string name="layout_manipulating_description_rename">Renames the image.</string>
+    <string name="layout_manipulating_description_delay">Deletes the image after the specified seconds.</string>
+    <string name="layout_manipulating_switch_delay">Enable to delete the image later</string>
+    <string name="layout_manipulating_text_delay_unit">Delay seconds:</string>
+    <string name="layout_manipulating_hint_delay_seconds" translatable="false">120</string>
 </resources>
