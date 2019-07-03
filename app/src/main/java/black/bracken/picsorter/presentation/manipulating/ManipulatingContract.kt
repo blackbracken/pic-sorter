@@ -23,9 +23,9 @@ object ManipulatingContract {
 
         fun openDirectorySelector()
 
-        fun enableToDeleteLater()
+        fun enableDelayEdit()
 
-        fun disableToDeleteLater()
+        fun disableDelayEdit()
 
     }
 
@@ -41,9 +41,11 @@ object ManipulatingContract {
 
         fun onChangeNewName(newName: String)
 
-        fun onSwitchDeleteLater(deleteLater: Boolean)
+        fun onEnableToDeleteLater(seconds: Int?)
 
-        fun onChangeDelayToDelete(delay: Int)
+        fun onDisableToDeleteLater()
+
+        fun onChangeDelayToDelete(seconds: Int?)
 
     }
 

@@ -62,9 +62,21 @@ class ManipulatingPresenter(
         reservationState.newName = newName.takeIf { it.isNotEmpty() }
     }
 
-    override fun onSwitchDeleteLater(deleteLater: Boolean) = TODO("not implemented yet")
+    override fun onEnableToDeleteLater(seconds: Int?) {
+        view.enableDelayEdit()
 
-    override fun onChangeDelayToDelete(delay: Int) = TODO("not implemented yet")
+        reservationState.delayToDelete = seconds
+    }
+
+    override fun onDisableToDeleteLater() {
+        view.disableDelayEdit()
+
+        reservationState.delayToDelete = null
+    }
+
+    override fun onChangeDelayToDelete(seconds: Int?) {
+        reservationState.delayToDelete = seconds
+    }
 
     data class ReservationState(
         var directoryPath: File? = null,

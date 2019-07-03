@@ -55,7 +55,15 @@ class ManipulatingActivity : AppCompatActivity(), ManipulatingContract.View {
         buttonApply.setOnClickListener { presenter.onApplyManipulation(manipulatedImage) }
         buttonTrash.setOnClickListener { presenter.onDismiss(manipulatedImage) }
         buttonChangeDirectory.setOnClickListener { presenter.onOpenDirectorySelector() }
+        switchToDeleteLater.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                presenter.onEnableToDeleteLater(editDelaySeconds.text.toString().toIntOrNull())
+            } else {
+                presenter.onDisableToDeleteLater()
+            }
+        }
         editNewName.setOnTextChanged { text -> presenter.onChangeNewName(text) }
+        editDelaySeconds.setOnTextChanged { secondsText -> presenter.onChangeDelayToDelete(secondsText.toIntOrNull()) }
     }
 
     override fun close() {
@@ -73,9 +81,13 @@ class ManipulatingActivity : AppCompatActivity(), ManipulatingContract.View {
         startDirectoryChooserActivity(CALLBACK_OPEN_DIR_SELECTOR)
     }
 
-    override fun enableToDeleteLater() = TODO("not implemented yet")
+    override fun enableDelayEdit() {
+        editDelaySeconds.isEnabled = true
+    }
 
-    override fun disableToDeleteLater() = TODO("not implemented yet")
+    override fun disableDelayEdit() {
+        editDelaySeconds.isEnabled = false
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
