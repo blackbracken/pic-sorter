@@ -88,7 +88,7 @@ class ObserverService : Service(), ObserverContract.View {
         notificationManager.cancel(STATIONED_NOTIFICATION_ID)
     }
 
-    override fun showDetectionHeadsUpNotification() {
+    override fun showDetectHeadsUpNotification() {
         NotificationCompat
             .Builder(this, DETECTION_CHANNEL_ID)
             .apply {

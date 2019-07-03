@@ -14,7 +14,7 @@ object ObserverContract {
 
         fun clearNotification()
 
-        fun showDetectionHeadsUpNotification()
+        fun showDetectHeadsUpNotification()
 
     }
 

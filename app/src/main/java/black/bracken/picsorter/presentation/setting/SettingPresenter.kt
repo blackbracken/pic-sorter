@@ -67,6 +67,10 @@ class SettingPresenter(
             settingRepository.addObservedDirectoryPath(path)
             view.addObservedPath(path)
         }
+
+        if (tryStopObserverService()) {
+            startObserverService()
+        }
     }
 
     override fun onRemoveObserved(path: String) {
