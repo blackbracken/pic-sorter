@@ -67,7 +67,7 @@ class ManipulatingActivity : AppCompatActivity(), ManipulatingContract.View {
     }
 
     override fun close() {
-        finish()
+        finishAndRemoveTask()
     }
 
     override fun showManipulatedImage() {
