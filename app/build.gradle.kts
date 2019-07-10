@@ -13,7 +13,7 @@ android {
     compileSdkVersion(28)
     defaultConfig {
         applicationId = "black.bracken.picsorter"
-        minSdkVersion(28)
+        minSdkVersion(26)
         targetSdkVersion(28)
         versionCode = 1
         versionName = "1.0"
