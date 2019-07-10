@@ -18,7 +18,7 @@ import java.io.File
 class ManipulatingActivity : AppCompatActivity(), ManipulatingContract.View {
 
     companion object {
-        const val EXTRA_PICTURE_PATH = "PicturePath"
+        const val EXTRA_IMAGE_PATH = "ImagePath"
 
         private const val CALLBACK_OPEN_DIR_SELECTOR = 2045
     }
@@ -44,7 +44,7 @@ class ManipulatingActivity : AppCompatActivity(), ManipulatingContract.View {
             textExtension.text = ".$value"
         }
 
-    private val manipulatedImage by lazy { File(intent.getStringExtra(EXTRA_PICTURE_PATH)) }
+    private val manipulatedImage by lazy { File(intent.getStringExtra(EXTRA_IMAGE_PATH)) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -10,19 +10,17 @@ object ObserverContract {
 
     interface View : BaseView<View, Presenter> {
 
-        fun stationNotification()
+        fun stationNotificationForForeground()
 
-        fun clearNotification()
+        fun clearNotificationForForeground()
 
-        fun showDetectHeadsUpNotification()
+        fun showDetectionHeadsUp(imagePath: String)
 
     }
 
     interface Presenter : BasePresenter<Presenter, View> {
 
-        fun onClickToOpenManipulator(imagePath: String)
-
-        fun onClickToOpenSettings()
+        fun onDetectAdditionInObserved(imagePath: String)
 
     }
 

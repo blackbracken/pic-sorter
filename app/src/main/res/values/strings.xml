@@ -23,4 +23,6 @@
     <string name="layout_manipulating_switch_delay">Enable to delete the image later</string>
     <string name="layout_manipulating_text_delay_unit">Delay seconds:</string>
     <string name="layout_manipulating_hint_delay_seconds" translatable="false">120</string>
+    <string name="notification_detection_button_manipulate">Edit</string>
+    <string name="notification_detection_description">The image added has been detected</string>
 </resources>

@@ -20,4 +20,6 @@
     <string name="layout_manipulating_description_delay">指定秒後に画像を自動で削除します</string>
     <string name="layout_manipulating_switch_delay">指定時間後に画像を削除する</string>
     <string name="layout_manipulating_text_delay_unit">遅延秒数:</string>
+    <string name="notification_detection_button_manipulate">編集</string>
+    <string name="notification_detection_description">画像の更新を検出しました</string>
 </resources>

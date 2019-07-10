@@ -2,6 +2,8 @@ package black.bracken.picsorter.presentation.manipulating
 
 import android.content.Context
 import android.os.Handler
+import black.bracken.picsorter.ext.notificationManager
+import black.bracken.picsorter.presentation.observer.ObserverService
 import black.bracken.picsorter.util.AndroidImage
 import java.io.File
 
@@ -21,6 +23,8 @@ class ManipulatingPresenter(
         view.directoryPathText = image.parent
         view.newNameHint = image.nameWithoutExtension
         view.imageExtension = image.extension
+
+        context.notificationManager.cancel(ObserverService.DETECTION_NOTIFICATION_ID)
     }
 
     override fun onApplyManipulation(image: File) {
