@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">PicSorter</string>
     <string name="observer_name" translatable="false">ObserverChannel</string>
-    <string name="observer_text">observes updating the specified directories</string>
+    <string name="observer_text">Hide the notification to hold down this.</string>
     <string name="layout_setting_switch_enables">Enable PicSorter</string>
     <string name="layout_setting_switch_autostart">Run PicSorter on booting</string>
     <string name="layout_setting_observed_list_text">List of observed directories</string>
@@ -25,4 +25,5 @@
     <string name="layout_manipulating_hint_delay_seconds" translatable="false">120</string>
     <string name="notification_detection_button_manipulate">Edit</string>
     <string name="notification_detection_description">The image added has been detected</string>
+    <string name="observer_text_sub">Observes updating</string>
 </resources>

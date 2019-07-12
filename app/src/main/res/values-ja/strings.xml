@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="observer_text">指定されたディレクトリの更新を監視しています</string>
+    <string name="observer_text">長押しでこの通知は隠すことができます</string>
     <string name="layout_setting_switch_enables">PicSorterを有効にする</string>
     <string name="layout_setting_switch_enables_description">"指定されたディレクトリ内の画像ファイル更新を監視します"</string>
     <string name="layout_setting_switch_autostart">Android起動時にPicSorterを起動する</string>
@@ -22,4 +22,5 @@
     <string name="layout_manipulating_text_delay_unit">遅延秒数:</string>
     <string name="notification_detection_button_manipulate">編集</string>
     <string name="notification_detection_description">画像の更新を検出しました</string>
+    <string name="observer_text_sub">更新を監視しています</string>
 </resources>

@@ -79,6 +79,7 @@ class ObserverService : Service(), ObserverContract.View {
                 setOngoing(true)
                 setSmallIcon(R.drawable.app_icon)
                 setContentText(getString(R.string.observer_text))
+                setSubText(getString(R.string.observer_text_sub))
             }
             .build()
             .also { notification -> startForeground(STATIONED_NOTIFICATION_ID, notification) }
