@@ -41,7 +41,8 @@ class ObserverService : Service(), ObserverContract.View {
     private val detectionChannel =
         NotificationChannel(DETECTION_CHANNEL_ID, DETECTION_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH).apply {
             lockscreenVisibility = Notification.VISIBILITY_PRIVATE
-            setShowBadge(false)
+            setSound(null, null)
+            setShowBadge(true)
         }
 
     private val observer by lazy {
@@ -110,6 +111,8 @@ class ObserverService : Service(), ObserverContract.View {
                     pendingIntent
                 )
             }
+
+        notificationManager.cancel(DETECTION_NOTIFICATION_ID)
 
         NotificationCompat
             .Builder(this, DETECTION_CHANNEL_ID)
