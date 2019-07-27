@@ -1,4 +1,4 @@
-package black.bracken.picsorter.presentation.settings
+package black.bracken.picsorter.presentation.settings.top
 
 import black.bracken.picsorter.presentation.BasePresenter
 import black.bracken.picsorter.presentation.BaseView
@@ -6,7 +6,7 @@ import black.bracken.picsorter.presentation.BaseView
 /**
  * @author BlackBracken
  */
-object SettingsContract {
+object SettingsTopContract {
 
     interface View : BaseView<View, Presenter> {
 

@@ -1,4 +1,4 @@
-package black.bracken.picsorter.presentation.settings
+package black.bracken.picsorter.presentation.settings.top
 
 import android.content.Context
 import android.content.Intent
@@ -8,10 +8,10 @@ import black.bracken.picsorter.repository.settings.SettingsRepository
 /**
  * @author BlackBracken
  */
-class SettingsPresenter(
-    private val view: SettingsContract.View,
+class SettingsTopPresenter(
+    private val view: SettingsTopContract.View,
     private val context: Context
-) : SettingsContract.Presenter {
+) : SettingsTopContract.Presenter {
 
     private val settingsRepository = SettingsRepository(context)
 

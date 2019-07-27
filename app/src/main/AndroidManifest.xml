@@ -21,7 +21,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:theme">
 
-        <activity android:name=".presentation.settings.SettingsActivity">
+        <activity android:name=".presentation.settings.top.SettingsTopActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

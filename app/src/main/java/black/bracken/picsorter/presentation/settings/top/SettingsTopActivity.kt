@@ -1,4 +1,4 @@
-package black.bracken.picsorter.presentation.settings
+package black.bracken.picsorter.presentation.settings.top
 
 import android.Manifest
 import android.app.AlertDialog
@@ -9,25 +9,37 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import black.bracken.picsorter.R
 import black.bracken.picsorter.ext.startDirectoryChooserActivity
-import kotlinx.android.synthetic.main.activity_settings.*
+import kotlinx.android.synthetic.main.activity_settings_top.*
 import net.rdrei.android.dirchooser.DirectoryChooserActivity
 
 /**
  * @author BlackBracken
  */
-class SettingsActivity : AppCompatActivity(), SettingsContract.View {
+class SettingsTopActivity : AppCompatActivity(),
+    SettingsTopContract.View {
 
     companion object {
         private const val CALLBACK_OPEN_DIR_SELECTOR = 1945
     }
 
-    override val presenter: SettingsContract.Presenter by lazy { SettingsPresenter(this, this) }
+    override val presenter: SettingsTopContract.Presenter by lazy {
+        SettingsTopPresenter(
+            this,
+            this
+        )
+    }
 
-    private val observedPathListAdapter by lazy { ObservedDirectoryPathListAdapter(this, listObserved, presenter) }
+    private val observedPathListAdapter by lazy {
+        ObservedDirectoryPathListAdapter(
+            this,
+            listObserved,
+            presenter
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+        setContentView(R.layout.activity_settings_top)
         setSupportActionBar(toolbar)
 
         // TODO: notice to agree permission if not
