@@ -2,11 +2,11 @@
     <string name="app_name" translatable="false">PicSorter</string>
     <string name="observer_name" translatable="false">ObserverChannel</string>
     <string name="observer_text">Hide the notification to hold down this.</string>
-    <string name="layout_setting_switch_enables">Enable PicSorter</string>
-    <string name="layout_setting_switch_autostart">Run PicSorter on booting</string>
-    <string name="layout_setting_observed_list_text">List of observed directories</string>
-    <string name="layout_setting_observed_list_button_add_description">Add observed directory</string>
-    <string name="layout_setting_observed_button_remove_description">Exclude from observed list</string>
+    <string name="layout_settings_switch_enables">Enable PicSorter</string>
+    <string name="layout_settings_switch_autostart">Run PicSorter on booting</string>
+    <string name="layout_settings_observed_list_text">List of observed directories</string>
+    <string name="layout_settings_observed_list_button_add_description">Add observed directory</string>
+    <string name="layout_settings_observed_button_remove_description">Exclude from observed list</string>
     <string name="error_duplication">Error: The specified path is already registered</string>
     <string name="dialog_confirm_remove">Are you sure you want to delete?</string>
     <string name="dialog_do_remove">Remove</string>

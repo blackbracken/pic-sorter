@@ -1,19 +1,19 @@
-package black.bracken.picsorter.presentation.setting
+package black.bracken.picsorter.presentation.settings
 
 import android.content.Context
 import android.content.Intent
 import black.bracken.picsorter.presentation.observer.ObserverService
-import black.bracken.picsorter.repository.setting.SettingRepository
+import black.bracken.picsorter.repository.settings.SettingsRepository
 
 /**
  * @author BlackBracken
  */
-class SettingPresenter(
-    private val view: SettingContract.View,
+class SettingsPresenter(
+    private val view: SettingsContract.View,
     private val context: Context
-) : SettingContract.Presenter {
+) : SettingsContract.Presenter {
 
-    private val settingRepository = SettingRepository(context)
+    private val settingsRepository = SettingsRepository(context)
 
     override fun onStart() {
         fun setSwitchToEnableObserver() {
@@ -26,7 +26,7 @@ class SettingPresenter(
         }
 
         fun setSwitchToRunOnBoot() {
-            if (settingRepository.shouldRunOnBoot) {
+            if (settingsRepository.shouldRunOnBoot) {
                 view.switchOnToRunOnBoot()
             } else {
                 view.switchOffToRunOnBoot()
@@ -34,7 +34,7 @@ class SettingPresenter(
         }
 
         fun addObservedPathsToListView() {
-            settingRepository
+            settingsRepository
                 .observedDirectoryPathList
                 .forEach(view::addObservedPath)
         }
@@ -53,7 +53,7 @@ class SettingPresenter(
     }
 
     override fun onToggleRunOnBoot(isChecked: Boolean) {
-        settingRepository.shouldRunOnBoot = isChecked
+        settingsRepository.shouldRunOnBoot = isChecked
     }
 
     override fun onOpenObservedPathSelector() {
@@ -61,10 +61,10 @@ class SettingPresenter(
     }
 
     override fun onAddObserved(path: String) {
-        if (settingRepository.containsObservedDirectoryPath(path)) {
+        if (settingsRepository.containsObservedDirectoryPath(path)) {
             view.showErrorDueToDuplication()
         } else {
-            settingRepository.addObservedDirectoryPath(path)
+            settingsRepository.addObservedDirectoryPath(path)
             view.addObservedPath(path)
         }
 
@@ -74,7 +74,7 @@ class SettingPresenter(
     }
 
     override fun onRemoveObserved(path: String) {
-        settingRepository.removeObservedDirectoryPath(path)
+        settingsRepository.removeObservedDirectoryPath(path)
         view.removeObservedPath(path)
     }
 

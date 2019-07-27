@@ -8,7 +8,7 @@ import androidx.core.app.NotificationCompat
 import black.bracken.picsorter.R
 import black.bracken.picsorter.ext.notificationManager
 import black.bracken.picsorter.presentation.manipulating.ManipulatingActivity
-import black.bracken.picsorter.repository.setting.SettingRepository
+import black.bracken.picsorter.repository.settings.SettingsRepository
 
 /**
  * @author BlackBracken
@@ -47,7 +47,7 @@ class ObserverService : Service(), ObserverContract.View {
 
     private val observer by lazy {
         DirectoriesObserver(
-            SettingRepository(this).observedDirectoryPathList,
+            SettingsRepository(this).observedDirectoryPathList,
             presenter::onDetectAdditionInObserved
         )
     }

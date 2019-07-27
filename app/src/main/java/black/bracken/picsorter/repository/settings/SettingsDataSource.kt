@@ -1,9 +1,9 @@
-package black.bracken.picsorter.repository.setting
+package black.bracken.picsorter.repository.settings
 
 /**
  * @author BlackBracken
  */
-interface SettingDataSource {
+interface SettingsDataSource {
 
     var shouldRunOnBoot: Boolean
 

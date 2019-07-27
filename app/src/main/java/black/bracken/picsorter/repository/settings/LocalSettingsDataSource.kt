@@ -1,4 +1,4 @@
-package black.bracken.picsorter.repository.setting
+package black.bracken.picsorter.repository.settings
 
 import android.content.Context
 import black.bracken.picsorter.ext.write
@@ -6,7 +6,7 @@ import black.bracken.picsorter.ext.write
 /**
  * @author BlackBracken
  */
-class LocalSettingDataSource(context: Context) : SettingDataSource {
+class LocalSettingsDataSource(context: Context) : SettingsDataSource {
 
     companion object {
         private const val KEY_RUN_ON_BOOT = "RunOnBoot"

@@ -1,4 +1,4 @@
-package black.bracken.picsorter.presentation.setting
+package black.bracken.picsorter.presentation.settings
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.layout_observed.view.*
 class ObservedDirectoryPathListAdapter(
     private val context: Context,
     private val root: ListView,
-    private val presenter: SettingContract.Presenter
+    private val presenter: SettingsContract.Presenter
 ) : BaseAdapter() {
 
     val observedPathList = mutableListOf<String>()

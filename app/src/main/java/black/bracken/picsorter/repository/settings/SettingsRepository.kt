@@ -1,13 +1,13 @@
-package black.bracken.picsorter.repository.setting
+package black.bracken.picsorter.repository.settings
 
 import android.content.Context
 
 /**
  * @author BlackBracken
  */
-class SettingRepository(context: Context) : SettingDataSource {
+class SettingsRepository(context: Context) : SettingsDataSource {
 
-    private val dataSource = LocalSettingDataSource(context)
+    private val dataSource = LocalSettingsDataSource(context)
 
     override var shouldRunOnBoot: Boolean
         get() = dataSource.shouldRunOnBoot
