@@ -1,48 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:dist="http://schemas.android.com/apk/distribution"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="black.bracken.picsorter">
+          xmlns:dist="http://schemas.android.com/apk/distribution"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="black.bracken.picsorter">
 
-    <dist:module dist:instant="true" />
+    <dist:module dist:instant="true"/>
 
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
-        android:allowBackup="true"
-        android:fullBackupContent="false"
-        android:fullBackupOnly="false"
-        android:icon="@drawable/app_icon"
-        android:label="@string/app_name"
-        android:roundIcon="@drawable/app_icon"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:replace="android:theme">
+            android:allowBackup="true"
+            android:fullBackupContent="false"
+            android:fullBackupOnly="false"
+            android:icon="@drawable/app_icon"
+            android:label="@string/app_name"
+            android:roundIcon="@drawable/app_icon"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            tools:replace="android:theme">
 
         <activity android:name=".presentation.settings.top.SettingsTopActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.VIEW"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.manipulating.ManipulatingActivity" />
+        <activity android:name=".presentation.settings.directorieschooser.SettingsDirectoriesChooserActivity"/>
 
-        <service android:name=".presentation.observer.ObserverService" />
+        <activity android:name=".presentation.manipulating.ManipulatingActivity"/>
+
+        <service android:name=".presentation.observer.ObserverService"/>
 
         <receiver
-            android:name=".receiver.BootReceiver"
-            android:exported="false">
+                android:name=".receiver.BootReceiver"
+                android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </receiver>
-        <activity android:name="net.rdrei.android.dirchooser.DirectoryChooserActivity" />
+        <activity android:name="net.rdrei.android.dirchooser.DirectoryChooserActivity"/>
 
     </application>
 

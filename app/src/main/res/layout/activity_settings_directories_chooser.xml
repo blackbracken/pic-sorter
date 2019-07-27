@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.settings.directorieschooser.SettingsDirectoriesChooserActivity">
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarDirectories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize"/>
+    <View
+            android:id="@+id/backgroundDirectories"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="12dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            android:background="#B4B4B4"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarDirectories"/>
+    <TextView
+            android:id="@+id/textAddButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="4dp"
+
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="@id/buttonAddDirectory"
+            app:layout_constraintBottom_toBottomOf="@id/buttonAddDirectory"
+            app:layout_constraintStart_toStartOf="@id/backgroundDirectories"
+            app:layout_constraintEnd_toStartOf="@id/buttonAddDirectory"
+
+            android:text="@string/layout_settings_observed_list_text"
+            android:textColor="#000000"/>
+    <ImageButton
+            android:id="@+id/buttonAddDirectory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="12dp"
+
+            app:layout_constraintTop_toTopOf="@id/backgroundDirectories"
+            app:layout_constraintStart_toEndOf="@id/textAddButton"
+            app:layout_constraintEnd_toEndOf="@id/backgroundDirectories"
+
+            app:srcCompat="@drawable/baseline_add_black_24"
+            android:contentDescription="@string/layout_settings_observed_list_button_add_description"/>
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerDirectories"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:layout_marginVertical="8dp"
+
+            app:layout_constraintTop_toBottomOf="@id/buttonAddDirectory"
+            app:layout_constraintStart_toStartOf="@id/textAddButton"
+            app:layout_constraintEnd_toEndOf="@id/buttonAddDirectory"
+            app:layout_constraintBottom_toBottomOf="@id/backgroundDirectories"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
