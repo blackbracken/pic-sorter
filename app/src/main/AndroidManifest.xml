@@ -30,7 +30,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.settings.directorieschooser.SettingsDirectoriesChooserActivity"/>
+        <activity android:name=".presentation.settings.directorieschooser.SettingsDirectoriesChooserActivity"
+                  android:parentActivityName=".presentation.settings.top.SettingsTopActivity"/>
 
         <activity android:name=".presentation.manipulating.ManipulatingActivity"/>
 

@@ -29,6 +29,12 @@ class SettingsDirectoriesChooserActivity
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings_directories_chooser)
 
+        setSupportActionBar(toolbarDirectories)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeButtonEnabled(true)
+        }
+
         recyclerDirectories.adapter = recyclerAdapter
         recyclerDirectories.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
     }
