@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import black.bracken.picsorter.R
@@ -40,6 +41,7 @@ class SettingsDirectoriesChooserActivity
 
         recyclerDirectories.adapter = recyclerAdapter
         recyclerDirectories.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        recyclerDirectories.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
 
         buttonAddDirectory.setOnClickListener { presenter.onOpenDirectoryChooser() }
 
