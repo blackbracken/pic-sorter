@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import black.bracken.picsorter.presentation.observer.ObserverService
-import black.bracken.picsorter.repository.setting.SettingRepository
+import black.bracken.picsorter.repository.settings.SettingsRepository
 
 /**
  * @author BlackBracken
@@ -18,9 +18,9 @@ class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action != BOOT_ACTION) return
 
-        val settingRepository = SettingRepository(context)
+        val settingsRepository = SettingsRepository(context)
 
-        if (settingRepository.shouldRunOnBoot) {
+        if (settingsRepository.shouldRunOnBoot) {
             context.startForegroundService(Intent(context, ObserverService::class.java))
         }
     }
