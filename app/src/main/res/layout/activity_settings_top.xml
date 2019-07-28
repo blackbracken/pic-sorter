@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:text="@string/layout_setting_switch_enables_description"
+                    android:text="@string/layout_settings_switch_enables_description"
                     android:padding="10dp"/>
         </LinearLayout>
         <LinearLayout
@@ -58,26 +58,26 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="18dp" android:background="#B4B4B4" android:elevation="6dp"
-                android:paddingHorizontal="10dp" android:paddingBottom="10dp" android:paddingTop="4dp">
+                android:layout_marginTop="18dp" android:background="#B4B4B4" android:elevation="6dp">
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
                 <TextView
                         android:layout_width="0dp"
-                        android:layout_height="match_parent" android:layout_weight="1"
-                        android:text="@string/layout_settings_observed_list_text"
-                        android:gravity="center_vertical" android:textColor="#000000"/>
-                <ImageButton
+                        android:layout_height="fill_parent" android:id="@+id/textDirectories"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:padding="10dp" android:textColor="#000000"
+                        android:text="@string/layout_settings_open_chooser" android:gravity="center_vertical"/>
+                <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" app:srcCompat="@drawable/baseline_add_black_24"
-                        android:id="@+id/buttonAddObserved"
-                        android:contentDescription="@string/layout_settings_observed_list_button_add_description"/>
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_chevron_right_24"
+                        android:clickable="true"
+                        android:layout_gravity="end"
+                        android:id="@+id/imageDirectoriesArrow" android:padding="10dp"/>
             </LinearLayout>
-            <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:id="@+id/listObserved"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

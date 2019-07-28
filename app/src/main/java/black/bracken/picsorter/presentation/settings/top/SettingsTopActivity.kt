@@ -1,16 +1,13 @@
 package black.bracken.picsorter.presentation.settings.top
 
 import android.Manifest
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import black.bracken.picsorter.R
-import black.bracken.picsorter.ext.startDirectoryChooserActivity
+import black.bracken.picsorter.presentation.settings.directorieschooser.SettingsDirectoriesChooserActivity
 import kotlinx.android.synthetic.main.activity_settings_top.*
-import net.rdrei.android.dirchooser.DirectoryChooserActivity
 
 /**
  * @author BlackBracken
@@ -18,22 +15,10 @@ import net.rdrei.android.dirchooser.DirectoryChooserActivity
 class SettingsTopActivity : AppCompatActivity(),
     SettingsTopContract.View {
 
-    companion object {
-        private const val CALLBACK_OPEN_DIR_SELECTOR = 1945
-    }
-
     override val presenter: SettingsTopContract.Presenter by lazy {
         SettingsTopPresenter(
             this,
             this
-        )
-    }
-
-    private val observedPathListAdapter by lazy {
-        ObservedDirectoryPathListAdapter(
-            this,
-            listObserved,
-            presenter
         )
     }
 
@@ -47,9 +32,8 @@ class SettingsTopActivity : AppCompatActivity(),
 
         switchEnable.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleObserverService(isChecked) }
         switchRunOnBoot.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleRunOnBoot(isChecked) }
-        buttonAddObserved.setOnClickListener { presenter.onOpenObservedPathSelector() }
-
-        listObserved.adapter = observedPathListAdapter
+        textDirectories.setOnClickListener { presenter.onOpenDirectoriesChooser() }
+        imageDirectoriesArrow.setOnClickListener { presenter.onOpenDirectoriesChooser() }
 
         presenter.onStart()
     }
@@ -70,44 +54,8 @@ class SettingsTopActivity : AppCompatActivity(),
         switchRunOnBoot.isChecked = false
     }
 
-    override fun openObservedPathSelector() {
-        startDirectoryChooserActivity(CALLBACK_OPEN_DIR_SELECTOR)
-    }
-
-    override fun addObservedPath(path: String) {
-        observedPathListAdapter.observedPathList += path
-        observedPathListAdapter.notifyDataSetChanged()
-    }
-
-    override fun removeObservedPath(path: String) {
-        observedPathListAdapter.observedPathList -= path
-        observedPathListAdapter.notifyDataSetChanged()
-    }
-
-    override fun showErrorDueToDuplication() {
-        Toast
-            .makeText(this, R.string.error_duplication, Toast.LENGTH_SHORT)
-            .show()
-    }
-
-    override fun showConfirmDialogToRemoveObserved(path: String) {
-        AlertDialog.Builder(this)
-            .setMessage(R.string.dialog_confirm_remove)
-            .setPositiveButton(R.string.dialog_do_remove) { _, _ -> presenter.onRemoveObserved(path) }
-            .setNegativeButton(R.string.dialog_cancel) { _, _ -> /* do nothing */ }
-            .create()
-            .show()
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        when (requestCode) {
-            CALLBACK_OPEN_DIR_SELECTOR -> {
-                data?.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR)
-                    ?.run(presenter::onAddObserved)
-            }
-        }
+    override fun openDirectoriesChooser() {
+        startActivity(Intent(this, SettingsDirectoriesChooserActivity::class.java))
     }
 
 }

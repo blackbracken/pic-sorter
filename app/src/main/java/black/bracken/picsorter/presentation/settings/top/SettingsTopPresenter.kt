@@ -33,15 +33,8 @@ class SettingsTopPresenter(
             }
         }
 
-        fun addObservedPathsToListView() {
-            settingsRepository
-                .directoryPathList
-                .forEach(view::addObservedPath)
-        }
-
         setSwitchToEnableObserver()
         setSwitchToRunOnBoot()
-        addObservedPathsToListView()
     }
 
     override fun onToggleObserverService(isChecked: Boolean) {
@@ -56,30 +49,8 @@ class SettingsTopPresenter(
         settingsRepository.shouldRunOnBoot = isChecked
     }
 
-    override fun onOpenObservedPathSelector() {
-        view.openObservedPathSelector()
-    }
-
-    override fun onAddObserved(path: String) {
-        if (settingsRepository.containsDirectoryPath(path)) {
-            view.showErrorDueToDuplication()
-        } else {
-            settingsRepository.addDirectoryPath(path)
-            view.addObservedPath(path)
-        }
-
-        if (tryStopObserverService()) {
-            startObserverService()
-        }
-    }
-
-    override fun onRemoveObserved(path: String) {
-        settingsRepository.removeDirectoryPath(path)
-        view.removeObservedPath(path)
-    }
-
-    override fun onConfirmToRemoveObserved(path: String) {
-        view.showConfirmDialogToRemoveObserved(path)
+    override fun onOpenDirectoriesChooser() {
+        view.openDirectoriesChooser()
     }
 
     private fun startObserverService() {

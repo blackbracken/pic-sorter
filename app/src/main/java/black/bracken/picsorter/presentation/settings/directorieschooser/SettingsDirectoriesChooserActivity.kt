@@ -35,6 +35,7 @@ class SettingsDirectoriesChooserActivity
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setHomeButtonEnabled(true)
+            setTitle(R.string.layout_settings_open_chooser)
         }
 
         recyclerDirectories.adapter = recyclerAdapter

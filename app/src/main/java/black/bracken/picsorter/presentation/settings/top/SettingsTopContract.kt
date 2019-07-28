@@ -18,15 +18,7 @@ object SettingsTopContract {
 
         fun switchOffToRunOnBoot()
 
-        fun openObservedPathSelector()
-
-        fun addObservedPath(path: String)
-
-        fun showErrorDueToDuplication()
-
-        fun removeObservedPath(path: String)
-
-        fun showConfirmDialogToRemoveObserved(path: String)
+        fun openDirectoriesChooser()
 
     }
 
@@ -36,13 +28,7 @@ object SettingsTopContract {
 
         fun onToggleRunOnBoot(isChecked: Boolean)
 
-        fun onOpenObservedPathSelector()
-
-        fun onAddObserved(path: String)
-
-        fun onRemoveObserved(path: String)
-
-        fun onConfirmToRemoveObserved(path: String)
+        fun onOpenDirectoriesChooser()
 
     }
 

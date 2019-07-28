@@ -14,7 +14,7 @@
     <string name="layout_manipulating_button_apply">APPLY</string>
     <string name="layout_manipulating_button_change">CHANGE</string>
     <string name="layout_manipulating_description_directory">Changes a directory where is saved the image.</string>
-    <string name="layout_setting_switch_enables_description">Changes whether to observe the specified directories.
+    <string name="layout_settings_switch_enables_description">Changes whether to observe the specified directories.
     </string>
     <string name="layout_manipulating_content_description_image">A manipulated image</string>
     <string name="layout_manipulating_content_description_button_delete">Deletes the image</string>
@@ -26,4 +26,5 @@
     <string name="notification_detection_button_manipulate">Edit</string>
     <string name="notification_detection_description">The image added has been detected</string>
     <string name="observer_text_sub">Observes updating</string>
+    <string name="layout_settings_open_chooser">Choose the directories are observed</string>
 </resources>
