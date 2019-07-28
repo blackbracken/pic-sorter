@@ -1,6 +1,7 @@
 package black.bracken.picsorter.presentation.settings.directorieschooser
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import black.bracken.picsorter.R
 import black.bracken.picsorter.ext.startDirectoryChooserActivity
 import black.bracken.picsorter.presentation.settings.directorieschooser.recycler.DirectoryRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_settings_directories_chooser.*
+import net.rdrei.android.dirchooser.DirectoryChooserActivity
 
 /**
  * @author BlackBracken
@@ -37,6 +39,10 @@ class SettingsDirectoriesChooserActivity
 
         recyclerDirectories.adapter = recyclerAdapter
         recyclerDirectories.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+
+        buttonAddDirectory.setOnClickListener { presenter.onOpenDirectoryChooser() }
+
+        presenter.onStart()
     }
 
     override fun addDirectory(directoryPath: String) {
@@ -64,6 +70,16 @@ class SettingsDirectoriesChooserActivity
         Toast
             .makeText(this, R.string.error_duplication, Toast.LENGTH_SHORT)
             .show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (requestCode) {
+            CALLBACK_OPEN_DIR_CHOOSER -> {
+                data?.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR)?.run(presenter::onAddDirectory)
+            }
+        }
     }
 
 }

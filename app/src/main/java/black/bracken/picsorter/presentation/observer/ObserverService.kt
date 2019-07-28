@@ -47,7 +47,7 @@ class ObserverService : Service(), ObserverContract.View {
 
     private val observer by lazy {
         DirectoriesObserver(
-            SettingsRepository(this).observedDirectoryPathList,
+            SettingsRepository(this).directoryPathList,
             presenter::onDetectAdditionInObserved
         )
     }

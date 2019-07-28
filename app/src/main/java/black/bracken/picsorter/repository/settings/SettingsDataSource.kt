@@ -7,12 +7,12 @@ interface SettingsDataSource {
 
     var shouldRunOnBoot: Boolean
 
-    val observedDirectoryPathList: List<String>
+    val directoryPathList: List<String>
 
-    fun addObservedDirectoryPath(path: String)
+    fun addDirectoryPath(path: String)
 
-    fun removeObservedDirectoryPath(path: String)
+    fun removeDirectoryPath(path: String)
 
-    fun containsObservedDirectoryPath(path: String): Boolean
+    fun containsDirectoryPath(path: String): Boolean
 
 }

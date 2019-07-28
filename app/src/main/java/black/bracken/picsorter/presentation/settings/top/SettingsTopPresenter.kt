@@ -35,7 +35,7 @@ class SettingsTopPresenter(
 
         fun addObservedPathsToListView() {
             settingsRepository
-                .observedDirectoryPathList
+                .directoryPathList
                 .forEach(view::addObservedPath)
         }
 
@@ -61,10 +61,10 @@ class SettingsTopPresenter(
     }
 
     override fun onAddObserved(path: String) {
-        if (settingsRepository.containsObservedDirectoryPath(path)) {
+        if (settingsRepository.containsDirectoryPath(path)) {
             view.showErrorDueToDuplication()
         } else {
-            settingsRepository.addObservedDirectoryPath(path)
+            settingsRepository.addDirectoryPath(path)
             view.addObservedPath(path)
         }
 
@@ -74,7 +74,7 @@ class SettingsTopPresenter(
     }
 
     override fun onRemoveObserved(path: String) {
-        settingsRepository.removeObservedDirectoryPath(path)
+        settingsRepository.removeDirectoryPath(path)
         view.removeObservedPath(path)
     }
 

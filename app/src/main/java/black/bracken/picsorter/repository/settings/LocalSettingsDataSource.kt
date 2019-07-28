@@ -19,17 +19,17 @@ class LocalSettingsDataSource(context: Context) : SettingsDataSource {
         get() = preferences.getBoolean(KEY_RUN_ON_BOOT, false)
         set(value) = preferences.write { putBoolean(KEY_RUN_ON_BOOT, value) }
 
-    override val observedDirectoryPathList: List<String>
+    override val directoryPathList: List<String>
         get() = preferences.getStringSet(KEY_OBSERVED_PATH_LIST, setOf())?.toList() ?: listOf()
 
-    override fun addObservedDirectoryPath(path: String) {
-        preferences.write { putStringSet(KEY_OBSERVED_PATH_LIST, observedDirectoryPathList.plus(path).toSet()) }
+    override fun addDirectoryPath(path: String) {
+        preferences.write { putStringSet(KEY_OBSERVED_PATH_LIST, directoryPathList.plus(path).toSet()) }
     }
 
-    override fun removeObservedDirectoryPath(path: String) {
-        preferences.write { putStringSet(KEY_OBSERVED_PATH_LIST, observedDirectoryPathList.minus(path).toSet()) }
+    override fun removeDirectoryPath(path: String) {
+        preferences.write { putStringSet(KEY_OBSERVED_PATH_LIST, directoryPathList.minus(path).toSet()) }
     }
 
-    override fun containsObservedDirectoryPath(path: String): Boolean = path in observedDirectoryPathList
+    override fun containsDirectoryPath(path: String): Boolean = path in directoryPathList
 
 }

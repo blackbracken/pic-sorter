@@ -15,13 +15,13 @@ class SettingsRepository(context: Context) : SettingsDataSource {
             dataSource.shouldRunOnBoot = value
         }
 
-    override val observedDirectoryPathList: List<String>
-        get() = dataSource.observedDirectoryPathList
+    override val directoryPathList: List<String>
+        get() = dataSource.directoryPathList
 
-    override fun addObservedDirectoryPath(path: String) = dataSource.addObservedDirectoryPath(path)
+    override fun addDirectoryPath(path: String) = dataSource.addDirectoryPath(path)
 
-    override fun removeObservedDirectoryPath(path: String) = dataSource.removeObservedDirectoryPath(path)
+    override fun removeDirectoryPath(path: String) = dataSource.removeDirectoryPath(path)
 
-    override fun containsObservedDirectoryPath(path: String) = dataSource.containsObservedDirectoryPath(path)
+    override fun containsDirectoryPath(path: String) = dataSource.containsDirectoryPath(path)
 
 }
