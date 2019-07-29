@@ -28,4 +28,7 @@
     <string name="observer_text_sub">Observes updating</string>
     <string name="layout_settings_open_chooser">Choose the directories are observed</string>
     <string name="menu_settings_credit">Credit</string>
+    <string name="dialog_ok">OK</string>
+    <string name="content_credit" translatable="false">"PicSorter by BlackBracken\nicon, graphics by Hibiki"
+    </string>
 </resources>

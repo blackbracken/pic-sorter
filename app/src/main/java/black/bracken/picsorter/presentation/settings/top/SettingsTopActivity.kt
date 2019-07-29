@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import black.bracken.picsorter.R
@@ -76,8 +76,11 @@ class SettingsTopActivity : AppCompatActivity(),
     }
 
     override fun showCredit() {
-        // TODO: show true credit
-        Toast.makeText(this, "CREDIT!", Toast.LENGTH_SHORT).show()
+        AlertDialog.Builder(this)
+            .setTitle(R.string.menu_settings_credit)
+            .setMessage(R.string.content_credit)
+            .setPositiveButton(R.string.dialog_ok, null)
+            .show()
     }
 
 }

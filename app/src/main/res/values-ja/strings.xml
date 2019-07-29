@@ -25,4 +25,5 @@
     <string name="observer_text_sub">更新を監視しています</string>
     <string name="layout_settings_open_chooser">監視するディレクトリを指定</string>
     <string name="menu_settings_credit">クレジット</string>
+    <string name="dialog_ok">了解</string>
 </resources>
