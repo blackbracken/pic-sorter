@@ -53,6 +53,10 @@ class SettingsTopPresenter(
         view.openDirectoriesChooser()
     }
 
+    override fun onShowCredit() {
+        view.showCredit()
+    }
+
     private fun startObserverService() {
         context.startForegroundService(Intent(context, ObserverService::class.java))
     }

@@ -24,4 +24,5 @@
     <string name="notification_detection_description">画像の更新を検出しました</string>
     <string name="observer_text_sub">更新を監視しています</string>
     <string name="layout_settings_open_chooser">監視するディレクトリを指定</string>
+    <string name="menu_settings_credit">クレジット</string>
 </resources>

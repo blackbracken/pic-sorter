@@ -20,6 +20,8 @@ object SettingsTopContract {
 
         fun openDirectoriesChooser()
 
+        fun showCredit()
+
     }
 
     interface Presenter : BasePresenter<Presenter, View> {
@@ -29,6 +31,8 @@ object SettingsTopContract {
         fun onToggleRunOnBoot(isChecked: Boolean)
 
         fun onOpenDirectoriesChooser()
+
+        fun onShowCredit()
 
     }
 

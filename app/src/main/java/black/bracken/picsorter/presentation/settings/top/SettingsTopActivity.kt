@@ -3,6 +3,9 @@ package black.bracken.picsorter.presentation.settings.top
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import black.bracken.picsorter.R
@@ -38,6 +41,20 @@ class SettingsTopActivity : AppCompatActivity(),
         presenter.onStart()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_settings, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.item_settings_credit -> presenter.onShowCredit()
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun switchOnToEnableObserver() {
         switchEnable.isChecked = true
     }
@@ -56,6 +73,11 @@ class SettingsTopActivity : AppCompatActivity(),
 
     override fun openDirectoriesChooser() {
         startActivity(Intent(this, SettingsDirectoriesChooserActivity::class.java))
+    }
+
+    override fun showCredit() {
+        // TODO: show true credit
+        Toast.makeText(this, "CREDIT!", Toast.LENGTH_SHORT).show()
     }
 
 }

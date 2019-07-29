@@ -27,4 +27,5 @@
     <string name="notification_detection_description">The image added has been detected</string>
     <string name="observer_text_sub">Observes updating</string>
     <string name="layout_settings_open_chooser">Choose the directories are observed</string>
+    <string name="menu_settings_credit">Credit</string>
 </resources>
