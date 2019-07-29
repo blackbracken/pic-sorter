@@ -25,7 +25,7 @@ class SettingsTopActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings_top)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(toolbarSettings)
 
         // TODO: notice to agree permission if not
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)

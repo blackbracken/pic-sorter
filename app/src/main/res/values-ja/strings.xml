@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="observer_text">長押しして設定からこの通知は隠すことができます</string>
-    <string name="layout_settings_switch_enables">PicSorterを有効にする</string>
+    <string name="layout_settings_switch_enable">PicSorterを有効にする</string>
     <string name="layout_settings_switch_enables_description">"指定されたディレクトリ内の画像ファイル更新を監視します"</string>
-    <string name="layout_settings_switch_autostart">Android起動時にPicSorterを起動する</string>
+    <string name="layout_settings_switch_run_on_boot">Android起動時にPicSorterを起動する</string>
     <string name="layout_settings_observed_list_text">監視するディレクトリ一覧</string>
     <string name="layout_settings_observed_list_button_add_description">監視対象となるディレクトリを追加します</string>
     <string name="layout_settings_observed_button_remove_description">監視対象からこのディレクトリを外します</string>
