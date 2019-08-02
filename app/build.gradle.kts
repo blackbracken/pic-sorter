@@ -15,8 +15,8 @@ android {
         applicationId = "black.bracken.picsorter"
         minSdkVersion(26)
         targetSdkVersion(28)
-        versionCode = 2
-        versionName = "1.0"
+        versionCode = 3
+        versionName = "1.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -39,6 +39,8 @@ dependencies {
 
     implementation("net.rdrei.android.dirchooser:library:3.2@aar")
     implementation("com.github.guardian:Option:-SNAPSHOT")
+
+    implementation("androidx.recyclerview:recyclerview:1.1.0-beta01")
 
     implementation("com.github.bumptech.glide:glide:$versionGlide")
     annotationProcessor("com.github.bumptech.glide:compiler:$versionGlide")

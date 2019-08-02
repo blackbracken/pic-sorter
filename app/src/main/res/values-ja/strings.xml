@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="observer_text">長押しして設定からこの通知は隠すことができます</string>
-    <string name="layout_setting_switch_enables">PicSorterを有効にする</string>
-    <string name="layout_setting_switch_enables_description">"指定されたディレクトリ内の画像ファイル更新を監視します"</string>
-    <string name="layout_setting_switch_autostart">Android起動時にPicSorterを起動する</string>
-    <string name="layout_setting_observed_list_text">監視するディレクトリ一覧</string>
-    <string name="layout_setting_observed_list_button_add_description">監視対象となるディレクトリを追加します</string>
-    <string name="layout_setting_observed_button_remove_description">監視対象からこのディレクトリを外します</string>
+    <string name="layout_settings_switch_enable">PicSorterを有効にする</string>
+    <string name="layout_settings_switch_enables_description">"指定されたディレクトリ内の画像ファイル更新を監視します"</string>
+    <string name="layout_settings_switch_run_on_boot">Android起動時にPicSorterを起動する</string>
+    <string name="layout_settings_observed_list_text">監視するディレクトリ一覧</string>
+    <string name="layout_settings_observed_list_button_add_description">監視対象となるディレクトリを追加します</string>
+    <string name="layout_settings_observed_button_remove_description">監視対象からこのディレクトリを外します</string>
     <string name="error_duplication">エラー: 指定されたパスは既に登録されています</string>
     <string name="dialog_confirm_remove">本当に削除しますか?</string>
     <string name="dialog_do_remove">削除する</string>
@@ -23,4 +23,7 @@
     <string name="notification_detection_button_manipulate">編集</string>
     <string name="notification_detection_description">画像の更新を検出しました</string>
     <string name="observer_text_sub">更新を監視しています</string>
+    <string name="layout_settings_open_chooser">監視するディレクトリを指定</string>
+    <string name="dialog_ok">了解</string>
+    <string name="title_copyright">権利表記</string>
 </resources>

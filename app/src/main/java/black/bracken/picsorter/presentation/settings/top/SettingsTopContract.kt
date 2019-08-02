@@ -1,4 +1,4 @@
-package black.bracken.picsorter.presentation.setting
+package black.bracken.picsorter.presentation.settings.top
 
 import black.bracken.picsorter.presentation.BasePresenter
 import black.bracken.picsorter.presentation.BaseView
@@ -6,7 +6,7 @@ import black.bracken.picsorter.presentation.BaseView
 /**
  * @author BlackBracken
  */
-object SettingContract {
+object SettingsTopContract {
 
     interface View : BaseView<View, Presenter> {
 
@@ -18,15 +18,9 @@ object SettingContract {
 
         fun switchOffToRunOnBoot()
 
-        fun openObservedPathSelector()
+        fun openDirectoriesChooser()
 
-        fun addObservedPath(path: String)
-
-        fun showErrorDueToDuplication()
-
-        fun removeObservedPath(path: String)
-
-        fun showConfirmDialogToRemoveObserved(path: String)
+        fun showCopyright()
 
     }
 
@@ -36,13 +30,9 @@ object SettingContract {
 
         fun onToggleRunOnBoot(isChecked: Boolean)
 
-        fun onOpenObservedPathSelector()
+        fun onOpenDirectoriesChooser()
 
-        fun onAddObserved(path: String)
-
-        fun onRemoveObserved(path: String)
-
-        fun onConfirmToRemoveObserved(path: String)
+        fun onShowCopyright()
 
     }
 

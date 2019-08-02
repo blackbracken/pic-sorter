@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      android:background="#636363"
+      app:titleTextColor="#E0E0E0"
+      android:theme="?attr/actionBarTheme">
+    <item
+            android:id="@+id/item_settings_copyright"
+            android:title="@string/title_copyright"/>
+</menu>
