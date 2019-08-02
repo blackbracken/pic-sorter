@@ -1,4 +1,4 @@
-![Header](https://raw.githubusercontent.com/blackbracken/PicSorter/master/header.png)
+![Header](https://raw.githubusercontent.com/blackbracken/PicSorter/develop/header.png)
 # PicSorter
 *An Android app for assisting to sort pictures*
 
