@@ -5,6 +5,6 @@
       app:titleTextColor="#E0E0E0"
       android:theme="?attr/actionBarTheme">
     <item
-            android:id="@+id/item_settings_credit"
-            android:title="@string/menu_settings_credit"/>
+            android:id="@+id/item_settings_copyright"
+            android:title="@string/title_copyright"/>
 </menu>

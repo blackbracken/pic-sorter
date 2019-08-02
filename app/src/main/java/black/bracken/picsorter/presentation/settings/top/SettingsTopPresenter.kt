@@ -53,8 +53,8 @@ class SettingsTopPresenter(
         view.openDirectoriesChooser()
     }
 
-    override fun onShowCredit() {
-        view.showCredit()
+    override fun onShowCopyright() {
+        view.showCopyright()
     }
 
     private fun startObserverService() {

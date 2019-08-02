@@ -20,7 +20,7 @@ object SettingsTopContract {
 
         fun openDirectoriesChooser()
 
-        fun showCredit()
+        fun showCopyright()
 
     }
 
@@ -32,7 +32,7 @@ object SettingsTopContract {
 
         fun onOpenDirectoriesChooser()
 
-        fun onShowCredit()
+        fun onShowCopyright()
 
     }
 
