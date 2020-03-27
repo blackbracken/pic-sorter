@@ -34,14 +34,27 @@ class SettingsTopActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_settings_top)
         setSupportActionBar(toolbarSettings)
 
-        // TODO: notice to agree permission if not
-        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
+        // TODO: notice to agree permission if doesn't
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+            1
+        )
 
-        switchEnable.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleObserverService(isChecked) }
-        switchRunOnBoot.setOnCheckedChangeListener { _, isChecked -> presenter.onToggleRunOnBoot(isChecked) }
+        switchEnable.setOnCheckedChangeListener { _, isChecked ->
+            presenter.onToggleObserverService(
+                isChecked
+            )
+        }
+        switchRunOnBoot.setOnCheckedChangeListener { _, isChecked ->
+            presenter.onToggleRunOnBoot(
+                isChecked
+            )
+        }
         textDirectories.setOnClickListener { presenter.onOpenDirectoriesChooser() }
         imageDirectoriesArrow.setOnClickListener { presenter.onOpenDirectoriesChooser() }
 
