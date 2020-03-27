@@ -7,4 +7,12 @@ class TopViewModel(
     private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
+    fun switchToEnableObserver(isEnabled: Boolean) {
+        // TODO not implemented yet
+    }
+
+    fun switchToRunOnBoot(isEnabled: Boolean) {
+        settingsRepository.shouldRunOnBoot = isEnabled
+    }
+
 }
