@@ -22,10 +22,10 @@ class ObserverService : Service(), ObserverContract.View {
         const val DETECTION_NOTIFICATION_ID = 7610
 
         private const val STATIONED_CHANNEL_ID = "observer"
-        private const val STATIONED_CHANNEL_NAME = "ObserverChannel"
+        private const val STATIONED_CHANNEL_NAME = "常駐用の通知(非表示にして問題ありません)"
 
         private const val DETECTION_CHANNEL_ID = "detection"
-        private const val DETECTION_CHANNEL_NAME = "DetectionChannel"
+        private const val DETECTION_CHANNEL_NAME = "更新の検出通知"
 
         private val NOTIFICATION_COLOR = Color.argb(0, 80, 80, 80)
     }
