@@ -26,7 +26,12 @@ class SettingsDirectoriesChooserActivity
 
     override val presenter by lazy { SettingsDirectoriesChooserPresenter(this, this) }
 
-    private val recyclerAdapter by lazy { DirectoryRecyclerAdapter(this, presenter::onTryToRemoveDirectory) }
+    private val recyclerAdapter by lazy {
+        DirectoryRecyclerAdapter(
+            this,
+            presenter::onTryToRemoveDirectory
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +39,6 @@ class SettingsDirectoriesChooserActivity
 
         setSupportActionBar(toolbarDirectories)
         supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
             setHomeButtonEnabled(true)
             setTitle(R.string.layout_settings_open_chooser)
         }
@@ -63,7 +67,11 @@ class SettingsDirectoriesChooserActivity
     override fun showConfirmationToRemoveDirectory(directoryPath: String) {
         AlertDialog.Builder(this)
             .setMessage(R.string.dialog_confirm_remove)
-            .setPositiveButton(R.string.dialog_do_remove) { _, _ -> presenter.onRemoveDirectory(directoryPath) }
+            .setPositiveButton(R.string.dialog_do_remove) { _, _ ->
+                presenter.onRemoveDirectory(
+                    directoryPath
+                )
+            }
             .setNegativeButton(R.string.dialog_cancel) { _, _ -> /* do nothing */ }
             .create()
             .show()
@@ -80,7 +88,8 @@ class SettingsDirectoriesChooserActivity
 
         when (requestCode) {
             CALLBACK_OPEN_DIR_CHOOSER -> {
-                data?.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR)?.run(presenter::onAddDirectory)
+                data?.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR)
+                    ?.run(presenter::onAddDirectory)
             }
         }
     }

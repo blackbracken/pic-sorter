@@ -9,13 +9,11 @@ import androidx.fragment.app.Fragment
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.TopFragmentBinding
 import black.bracken.picsorter.ext.observe
+import black.bracken.picsorter.view.AppActivity
+import kotlinx.android.synthetic.main.top_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class TopFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = TopFragment()
-    }
 
     private val viewModel by viewModel<TopViewModel>()
 
@@ -45,6 +43,10 @@ class TopFragment : Fragment() {
                 switchToRunOnBoot(isEnabled)
             }
         }
+
+        fun openDirectoriesChooser() = (activity as? AppActivity)?.openDirectoriesChooser()
+        textDirectories.setOnClickListener { openDirectoriesChooser() }
+        imageDirectoriesArrow.setOnClickListener { openDirectoriesChooser() }
     }
 
 }
