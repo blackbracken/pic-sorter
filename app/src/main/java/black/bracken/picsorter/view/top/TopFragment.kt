@@ -31,16 +31,17 @@ class TopFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        @Suppress("NullableBooleanElvis")
         with(viewModel) {
             enablesObserverLiveData.observe(viewLifecycleOwner) { isEnabled ->
-                if (isEnabled) {
+                if (isEnabled ?: false) {
                     enableObserver()
                 } else {
                     tryToDisableObserver()
                 }
             }
             runOnBootLiveData.observe(viewLifecycleOwner) { isEnabled ->
-                switchToRunOnBoot(isEnabled)
+                switchToRunOnBoot(isEnabled ?: false)
             }
         }
 
