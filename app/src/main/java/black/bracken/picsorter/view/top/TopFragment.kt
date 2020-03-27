@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import black.bracken.picsorter.R
-import kotlinx.android.synthetic.main.activity_settings_top.*
+import black.bracken.picsorter.databinding.TopFragmentBinding
+import black.bracken.picsorter.ext.observe
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class TopFragment : Fragment() {
@@ -20,14 +22,28 @@ class TopFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.top_fragment, container, false)
+    ): View? {
+        val binding = DataBindingUtil.inflate<TopFragmentBinding>(
+            inflater, R.layout.top_fragment, container, false
+        ).also { binding -> binding.viewModel = viewModel }
+
+        return binding.root
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         with(viewModel) {
-            switchEnable.setOnCheckedChangeListener { _, checked -> switchToEnableObserver(checked) }
-            switchRunOnBoot.setOnCheckedChangeListener { _, checked -> switchToRunOnBoot(checked) }
+            enablesObserverLiveData.observe(viewLifecycleOwner) { isEnabled ->
+                if (isEnabled) {
+                    enableObserver()
+                } else {
+                    tryToDisableObserver()
+                }
+            }
+            runOnBootLiveData.observe(viewLifecycleOwner) { isEnabled ->
+                switchToRunOnBoot(isEnabled)
+            }
         }
     }
 

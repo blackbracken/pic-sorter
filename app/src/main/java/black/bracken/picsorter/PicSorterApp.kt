@@ -13,7 +13,7 @@ class PicSorterApp : Application() {
     private val koinModule = module {
         single { SettingsRepository(get()) }
 
-        viewModel { TopViewModel(get()) }
+        viewModel { TopViewModel(get(), get()) }
     }
 
     override fun onCreate() {
