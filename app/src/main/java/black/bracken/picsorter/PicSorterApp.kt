@@ -3,6 +3,7 @@ package black.bracken.picsorter
 import android.app.Application
 import black.bracken.picsorter.repository.imageobserver.ImageObserverDataSource
 import black.bracken.picsorter.repository.imageobserver.ImageObserverRepository
+import black.bracken.picsorter.repository.settings.SettingsDataSource
 import black.bracken.picsorter.repository.settings.SettingsRepository
 import black.bracken.picsorter.ui.top.TopViewModel
 import org.koin.android.ext.koin.androidContext
@@ -14,7 +15,7 @@ import org.koin.dsl.module
 class PicSorterApp : Application() {
 
     private val koinModule = module {
-        single { SettingsRepository(get()) }
+        single<SettingsRepository> { SettingsDataSource(get()) }
         single<ImageObserverRepository> { ImageObserverDataSource(get()) }
 
         viewModel { TopViewModel(get(), get()) }

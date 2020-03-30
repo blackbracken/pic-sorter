@@ -9,11 +9,10 @@ import black.bracken.picsorter.R
 import black.bracken.picsorter.ext.notificationManager
 import black.bracken.picsorter.presentation.manipulating.ManipulatingActivity
 import black.bracken.picsorter.repository.settings.SettingsRepository
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-/**
- * @author BlackBracken
- */
-class ObserverService : Service(), ObserverContract.View {
+class ObserverService : Service(), ObserverContract.View, KoinComponent {
 
     companion object {
         const val CALLBACK_OPEN_MANIPULATOR = 2145
@@ -53,9 +52,11 @@ class ObserverService : Service(), ObserverContract.View {
             setShowBadge(true)
         }
 
+    private val settingsRepository: SettingsRepository by inject()
+
     private val observer by lazy {
         DirectoriesObserver(
-            SettingsRepository(this).directoryPathList,
+            settingsRepository.directoryPathList,
             presenter::onDetectAdditionInObserved
         )
     }

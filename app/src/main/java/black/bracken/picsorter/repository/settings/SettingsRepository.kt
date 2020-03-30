@@ -1,27 +1,15 @@
 package black.bracken.picsorter.repository.settings
 
-import android.content.Context
+interface SettingsRepository {
 
-/**
- * @author BlackBracken
- */
-class SettingsRepository(context: Context) : SettingsDataSource {
+    var shouldRunOnBoot: Boolean
 
-    private val dataSource = LocalSettingsDataSource(context)
+    val directoryPathList: List<String>
 
-    override var shouldRunOnBoot: Boolean
-        get() = dataSource.shouldRunOnBoot
-        set(value) {
-            dataSource.shouldRunOnBoot = value
-        }
+    fun addDirectoryPath(path: String)
 
-    override val directoryPathList: List<String>
-        get() = dataSource.directoryPathList
+    fun removeDirectoryPath(path: String)
 
-    override fun addDirectoryPath(path: String) = dataSource.addDirectoryPath(path)
-
-    override fun removeDirectoryPath(path: String) = dataSource.removeDirectoryPath(path)
-
-    override fun containsDirectoryPath(path: String) = dataSource.containsDirectoryPath(path)
+    fun containsDirectoryPath(path: String): Boolean
 
 }

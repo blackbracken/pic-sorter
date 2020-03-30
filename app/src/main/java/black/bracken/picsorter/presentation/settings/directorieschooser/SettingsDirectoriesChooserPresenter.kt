@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import black.bracken.picsorter.presentation.observer.ObserverService
 import black.bracken.picsorter.repository.settings.SettingsRepository
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
 /**
  * @author BlackBracken
@@ -11,9 +13,9 @@ import black.bracken.picsorter.repository.settings.SettingsRepository
 class SettingsDirectoriesChooserPresenter(
     private val view: SettingsDirectoriesChooserContract.View,
     private val context: Context
-) : SettingsDirectoriesChooserContract.Presenter {
+) : SettingsDirectoriesChooserContract.Presenter, KoinComponent {
 
-    private val settingsRepository = SettingsRepository(context)
+    private val settingsRepository by inject<SettingsRepository>()
 
     override fun onStart() {
         fun addDirectoryPathsToRecycler() = settingsRepository
