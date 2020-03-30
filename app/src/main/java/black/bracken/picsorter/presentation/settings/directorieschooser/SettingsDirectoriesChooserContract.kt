@@ -3,9 +3,6 @@ package black.bracken.picsorter.presentation.settings.directorieschooser
 import black.bracken.picsorter.presentation.BasePresenter
 import black.bracken.picsorter.presentation.BaseView
 
-/**
- * @author BlackBracken
- */
 object SettingsDirectoriesChooserContract {
 
     interface View : BaseView<View, Presenter> {

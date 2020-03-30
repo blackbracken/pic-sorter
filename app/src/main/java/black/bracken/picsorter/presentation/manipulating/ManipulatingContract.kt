@@ -4,9 +4,6 @@ import black.bracken.picsorter.presentation.BasePresenter
 import black.bracken.picsorter.presentation.BaseView
 import java.io.File
 
-/**
- * @author BlackBracken
- */
 object ManipulatingContract {
 
     interface View : BaseView<View, Presenter> {

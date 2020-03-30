@@ -7,9 +7,6 @@ import black.bracken.picsorter.presentation.observer.ObserverService
 import black.bracken.picsorter.util.AndroidImage
 import java.io.File
 
-/**
- * @author BlackBracken
- */
 class ManipulatingPresenter(
     private val view: ManipulatingContract.View,
     private val context: Context,

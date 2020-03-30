@@ -7,9 +7,6 @@ import black.bracken.picsorter.repository.settings.SettingsRepository
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-/**
- * @author BlackBracken
- */
 class SettingsDirectoriesChooserPresenter(
     private val view: SettingsDirectoriesChooserContract.View,
     private val context: Context

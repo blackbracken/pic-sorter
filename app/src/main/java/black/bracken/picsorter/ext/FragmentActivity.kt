@@ -5,10 +5,6 @@ import androidx.fragment.app.FragmentActivity
 import net.rdrei.android.dirchooser.DirectoryChooserActivity
 import net.rdrei.android.dirchooser.DirectoryChooserConfig
 
-/**
- * @author BlackBracken
- */
-
 fun FragmentActivity.startDirectoryChooserActivity(requestCode: Int) {
     val intent = Intent(this, DirectoryChooserActivity::class.java)
         .apply {

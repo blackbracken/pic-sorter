@@ -14,9 +14,6 @@ import black.bracken.picsorter.presentation.settings.directorieschooser.recycler
 import kotlinx.android.synthetic.main.activity_settings_directories_chooser.*
 import net.rdrei.android.dirchooser.DirectoryChooserActivity
 
-/**
- * @author BlackBracken
- */
 class SettingsDirectoriesChooserActivity
     : AppCompatActivity(), SettingsDirectoriesChooserContract.View {
 

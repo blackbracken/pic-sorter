@@ -8,9 +8,6 @@ import black.bracken.picsorter.repository.settings.SettingsRepository
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-/**
- * @author BlackBracken
- */
 class BootReceiver : BroadcastReceiver(), KoinComponent {
 
     private val settingsRepository: SettingsRepository by inject()

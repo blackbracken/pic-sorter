@@ -5,9 +5,6 @@ import android.content.Context
 import android.provider.MediaStore
 import java.io.File
 
-/**
- * @author BlackBracken
- */
 class AndroidImage(file: File, private val context: Context) {
 
     var file: File? = file

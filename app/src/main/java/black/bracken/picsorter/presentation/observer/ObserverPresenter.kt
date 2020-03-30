@@ -1,8 +1,5 @@
 package black.bracken.picsorter.presentation.observer
 
-/**
- * @author BlackBracken
- */
 class ObserverPresenter(
     private val view: ObserverContract.View
 ) : ObserverContract.Presenter {

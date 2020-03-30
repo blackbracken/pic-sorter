@@ -6,9 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import black.bracken.picsorter.R
 
-/**
- * @author BlackBracken
- */
 class DirectoryRecyclerAdapter(
     private val context: Context,
     private val onClickButtonToRemove: (String) -> Unit

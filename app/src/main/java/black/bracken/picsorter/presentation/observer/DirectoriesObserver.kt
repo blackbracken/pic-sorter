@@ -3,9 +3,6 @@ package black.bracken.picsorter.presentation.observer
 import android.os.FileObserver
 import java.util.*
 
-/**
- * @author BlackBracken
- */
 class DirectoriesObserver(
     pathList: List<String>,
     private val onObserved: (String) -> Unit

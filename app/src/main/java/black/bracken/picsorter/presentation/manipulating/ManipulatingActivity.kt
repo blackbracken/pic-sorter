@@ -12,9 +12,6 @@ import kotlinx.android.synthetic.main.activity_manipulating.*
 import net.rdrei.android.dirchooser.DirectoryChooserActivity
 import java.io.File
 
-/**
- * @author BlackBracken
- */
 class ManipulatingActivity : AppCompatActivity(), ManipulatingContract.View {
 
     companion object {
@@ -63,7 +60,11 @@ class ManipulatingActivity : AppCompatActivity(), ManipulatingContract.View {
             }
         }
         editNewName.setOnTextChanged { text -> presenter.onChangeNewName(text) }
-        editDelaySeconds.setOnTextChanged { secondsText -> presenter.onChangeDelayToDelete(secondsText.toIntOrNull()) }
+        editDelaySeconds.setOnTextChanged { secondsText ->
+            presenter.onChangeDelayToDelete(
+                secondsText.toIntOrNull()
+            )
+        }
     }
 
     override fun close() {
