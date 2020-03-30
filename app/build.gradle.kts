@@ -9,8 +9,6 @@ plugins {
 }
 
 val versionKotlin: String by project
-val versionGlide: String by project
-val versionArrow: String by project
 
 android {
     compileSdkVersion(28)
@@ -70,7 +68,10 @@ dependencies {
     implementation("org.koin:koin-androidx-fragment:2.1.5")
     implementation("org.koin:koin-androidx-ext:2.1.5")
 
-    implementation("com.github.bumptech.glide:glide:$versionGlide")
-    annotationProcessor("com.github.bumptech.glide:compiler:$versionGlide")
+    implementation("com.github.bumptech.glide:glide:4.9.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.9.0")
 
+    implementation("com.xwray:groupie:2.7.0")
+    implementation("com.xwray:groupie-kotlin-android-extensions:2.7.0")
+    implementation("com.xwray:groupie-databinding:2.7.0")
 }
