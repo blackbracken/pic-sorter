@@ -21,9 +21,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:replace="android:theme">
-        <activity android:name=".view.AppActivity">
-            <!-- TODO: remove the comment-out below -->
-            <!-- <activity android:name=".presentation.settings.top.SettingsTopActivity"> -->
+        <activity android:name=".ui.AppActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -31,9 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-                android:name=".presentation.settings.directorieschooser.SettingsDirectoriesChooserActivity"
-                android:parentActivityName=".presentation.settings.top.SettingsTopActivity" />
+        <activity android:name=".presentation.settings.directorieschooser.SettingsDirectoriesChooserActivity" />
         <activity android:name=".presentation.manipulating.ManipulatingActivity" />
 
         <service android:name=".presentation.observer.ObserverService" />

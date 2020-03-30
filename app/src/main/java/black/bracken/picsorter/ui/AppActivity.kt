@@ -1,4 +1,4 @@
-package black.bracken.picsorter.view
+package black.bracken.picsorter.ui
 
 import android.Manifest
 import android.content.Intent
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import black.bracken.picsorter.R
 import black.bracken.picsorter.presentation.settings.directorieschooser.SettingsDirectoriesChooserActivity
-import black.bracken.picsorter.view.top.TopFragment
+import black.bracken.picsorter.ui.top.TopFragment
 
 class AppActivity : AppCompatActivity() {
 

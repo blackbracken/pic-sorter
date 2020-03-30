@@ -7,14 +7,14 @@
 
         <variable
                 name="viewModel"
-                type="black.bracken.picsorter.view.top.TopViewModel" />
+                type="black.bracken.picsorter.ui.top.TopViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".view.top.TopFragment">
+            tools:context="black.bracken.picsorter.ui.top.TopFragment">
 
         <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarSettings"
@@ -49,8 +49,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
-                android:checked="@={viewModel.enablesObserverLiveData}"
+                android:checked="@={viewModel.enablesObserver}"
                 android:padding="10dp"
+
                 android:text="@string/layout_settings_switch_enable"
 
                 app:layout_constraintEnd_toEndOf="@id/backgroundEnable"
@@ -89,7 +90,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
-                android:checked="@={viewModel.runOnBootLiveData}"
+                android:checked="@={viewModel.runsOnBoot}"
                 android:padding="10dp"
                 android:text="@string/layout_settings_switch_run_on_boot"
 

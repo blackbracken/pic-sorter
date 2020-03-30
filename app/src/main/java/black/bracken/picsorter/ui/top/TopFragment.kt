@@ -1,4 +1,4 @@
-package black.bracken.picsorter.view.top
+package black.bracken.picsorter.ui.top
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,12 +9,11 @@ import androidx.fragment.app.Fragment
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.TopFragmentBinding
 import black.bracken.picsorter.ext.observe
-import black.bracken.picsorter.view.AppActivity
+import black.bracken.picsorter.ui.AppActivity
 import kotlinx.android.synthetic.main.top_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class TopFragment : Fragment() {
-
     private val viewModel by viewModel<TopViewModel>()
 
     override fun onCreateView(
@@ -31,21 +30,16 @@ class TopFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        @Suppress("NullableBooleanElvis")
-        with(viewModel) {
-            enablesObserverLiveData.observe(viewLifecycleOwner) { isEnabled ->
-                if (isEnabled ?: false) {
-                    enableObserver()
-                } else {
-                    tryToDisableObserver()
-                }
-            }
-            runOnBootLiveData.observe(viewLifecycleOwner) { isEnabled ->
-                switchToRunOnBoot(isEnabled ?: false)
-            }
+        viewModel.enablesObserver.observe(this) { isChecked ->
+            viewModel.switchToEnableImageObserver(isChecked)
+        }
+        viewModel.runsOnBoot.observe(this) { isChecked ->
+            viewModel.switchToRunOnBoot(isChecked)
         }
 
-        fun openDirectoriesChooser() = (activity as? AppActivity)?.openDirectoriesChooser()
+        // TODO: remove below after the chooser is replaced by fragment.
+        fun openDirectoriesChooser(): Unit =
+            (activity as? AppActivity)?.openDirectoriesChooser() ?: Unit
         textDirectories.setOnClickListener { openDirectoriesChooser() }
         imageDirectoriesArrow.setOnClickListener { openDirectoriesChooser() }
     }
