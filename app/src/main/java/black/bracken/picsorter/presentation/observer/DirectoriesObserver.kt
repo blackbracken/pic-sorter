@@ -1,6 +1,7 @@
 package black.bracken.picsorter.presentation.observer
 
 import android.os.FileObserver
+import java.util.*
 
 /**
  * @author BlackBracken
@@ -29,10 +30,8 @@ class DirectoriesObserver(
     ) : FileObserver(directoryPath, CLOSE_WRITE) {
 
         override fun onEvent(event: Int, fileName: String?) {
-            fileName ?: return
-
-            val fileExtension = fileName.toLowerCase().split(".").last()
-            if (fileExtension !in imageExtensionSet) {
+            val ext = fileName?.toLowerCase(Locale.getDefault())?.split(".")?.lastOrNull() ?: return
+            if (ext !in imageExtensionSet) {
                 return
             }
 

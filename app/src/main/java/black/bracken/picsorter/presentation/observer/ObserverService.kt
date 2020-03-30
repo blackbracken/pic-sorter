@@ -22,10 +22,10 @@ class ObserverService : Service(), ObserverContract.View {
         const val DETECTION_NOTIFICATION_ID = 7610
 
         private const val STATIONED_CHANNEL_ID = "observer"
-        private const val STATIONED_CHANNEL_NAME = "ObserverChannel"
+        private const val STATIONED_CHANNEL_NAME = "常駐用の通知(非表示にして問題ありません)"
 
         private const val DETECTION_CHANNEL_ID = "detection"
-        private const val DETECTION_CHANNEL_NAME = "DetectionChannel"
+        private const val DETECTION_CHANNEL_NAME = "更新の検出通知"
 
         private val NOTIFICATION_COLOR = Color.argb(0, 80, 80, 80)
     }
@@ -33,13 +33,21 @@ class ObserverService : Service(), ObserverContract.View {
     override val presenter by lazy { ObserverPresenter(this) }
 
     private val stationedChannel =
-        NotificationChannel(STATIONED_CHANNEL_ID, STATIONED_CHANNEL_NAME, NotificationManager.IMPORTANCE_LOW).apply {
+        NotificationChannel(
+            STATIONED_CHANNEL_ID,
+            STATIONED_CHANNEL_NAME,
+            NotificationManager.IMPORTANCE_LOW
+        ).apply {
             lockscreenVisibility = Notification.VISIBILITY_PRIVATE
             setShowBadge(false)
         }
 
     private val detectionChannel =
-        NotificationChannel(DETECTION_CHANNEL_ID, DETECTION_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH).apply {
+        NotificationChannel(
+            DETECTION_CHANNEL_ID,
+            DETECTION_CHANNEL_NAME,
+            NotificationManager.IMPORTANCE_HIGH
+        ).apply {
             lockscreenVisibility = Notification.VISIBILITY_PRIVATE
             setSound(null, null)
             setShowBadge(true)
@@ -128,7 +136,12 @@ class ObserverService : Service(), ObserverContract.View {
             .apply {
                 flags = Notification.FLAG_AUTO_CANCEL
             }
-            .also { notification -> notificationManager.notify(DETECTION_NOTIFICATION_ID, notification) }
+            .also { notification ->
+                notificationManager.notify(
+                    DETECTION_NOTIFICATION_ID,
+                    notification
+                )
+            }
     }
 
 }
