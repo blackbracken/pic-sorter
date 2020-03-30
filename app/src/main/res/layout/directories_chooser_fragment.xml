@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="black.bracken.picsorter.ui.dirchooser.DirectoriesChooserViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.dirchooser.DirectoryChooserFragment">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarDirectories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="#636363"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:titleTextColor="#E0E0E0" />
+
+        <View
+                android:id="@+id/backgroundDirectories"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="12dp"
+
+                android:background="#B4B4B4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbarDirectories" />
+
+        <TextView
+                android:id="@+id/textAddButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="4dp"
+
+                android:gravity="center_vertical"
+                android:text="@string/layout_settings_observed_list_text"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="@id/buttonAddDirectory"
+                app:layout_constraintEnd_toStartOf="@id/buttonAddDirectory"
+
+                app:layout_constraintStart_toStartOf="@id/backgroundDirectories"
+                app:layout_constraintTop_toTopOf="@id/buttonAddDirectory" />
+
+        <ImageButton
+                android:id="@+id/buttonAddDirectory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+
+                android:contentDescription="@string/layout_settings_observed_list_button_add_description"
+                app:layout_constraintEnd_toEndOf="@id/backgroundDirectories"
+                app:layout_constraintStart_toEndOf="@id/textAddButton"
+
+                app:layout_constraintTop_toTopOf="@id/backgroundDirectories"
+                app:srcCompat="@drawable/baseline_add_black_24" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerDirectories"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                android:layout_marginVertical="8dp"
+
+                app:layout_constraintBottom_toBottomOf="@id/backgroundDirectories"
+                app:layout_constraintEnd_toEndOf="@id/buttonAddDirectory"
+                app:layout_constraintStart_toStartOf="@id/textAddButton"
+                app:layout_constraintTop_toBottomOf="@id/buttonAddDirectory" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
