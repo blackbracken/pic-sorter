@@ -1,12 +1,12 @@
 package black.bracken.picsorter.ui
 
 import android.Manifest
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import black.bracken.picsorter.R
-import black.bracken.picsorter.presentation.settings.directorieschooser.SettingsDirectoriesChooserActivity
+import black.bracken.picsorter.ui.dirchooser.DirectoriesChooserFragment
 import black.bracken.picsorter.ui.top.TopFragment
 
 class AppActivity : AppCompatActivity() {
@@ -23,15 +23,18 @@ class AppActivity : AppCompatActivity() {
         )
 
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, TopFragment())
-                .commitNow()
+            TopFragment().open()
         }
     }
 
-    // TODO: remove this after all activities are replaced with fragments.
     fun openDirectoriesChooser() {
-        startActivity(Intent(this, SettingsDirectoriesChooserActivity::class.java))
+        DirectoriesChooserFragment().open()
+    }
+
+    private fun Fragment.open() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, this)
+            .commitNow()
     }
 
 }
