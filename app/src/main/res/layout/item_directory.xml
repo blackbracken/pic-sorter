@@ -30,6 +30,7 @@
                 android:id="@+id/buttonRemoveDirectory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorWarn"
                 android:contentDescription="@string/layout_settings_observed_button_remove_description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

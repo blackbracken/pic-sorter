@@ -20,7 +20,7 @@ class PicSorterApp : Application() {
         single<ImageObserverRepository> { ImageObserverDataSource(get()) }
 
         viewModel { TopViewModel(get(), get()) }
-        viewModel { DirectoriesChooserViewModel() }
+        viewModel { DirectoriesChooserViewModel(get()) }
     }
 
     override fun onCreate() {

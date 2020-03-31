@@ -1,5 +1,7 @@
 package black.bracken.picsorter.ui.dirchooser
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +11,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.DirectoriesChooserFragmentBinding
+import black.bracken.picsorter.ext.observe
+import black.bracken.picsorter.ext.startDirectoryChooser
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import com.xwray.groupie.groupiex.plusAssign
 import kotlinx.android.synthetic.main.directories_chooser_fragment.*
+import net.rdrei.android.dirchooser.DirectoryChooserActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DirectoriesChooserFragment : Fragment() {
@@ -35,12 +39,54 @@ class DirectoriesChooserFragment : Fragment() {
         val groupAdapter = GroupAdapter<GroupieViewHolder>()
         recyclerDirectories.adapter = groupAdapter
 
-        listOf("a/", "b/c/d", "hoge/", "fuga/").forEach { path ->
-            groupAdapter += DirectoryItem(path) {
-                // TODO: debugging
-                Toast.makeText(context, "You clicked $path", Toast.LENGTH_SHORT).show()
+        buttonAddDirectory.setOnClickListener { openDirectoryChooser() }
+
+        viewModel.directoryPathObservedList.observe(this) { pathList ->
+            with(groupAdapter) {
+                clear()
+                addAll(pathList.map { path ->
+                    DirectoryItem(path) { showConfirmationToRemoveDirectory(path) }
+                })
             }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == CALLBACK_OPEN_DIR_CHOOSER) {
+            val chosenPath = data?.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR)
+                ?: return
+
+            if (!viewModel.tryAddDirectory(chosenPath)) {
+                showErrorDueToDuplication()
+            }
+        }
+    }
+
+    private fun openDirectoryChooser() {
+        startDirectoryChooser(CALLBACK_OPEN_DIR_CHOOSER)
+    }
+
+    private fun showErrorDueToDuplication() {
+        Toast
+            .makeText(context, R.string.error_duplication, Toast.LENGTH_SHORT)
+            .show()
+    }
+
+    private fun showConfirmationToRemoveDirectory(directoryPath: String) {
+        AlertDialog.Builder(context)
+            .setMessage(R.string.dialog_confirm_remove)
+            .setPositiveButton(R.string.dialog_do_remove) { _, _ ->
+                viewModel.removeDirectory(directoryPath)
+            }
+            .setNegativeButton(R.string.dialog_cancel) { _, _ -> /* do nothing */ }
+            .create()
+            .show()
+    }
+
+    companion object {
+        private const val CALLBACK_OPEN_DIR_CHOOSER = 2145
     }
 
 }

@@ -6,16 +6,14 @@ import com.xwray.groupie.databinding.BindableItem
 
 class DirectoryItem(
     private val directoryPath: String,
-    private val onClickButton: (String) -> Unit
+    private val onClickButton: () -> Unit
 ) : BindableItem<ItemDirectoryBinding>() {
 
     override fun getLayout(): Int = R.layout.item_directory
 
     override fun bind(viewBinding: ItemDirectoryBinding, position: Int) {
         viewBinding.directoryPath = directoryPath
-        viewBinding.buttonRemoveDirectory.setOnClickListener {
-            onClickButton(directoryPath)
-        }
+        viewBinding.buttonRemoveDirectory.setOnClickListener { onClickButton() }
     }
 
 }
