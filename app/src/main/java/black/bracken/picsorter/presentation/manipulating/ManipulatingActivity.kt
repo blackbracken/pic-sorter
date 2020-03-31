@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import black.bracken.picsorter.R
 import black.bracken.picsorter.ext.setOnTextChanged
 import black.bracken.picsorter.ext.startDirectoryChooserActivity
-import com.bumptech.glide.Glide
+import coil.api.load
 import kotlinx.android.synthetic.main.activity_manipulating.*
 import net.rdrei.android.dirchooser.DirectoryChooserActivity
 import java.io.File
@@ -72,10 +72,7 @@ class ManipulatingActivity : AppCompatActivity(), ManipulatingContract.View {
     }
 
     override fun showManipulatedImage() {
-        Glide
-            .with(this)
-            .load(manipulatedImage)
-            .into(imageManipulated)
+        imageManipulated.load(manipulatedImage.absoluteFile)
     }
 
     override fun openDirectorySelector() {

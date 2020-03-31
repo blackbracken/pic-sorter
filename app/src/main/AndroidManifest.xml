@@ -29,7 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.settings.directorieschooser.SettingsDirectoriesChooserActivity" />
         <activity android:name=".presentation.manipulating.ManipulatingActivity" />
 
         <service android:name=".presentation.observer.ObserverService" />
