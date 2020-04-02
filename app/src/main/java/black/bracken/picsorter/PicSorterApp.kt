@@ -1,11 +1,12 @@
 package black.bracken.picsorter
 
 import android.app.Application
-import black.bracken.picsorter.repository.imageobserver.ImageObserverDataSource
-import black.bracken.picsorter.repository.imageobserver.ImageObserverRepository
-import black.bracken.picsorter.repository.settings.SettingsDataSource
-import black.bracken.picsorter.repository.settings.SettingsRepository
+import black.bracken.picsorter.service.repository.imageobserver.ImageObserverDataSource
+import black.bracken.picsorter.service.repository.imageobserver.ImageObserverRepository
+import black.bracken.picsorter.service.repository.settings.SettingsDataSource
+import black.bracken.picsorter.service.repository.settings.SettingsRepository
 import black.bracken.picsorter.ui.dirchooser.DirectoriesChooserViewModel
+import black.bracken.picsorter.ui.manipulating.ManipulatingViewModel
 import black.bracken.picsorter.ui.top.TopViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
@@ -21,6 +22,7 @@ class PicSorterApp : Application() {
 
         viewModel { TopViewModel(get(), get()) }
         viewModel { DirectoriesChooserViewModel(get()) }
+        factory { (imagePath: String) -> ManipulatingViewModel(imagePath, get()) }
     }
 
     override fun onCreate() {

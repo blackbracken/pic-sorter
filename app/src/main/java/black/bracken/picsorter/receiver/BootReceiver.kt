@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import black.bracken.picsorter.presentation.observer.ObserverService
-import black.bracken.picsorter.repository.settings.SettingsRepository
+import black.bracken.picsorter.service.repository.settings.SettingsRepository
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 

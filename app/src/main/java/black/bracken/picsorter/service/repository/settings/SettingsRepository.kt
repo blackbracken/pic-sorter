@@ -1,4 +1,4 @@
-package black.bracken.picsorter.repository.settings
+package black.bracken.picsorter.service.repository.settings
 
 interface SettingsRepository {
 

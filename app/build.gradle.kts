@@ -63,6 +63,10 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.0-alpha01")
 
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.0-alpha04")
+    implementation("androidx.navigation:navigation-ui:2.3.0-alpha04")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.3.0-alpha04")
+
     implementation("net.rdrei.android.dirchooser:library:3.2@aar")
     implementation("com.github.guardian:Option:-SNAPSHOT")
 
@@ -84,4 +88,3 @@ dependencies {
     implementation("com.xwray:groupie-kotlin-android-extensions:2.7.0")
     implementation("com.xwray:groupie-databinding:2.7.0")
 }
-
