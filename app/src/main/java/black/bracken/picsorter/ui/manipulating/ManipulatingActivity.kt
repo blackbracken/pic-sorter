@@ -1,26 +1,36 @@
-package black.bracken.picsorter.presentation.manipulating
+package black.bracken.picsorter.ui.manipulating
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import black.bracken.picsorter.R
 import black.bracken.picsorter.ext.setOnTextChanged
 import black.bracken.picsorter.ext.startDirectoryChooserActivity
+import black.bracken.picsorter.presentation.manipulating.ManipulatingContract
+import black.bracken.picsorter.presentation.manipulating.ManipulatingPresenter
 import coil.api.load
 import kotlinx.android.synthetic.main.activity_manipulating.*
 import net.rdrei.android.dirchooser.DirectoryChooserActivity
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 import java.io.File
+
 
 class ManipulatingActivity : AppCompatActivity(), ManipulatingContract.View {
 
-    companion object {
-        const val EXTRA_IMAGE_PATH = "ImagePath"
-
-        private const val CALLBACK_OPEN_DIR_SELECTOR = 2045
+    private val viewModel by inject<ManipulatingViewModel> {
+        parametersOf(intent.getStringExtra(EXTRA_IMAGE_PATH))
     }
 
-    override val presenter by lazy { ManipulatingPresenter(this, this, manipulatedImage) }
+    override val presenter by lazy {
+        ManipulatingPresenter(
+            this,
+            this,
+            manipulatedImage
+        )
+    }
 
     override var directoryPathText: String
         get() = textDirectoryPath.text.toString()
@@ -65,6 +75,12 @@ class ManipulatingActivity : AppCompatActivity(), ManipulatingContract.View {
                 secondsText.toIntOrNull()
             )
         }
+
+        Toast.makeText(
+            this,
+            "The given path is ${viewModel.image.absolutePath}.",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun close() {
@@ -97,6 +113,12 @@ class ManipulatingActivity : AppCompatActivity(), ManipulatingContract.View {
                     ?.run(presenter::onChangeDirectory)
             }
         }
+    }
+
+    companion object {
+        const val EXTRA_IMAGE_PATH = "ImagePath"
+
+        private const val CALLBACK_OPEN_DIR_SELECTOR = 2045
     }
 
 }

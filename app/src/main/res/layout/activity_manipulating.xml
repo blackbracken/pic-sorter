@@ -6,7 +6,7 @@
         android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.manipulating.ManipulatingActivity">
+        tools:context=".ui.manipulating.ManipulatingActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="0dp"
             android:paddingVertical="18dp"
-            tools:context=".presentation.manipulating.ManipulatingActivity">
+            tools:context=".ui.manipulating.ManipulatingActivity">
 
         <ImageView
                 android:id="@+id/imageManipulated"

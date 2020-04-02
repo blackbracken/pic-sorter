@@ -22,7 +22,7 @@ class PicSorterApp : Application() {
 
         viewModel { TopViewModel(get(), get()) }
         viewModel { DirectoriesChooserViewModel(get()) }
-        viewModel { ManipulatingViewModel() }
+        factory { (imagePath: String) -> ManipulatingViewModel(imagePath) }
     }
 
     override fun onCreate() {
