@@ -20,6 +20,7 @@ import net.rdrei.android.dirchooser.DirectoryChooserActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DirectoriesChooserFragment : Fragment() {
+
     private val viewModel by viewModel<DirectoriesChooserViewModel>()
 
     override fun onCreateView(
@@ -80,7 +81,9 @@ class DirectoriesChooserFragment : Fragment() {
             .setPositiveButton(R.string.dialog_do_remove) { _, _ ->
                 viewModel.removeDirectory(directoryPath)
             }
-            .setNegativeButton(R.string.dialog_cancel) { _, _ -> /* do nothing */ }
+            .setNegativeButton(R.string.dialog_cancel) { _, _ ->
+                /* do nothing */
+            }
             .create()
             .show()
     }

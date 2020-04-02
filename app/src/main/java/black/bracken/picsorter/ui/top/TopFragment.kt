@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.top_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class TopFragment : Fragment() {
+
     private val viewModel by viewModel<TopViewModel>()
 
     override fun onCreateView(
