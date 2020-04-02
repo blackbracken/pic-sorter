@@ -1,4 +1,4 @@
-package black.bracken.picsorter.repository.imageobserver
+package black.bracken.picsorter.service.repository.imageobserver
 
 import android.content.Context
 import android.content.Intent

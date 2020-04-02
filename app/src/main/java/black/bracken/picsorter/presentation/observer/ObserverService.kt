@@ -7,7 +7,7 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import black.bracken.picsorter.R
 import black.bracken.picsorter.ext.notificationManager
-import black.bracken.picsorter.repository.settings.SettingsRepository
+import black.bracken.picsorter.service.repository.settings.SettingsRepository
 import black.bracken.picsorter.ui.manipulating.ManipulatingActivity
 import org.koin.core.KoinComponent
 import org.koin.core.inject

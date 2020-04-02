@@ -1,119 +1,70 @@
 package black.bracken.picsorter.ui.manipulating
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import black.bracken.picsorter.R
+import black.bracken.picsorter.databinding.ActivityManipulatingBinding
 import black.bracken.picsorter.ext.setOnTextChanged
 import black.bracken.picsorter.ext.startDirectoryChooserActivity
-import black.bracken.picsorter.presentation.manipulating.ManipulatingContract
-import black.bracken.picsorter.presentation.manipulating.ManipulatingPresenter
 import coil.api.load
 import kotlinx.android.synthetic.main.activity_manipulating.*
+import kotlinx.android.synthetic.main.item_directory.textDirectoryPath
 import net.rdrei.android.dirchooser.DirectoryChooserActivity
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
-import java.io.File
 
-
-class ManipulatingActivity : AppCompatActivity(), ManipulatingContract.View {
+class ManipulatingActivity : AppCompatActivity() {
 
     private val viewModel by inject<ManipulatingViewModel> {
         parametersOf(intent.getStringExtra(EXTRA_IMAGE_PATH))
     }
 
-    override val presenter by lazy {
-        ManipulatingPresenter(
-            this,
-            this,
-            manipulatedImage
-        )
-    }
-
-    override var directoryPathText: String
-        get() = textDirectoryPath.text.toString()
-        set(value) {
-            textDirectoryPath.text = value
-        }
-
-    override var newNameHint: String
-        get() = editNewName.hint.toString()
-        set(value) {
-            editNewName.hint = value
-        }
-
-    override var imageExtension: String
-        get() = textExtension.text.toString().drop(1)
-        set(value) {
-            @SuppressLint("SetTextI18n")
-            textExtension.text = ".$value"
-        }
-
-    private val manipulatedImage by lazy { File(intent.getStringExtra(EXTRA_IMAGE_PATH)) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manipulating)
 
-        presenter.onStart()
-
-        buttonApply.setOnClickListener { presenter.onApplyManipulation(manipulatedImage) }
-        buttonTrash.setOnClickListener { presenter.onDismiss(manipulatedImage) }
-        buttonChangeDirectory.setOnClickListener { presenter.onOpenDirectorySelector() }
-        switchToDeleteLater.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                presenter.onEnableToDeleteLater(editDelaySeconds.text.toString().toIntOrNull())
-            } else {
-                presenter.onDisableToDeleteLater()
-            }
-        }
-        editNewName.setOnTextChanged { text -> presenter.onChangeNewName(text) }
-        editDelaySeconds.setOnTextChanged { secondsText ->
-            presenter.onChangeDelayToDelete(
-                secondsText.toIntOrNull()
-            )
-        }
-
-        Toast.makeText(
+        DataBindingUtil.setContentView<ActivityManipulatingBinding>(
             this,
-            "The given path is ${viewModel.image.absolutePath}.",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
+            R.layout.activity_manipulating
+        ).also { binding -> binding.viewModel = viewModel }
 
-    override fun close() {
-        finishAndRemoveTask()
-    }
+        imageManipulated.load(viewModel.image)
 
-    override fun showManipulatedImage() {
-        imageManipulated.load(manipulatedImage.absoluteFile)
-    }
+        buttonApply.setOnClickListener {
+            viewModel.manipulate()
+            close()
+        }
+        buttonTrash.setOnClickListener {
+            viewModel.dump()
+            close()
+        }
 
-    override fun openDirectorySelector() {
-        startDirectoryChooserActivity(CALLBACK_OPEN_DIR_SELECTOR)
-    }
+        buttonChangeDirectory.setOnClickListener {
+            startDirectoryChooserActivity(CALLBACK_OPEN_DIR_SELECTOR)
+        }
 
-    override fun enableDelayEdit() {
-        editDelaySeconds.isEnabled = true
-    }
-
-    override fun disableDelayEdit() {
-        editDelaySeconds.isEnabled = false
+        switchToDeleteLater.setOnCheckedChangeListener { _, isEnabled ->
+            viewModel.shouldDeleteLater.value = isEnabled
+            editDelaySeconds.isEnabled = isEnabled
+        }
+        editDelaySeconds.setOnTextChanged { secondsText ->
+            viewModel.secondsToDelete.value = secondsText.toIntOrNull()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        when (requestCode) {
-            CALLBACK_OPEN_DIR_SELECTOR -> {
-                data?.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR)
-                    ?.let { path -> File(path) }
-                    ?.run(presenter::onChangeDirectory)
-            }
+        if (requestCode == CALLBACK_OPEN_DIR_SELECTOR) {
+            val path = data?.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR) ?: return
+
+            textDirectoryPath.text = path
         }
     }
+
+    private fun close() = finishAndRemoveTask()
 
     companion object {
         const val EXTRA_IMAGE_PATH = "ImagePath"
