@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/topFragment">
+    <fragment
+            android:id="@+id/topFragment"
+            android:name="black.bracken.picsorter.ui.top.TopFragment"
+            android:label="TopFragment">
+        <action
+                android:id="@+id/action_topFragment_to_directoriesChooserFragment"
+                app:destination="@id/directoriesChooserFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/directoriesChooserFragment"
+            android:name="black.bracken.picsorter.ui.dirchooser.DirectoriesChooserFragment"
+            android:label="DirectoriesChooserFragment" />
+</navigation>

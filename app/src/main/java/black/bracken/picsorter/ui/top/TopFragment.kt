@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.TopFragmentBinding
 import black.bracken.picsorter.ext.observe
-import black.bracken.picsorter.ui.AppActivity
 import kotlinx.android.synthetic.main.top_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -37,11 +37,10 @@ class TopFragment : Fragment() {
             viewModel.switchToRunOnBoot(isChecked)
         }
 
-        // TODO: remove below after the chooser is replaced by fragment.
-        fun openDirectoriesChooser(): Unit =
-            (activity as? AppActivity)?.openDirectoriesChooser() ?: Unit
-        textDirectories.setOnClickListener { openDirectoriesChooser() }
-        imageDirectoriesArrow.setOnClickListener { openDirectoriesChooser() }
+        fun navigateDirChooser() =
+            findNavController().navigate(R.id.action_topFragment_to_directoriesChooserFragment)
+        textDirectories.setOnClickListener { navigateDirChooser() }
+        imageDirectoriesArrow.setOnClickListener { navigateDirChooser() }
     }
 
 }
