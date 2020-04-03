@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import java.io.File
 
 class ManipulatingViewModel(
-    val imagePath: String,
+    imagePath: String,
     private val context: Context
 ) : ViewModel() {
 
