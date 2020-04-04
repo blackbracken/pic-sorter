@@ -1,6 +1,8 @@
 package black.bracken.picsorter
 
 import android.app.Application
+import black.bracken.picsorter.ext.notificationManager
+import black.bracken.picsorter.notification.detection.DetectionNotification
 import black.bracken.picsorter.service.repository.imageobserver.ImageObserverDataSource
 import black.bracken.picsorter.service.repository.imageobserver.ImageObserverRepository
 import black.bracken.picsorter.service.repository.settings.SettingsDataSource
@@ -18,11 +20,13 @@ class PicSorterApp : Application() {
 
     private val koinModule = module {
         single<SettingsRepository> { SettingsDataSource(get()) }
-        single<ImageObserverRepository> { ImageObserverDataSource(get()) }
+        single<ImageObserverRepository> { ImageObserverDataSource() }
 
         viewModel { TopViewModel(get(), get()) }
         viewModel { DirectoriesChooserViewModel(get()) }
         factory { (imagePath: String) -> ManipulatingViewModel(imagePath, get()) }
+
+        single { DetectionNotification(get()) }
     }
 
     override fun onCreate() {
@@ -32,6 +36,8 @@ class PicSorterApp : Application() {
             androidContext(applicationContext)
             modules(koinModule)
         }
+
+        notificationManager.createNotificationChannel(DetectionNotification.channel)
     }
 
 }

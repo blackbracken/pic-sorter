@@ -1,28 +1,19 @@
 package black.bracken.picsorter.service.repository.imageobserver
 
-import android.content.Context
-import android.content.Intent
-import black.bracken.picsorter.presentation.observer.ObserverService
+import black.bracken.picsorter.service.ImageObserver
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-class ImageObserverDataSource(private val context: Context) : ImageObserverRepository {
+@ExperimentalCoroutinesApi
+class ImageObserverDataSource : ImageObserverRepository {
 
     override fun enableObserver() {
-        context.startForegroundService(Intent(context, ObserverService::class.java))
+        ImageObserver.start()
     }
 
     override fun disableObserver() {
-        tryToDisableObserver()
+        ImageObserver.stop()
     }
 
-    override fun verifyWhetherAvailable(): Boolean {
-        val enablesNow = tryToDisableObserver()
-        if (enablesNow) enableObserver()
-
-        return enablesNow
-    }
-
-    private fun tryToDisableObserver(): Boolean {
-        return context.stopService(Intent(context, ObserverService::class.java))
-    }
+    override fun isRunning(): Boolean = ImageObserver.isRunning
 
 }
