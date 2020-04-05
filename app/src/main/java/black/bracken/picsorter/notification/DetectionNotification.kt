@@ -6,23 +6,33 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import androidx.core.app.NotificationCompat
 import black.bracken.picsorter.R
-import black.bracken.picsorter.ext.notificationManager
 import black.bracken.picsorter.ui.manipulating.ManipulatingActivity
+import black.bracken.picsorter.util.NOTIFICATION_COLOR
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class DetectionNotification(private val filePath: String) : KoinComponent {
+object DetectionNotification : KoinComponent {
 
+    const val NOTIFICATION_ID = 7610
+
+    private const val CHANNEL_ID = "detection"
+    private const val CHANNEL_NAME = "更新の検出通知"
+    private const val CALLBACK_OPEN_MANIPULATOR = 2145
     private val context by inject<Context>()
 
-    fun show() {
-        val notificationManager = context.notificationManager
+    val channel = NotificationChannel(
+        CHANNEL_ID,
+        CHANNEL_NAME,
+        NotificationManager.IMPORTANCE_HIGH
+    ).apply {
+        lockscreenVisibility = Notification.VISIBILITY_PRIVATE
+        setSound(null, null)
+        setShowBadge(true)
+    }
 
-        notificationManager.cancel(NOTIFICATION_ID)
-
+    fun get(filePath: String): Notification {
         val actionToOpenManipulatingView = Intent(context, ManipulatingActivity::class.java)
             .apply {
                 putExtra(ManipulatingActivity.EXTRA_IMAGE_PATH, filePath)
@@ -44,9 +54,10 @@ class DetectionNotification(private val filePath: String) : KoinComponent {
                 )
             }
 
-        NotificationCompat.Builder(context, CHANNEL_ID)
+        return NotificationCompat.Builder(context, CHANNEL_ID)
             .apply {
                 color = NOTIFICATION_COLOR
+                setAutoCancel(true)
                 setColorized(true)
                 setDefaults(0)
                 setSmallIcon(R.drawable.app_icon)
@@ -57,28 +68,6 @@ class DetectionNotification(private val filePath: String) : KoinComponent {
             .apply {
                 flags = Notification.FLAG_AUTO_CANCEL
             }
-            .also { notification ->
-                notificationManager.notify(NOTIFICATION_ID, notification)
-            }
-    }
-
-    companion object {
-        const val NOTIFICATION_ID = 7610
-        const val CALLBACK_OPEN_MANIPULATOR = 2145
-
-        private const val CHANNEL_ID = "detection"
-        private const val CHANNEL_NAME = "更新の検出通知"
-        private val NOTIFICATION_COLOR = Color.argb(0, 80, 80, 80)
-
-        val channel = NotificationChannel(
-            CHANNEL_ID,
-            CHANNEL_NAME,
-            NotificationManager.IMPORTANCE_HIGH
-        ).apply {
-            lockscreenVisibility = Notification.VISIBILITY_PRIVATE
-            setSound(null, null)
-            setShowBadge(true)
-        }
     }
 
 }

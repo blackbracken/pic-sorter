@@ -6,6 +6,6 @@ interface ImageObserverRepository {
 
     fun disableObserver()
 
-    fun isRunning(): Boolean
+    fun verifyWhetherToRun(): Boolean
 
 }

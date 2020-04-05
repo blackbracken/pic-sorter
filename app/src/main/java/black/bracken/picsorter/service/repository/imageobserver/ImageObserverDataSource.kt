@@ -1,19 +1,29 @@
 package black.bracken.picsorter.service.repository.imageobserver
 
+import android.content.Context
+import android.content.Intent
 import black.bracken.picsorter.service.ImageObserver
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-@ExperimentalCoroutinesApi
-class ImageObserverDataSource : ImageObserverRepository {
+class ImageObserverDataSource : ImageObserverRepository, KoinComponent {
+
+    private val context by inject<Context>()
 
     override fun enableObserver() {
-        ImageObserver.start()
+        context.startForegroundService(Intent(context, ImageObserver::class.java))
     }
 
     override fun disableObserver() {
-        ImageObserver.stop()
+        context.stopService(Intent(context, ImageObserver::class.java))
     }
 
-    override fun isRunning(): Boolean = ImageObserver.isRunning
+    override fun verifyWhetherToRun(): Boolean =
+        if (!context.stopService(Intent(context, ImageObserver::class.java))) {
+            false
+        } else {
+            enableObserver()
+            true
+        }
 
 }

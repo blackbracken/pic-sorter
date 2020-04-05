@@ -3,6 +3,7 @@ package black.bracken.picsorter
 import android.app.Application
 import black.bracken.picsorter.ext.notificationManager
 import black.bracken.picsorter.notification.DetectionNotification
+import black.bracken.picsorter.notification.ObservingNotification
 import black.bracken.picsorter.service.repository.imageobserver.ImageObserverDataSource
 import black.bracken.picsorter.service.repository.imageobserver.ImageObserverRepository
 import black.bracken.picsorter.service.repository.settings.SettingsDataSource
@@ -35,7 +36,12 @@ class PicSorterApp : Application() {
             modules(koinModule)
         }
 
-        notificationManager.createNotificationChannel(DetectionNotification.channel)
+        notificationManager.createNotificationChannels(
+            listOf(
+                ObservingNotification.channel,
+                DetectionNotification.channel
+            )
+        )
     }
 
 }

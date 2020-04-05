@@ -32,7 +32,6 @@
         </activity>
         <activity android:name=".ui.manipulating.ManipulatingActivity" />
 
-        <service android:name=".presentation.observer.ObserverService" />
         <service android:name=".service.ImageObserver" />
 
         <receiver
