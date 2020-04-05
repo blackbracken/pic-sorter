@@ -1,4 +1,4 @@
-package black.bracken.picsorter.notification.detection
+package black.bracken.picsorter.notification
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -11,13 +11,19 @@ import androidx.core.app.NotificationCompat
 import black.bracken.picsorter.R
 import black.bracken.picsorter.ext.notificationManager
 import black.bracken.picsorter.ui.manipulating.ManipulatingActivity
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class DetectionNotification(private val context: Context) {
+class DetectionNotification(private val filePath: String) : KoinComponent {
 
-    fun show(filePath: String) {
-        context.notificationManager.cancel(NOTIFICATION_ID)
+    private val context by inject<Context>()
 
-        val openManipulatingActivity = Intent(context, ManipulatingActivity::class.java)
+    fun show() {
+        val notificationManager = context.notificationManager
+
+        notificationManager.cancel(NOTIFICATION_ID)
+
+        val actionToOpenManipulatingView = Intent(context, ManipulatingActivity::class.java)
             .apply {
                 putExtra(ManipulatingActivity.EXTRA_IMAGE_PATH, filePath)
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
@@ -38,22 +44,21 @@ class DetectionNotification(private val context: Context) {
                 )
             }
 
-        NotificationCompat
-            .Builder(context, CHANNEL_ID)
+        NotificationCompat.Builder(context, CHANNEL_ID)
             .apply {
                 color = NOTIFICATION_COLOR
                 setColorized(true)
                 setDefaults(0)
                 setSmallIcon(R.drawable.app_icon)
                 setContentText(context.getString(R.string.notification_detection_description))
-                addAction(openManipulatingActivity)
+                addAction(actionToOpenManipulatingView)
             }
             .build()
             .apply {
                 flags = Notification.FLAG_AUTO_CANCEL
             }
             .also { notification ->
-                context.notificationManager.notify(NOTIFICATION_ID, notification)
+                notificationManager.notify(NOTIFICATION_ID, notification)
             }
     }
 
