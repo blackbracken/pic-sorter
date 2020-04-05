@@ -49,7 +49,7 @@ dependencies {
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versionKotlin")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3")
-    implementation("androidx.appcompat:appcompat:1.2.0-alpha03")
+    implementation("androidx.appcompat:appcompat:1.2.0-beta01")
     implementation("androidx.constraintlayout:constraintlayout:2.0.0-beta4")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
@@ -61,7 +61,7 @@ dependencies {
     testImplementation("junit:junit:4.12")
     androidTestImplementation("androidx.test:runner:1.2.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.0-alpha01")
+    implementation("androidx.recyclerview:recyclerview:1.2.0-alpha02")
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.0-alpha04")
     implementation("androidx.navigation:navigation-ui:2.3.0-alpha04")
