@@ -29,4 +29,6 @@
     <string name="layout_settings_open_chooser">Choose the directories are observed</string>
     <string name="dialog_ok">OK</string>
     <string name="title_copyright">Copyright</string>
+    <string name="layout_settings_open_notification_settings">Open a standard notification settings shows on taking screenshot</string>
+    <string name="layout_settings_description_open_notification_settings">Advanced: To disable Android standard notification</string>
 </resources>

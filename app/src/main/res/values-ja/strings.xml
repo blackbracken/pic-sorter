@@ -26,4 +26,6 @@
     <string name="layout_settings_open_chooser">監視するディレクトリを指定</string>
     <string name="dialog_ok">了解</string>
     <string name="title_copyright">権利表記</string>
+    <string name="layout_settings_open_notification_settings">Android標準のスクリーンショットの通知設定を開く</string>
+    <string name="layout_settings_description_open_notification_settings">高度な設定: Android側のスクリーンショット通知を無効にします</string>
 </resources>
