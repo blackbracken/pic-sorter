@@ -30,6 +30,8 @@ class ManipulatingActivity : AppCompatActivity() {
             R.layout.activity_manipulating
         ).also { binding -> binding.viewModel = viewModel }
 
+        viewModel.removeNotificationIfExists()
+
         imageManipulated.load(viewModel.image)
 
         buttonApply.setOnClickListener {
