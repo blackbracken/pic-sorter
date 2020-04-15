@@ -1,6 +1,8 @@
 package black.bracken.picsorter.ui.top
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +44,17 @@ class TopFragment : Fragment() {
             findNavController().navigate(R.id.action_topFragment_to_directoriesChooserFragment)
         textDirectories.setOnClickListener { navigateDirChooser() }
         imageDirectoriesArrow.setOnClickListener { navigateDirChooser() }
+
+        fun openAndroidNotificationSettings() =
+            Intent()
+                .apply {
+                    action = Settings.ACTION_APP_NOTIFICATION_SETTINGS
+                    putExtra(Settings.EXTRA_APP_PACKAGE, "com.android.systemui")
+                }
+                .also { intent -> startActivity(intent); Unit }
+        textOpenNotificationSettings.setOnClickListener { openAndroidNotificationSettings() }
+        imageOpenNotificationSettingsArrow.setOnClickListener { openAndroidNotificationSettings() }
+        textDescriptionOpenNotificationSettings.setOnClickListener { openAndroidNotificationSettings() }
     }
 
 }
