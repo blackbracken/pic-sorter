@@ -7,6 +7,7 @@
 
 # 技術
 * MVVM + DataBinding
+* All ConstraintLayout
 * Kotlin Coroutine + Flow
 * Navigation
 * Koin
