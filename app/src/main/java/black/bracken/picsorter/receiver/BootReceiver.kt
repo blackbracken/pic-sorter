@@ -3,8 +3,8 @@ package black.bracken.picsorter.receiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import black.bracken.picsorter.service.repository.imageobserver.ImageObserverRepository
-import black.bracken.picsorter.service.repository.settings.SettingsRepository
+import black.bracken.picsorter.model.repository.imageobserver.ImageObserverRepository
+import black.bracken.picsorter.model.repository.settings.SettingsRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.core.KoinComponent
 import org.koin.core.inject

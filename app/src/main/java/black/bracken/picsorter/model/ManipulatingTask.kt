@@ -1,4 +1,4 @@
-package black.bracken.picsorter.service
+package black.bracken.picsorter.model
 
 import android.content.ContentValues
 import android.content.Context

@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import black.bracken.picsorter.ext.notificationManager
-import black.bracken.picsorter.notification.DetectionNotification
-import black.bracken.picsorter.service.ManipulatingTask
+import black.bracken.picsorter.model.notification.DetectionNotification
+import black.bracken.picsorter.model.ManipulatingTask
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.File

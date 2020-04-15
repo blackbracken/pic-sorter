@@ -2,12 +2,12 @@ package black.bracken.picsorter
 
 import android.app.Application
 import black.bracken.picsorter.ext.notificationManager
-import black.bracken.picsorter.notification.DetectionNotification
-import black.bracken.picsorter.notification.ObservingNotification
-import black.bracken.picsorter.service.repository.imageobserver.ImageObserverDataSource
-import black.bracken.picsorter.service.repository.imageobserver.ImageObserverRepository
-import black.bracken.picsorter.service.repository.settings.SettingsDataSource
-import black.bracken.picsorter.service.repository.settings.SettingsRepository
+import black.bracken.picsorter.model.notification.DetectionNotification
+import black.bracken.picsorter.model.notification.ObservingNotification
+import black.bracken.picsorter.model.repository.imageobserver.ImageObserverDataSource
+import black.bracken.picsorter.model.repository.imageobserver.ImageObserverRepository
+import black.bracken.picsorter.model.repository.settings.SettingsDataSource
+import black.bracken.picsorter.model.repository.settings.SettingsRepository
 import black.bracken.picsorter.ui.dirchooser.DirectoriesChooserViewModel
 import black.bracken.picsorter.ui.manipulating.ManipulatingViewModel
 import black.bracken.picsorter.ui.top.TopViewModel

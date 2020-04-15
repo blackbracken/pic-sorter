@@ -1,4 +1,4 @@
-package black.bracken.picsorter.service.repository.imageobserver
+package black.bracken.picsorter.model.repository.imageobserver
 
 interface ImageObserverRepository {
 

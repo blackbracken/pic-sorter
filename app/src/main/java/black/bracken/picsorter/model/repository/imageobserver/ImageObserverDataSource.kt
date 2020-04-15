@@ -1,8 +1,8 @@
-package black.bracken.picsorter.service.repository.imageobserver
+package black.bracken.picsorter.model.repository.imageobserver
 
 import android.content.Context
 import android.content.Intent
-import black.bracken.picsorter.service.ImageObserver
+import black.bracken.picsorter.model.ImageObserver
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
