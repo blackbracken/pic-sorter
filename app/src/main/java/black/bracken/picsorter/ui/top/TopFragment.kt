@@ -1,6 +1,8 @@
 package black.bracken.picsorter.ui.top
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
@@ -12,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.TopFragmentBinding
 import black.bracken.picsorter.ext.observe
+import com.afollestad.materialdialogs.MaterialDialog
 import kotlinx.android.synthetic.main.top_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -32,6 +35,8 @@ class TopFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        requestPermissions()
 
         viewModel.enablesObserver.observe(this) { isChecked ->
             viewModel.switchToEnableImageObserver(isChecked)
@@ -55,6 +60,22 @@ class TopFragment : Fragment() {
         textOpenNotificationSettings.setOnClickListener { openAndroidNotificationSettings() }
         imageOpenNotificationSettingsArrow.setOnClickListener { openAndroidNotificationSettings() }
         textDescriptionOpenNotificationSettings.setOnClickListener { openAndroidNotificationSettings() }
+    }
+
+    private fun requestPermissions() {
+        if (context?.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            return
+        }
+
+        MaterialDialog(context ?: return).show {
+            icon(R.drawable.ic_touch_app_black)
+            title(R.string.dialog_permission_request_title)
+            message(R.string.dialog_permission_request_subtitle)
+            positiveButton { dialog ->
+                dialog.dismiss()
+                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
+            }
+        }
     }
 
 }

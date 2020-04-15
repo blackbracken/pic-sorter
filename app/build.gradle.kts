@@ -88,5 +88,5 @@ dependencies {
     implementation("com.xwray:groupie-kotlin-android-extensions:2.7.0")
     implementation("com.xwray:groupie-databinding:2.7.0")
 
-    implementation("com.github.geniusforapp:fancyDialog:1.0.2")
+    implementation("com.afollestad.material-dialogs:core:3.2.1")
 }

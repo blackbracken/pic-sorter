@@ -28,4 +28,6 @@
     <string name="title_copyright">権利表記</string>
     <string name="layout_settings_open_notification_settings">Android標準のスクリーンショットの通知設定を開く</string>
     <string name="layout_settings_description_open_notification_settings">高度な設定: Android側のスクリーンショット通知を無効にします</string>
+    <string name="dialog_permission_request_title">ファイルへのアクセスを許可してください</string>
+    <string name="dialog_permission_request_subtitle">このアプリは権限無しでは動作しません。下のokボタンを押し許可してください。</string>
 </resources>
