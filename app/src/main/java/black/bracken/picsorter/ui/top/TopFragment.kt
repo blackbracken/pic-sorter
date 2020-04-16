@@ -73,8 +73,7 @@ class TopFragment : Fragment() {
             icon(R.drawable.ic_touch_app_black)
             title(R.string.dialog_permission_request_title)
             message(R.string.dialog_permission_request_subtitle)
-            positiveButton { dialog ->
-                dialog.dismiss()
+            positiveButton {
                 requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
             }
         }
