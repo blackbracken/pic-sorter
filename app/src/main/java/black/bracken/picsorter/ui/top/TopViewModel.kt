@@ -2,8 +2,8 @@ package black.bracken.picsorter.ui.top
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import black.bracken.picsorter.model.repository.imageobserver.ImageObserverRepository
-import black.bracken.picsorter.model.repository.settings.SettingsRepository
+import black.bracken.picsorter.service.repository.ImageObserverRepository
+import black.bracken.picsorter.service.repository.SettingsRepository
 
 class TopViewModel(
     private val imageObserverRepository: ImageObserverRepository,

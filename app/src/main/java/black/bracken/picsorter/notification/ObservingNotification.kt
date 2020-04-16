@@ -1,4 +1,4 @@
-package black.bracken.picsorter.model.notification
+package black.bracken.picsorter.notification
 
 import android.app.Notification
 import android.app.NotificationChannel

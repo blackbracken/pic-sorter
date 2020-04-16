@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import black.bracken.picsorter.ext.notificationManager
-import black.bracken.picsorter.model.notification.DetectionNotification
-import black.bracken.picsorter.model.ManipulatingTask
+import black.bracken.picsorter.notification.DetectionNotification
+import black.bracken.picsorter.service.ManipulatingTask
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.File
@@ -25,16 +25,17 @@ class ManipulatingViewModel(
     val imageExtension = ".${image.extension}"
 
     fun manipulate() {
-        val task = ManipulatingTask(image, context,
-            ManipulatingTask.TaskRequest(
-                imageDirectoryPath.value,
-                imageNewName.value
-                    ?.takeUnless { newName -> newName.isEmpty() },
-                shouldDeleteLater.value
-                    ?.takeIf { shouldDelete -> shouldDelete }
-                    ?.let { secondsToDelete.value }
+        val task =
+            ManipulatingTask(image, context,
+                ManipulatingTask.TaskRequest(
+                    imageDirectoryPath.value,
+                    imageNewName.value
+                        ?.takeUnless { newName -> newName.isEmpty() },
+                    shouldDeleteLater.value
+                        ?.takeIf { shouldDelete -> shouldDelete }
+                        ?.let { secondsToDelete.value }
+                )
             )
-        )
 
         // Execute in GlobalScope because the task may be executed out of ViewModelScope.
         GlobalScope.launch { task.execute() }
@@ -43,7 +44,11 @@ class ManipulatingViewModel(
     fun dump() {
         val task = ManipulatingTask(
             image, context,
-            ManipulatingTask.TaskRequest(null, null, 0)
+            ManipulatingTask.TaskRequest(
+                null,
+                null,
+                0
+            )
         )
 
         GlobalScope.launch { task.execute() }

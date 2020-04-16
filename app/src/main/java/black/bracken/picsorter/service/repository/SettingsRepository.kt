@@ -1,9 +1,24 @@
-package black.bracken.picsorter.model.repository.settings
+package black.bracken.picsorter.service.repository
 
 import android.content.Context
 import black.bracken.picsorter.ext.write
 
-class SettingsDataSource(context: Context) : SettingsRepository {
+interface SettingsRepository {
+
+    var shouldRunOnBoot: Boolean
+
+    val directoryPathList: List<String>
+
+    fun addDirectoryPath(path: String)
+
+    fun removeDirectoryPath(path: String)
+
+    fun containsDirectoryPath(path: String): Boolean
+
+}
+
+class SettingsDataSource(context: Context) :
+    SettingsRepository {
 
     companion object {
         private const val KEY_RUN_ON_BOOT = "RunOnBoot"

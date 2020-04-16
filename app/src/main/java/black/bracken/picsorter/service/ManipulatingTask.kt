@@ -1,4 +1,4 @@
-package black.bracken.picsorter.model
+package black.bracken.picsorter.service
 
 import android.content.ContentValues
 import android.content.Context
@@ -7,6 +7,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class ManipulatingTask(
     private var file: File?,
@@ -23,13 +25,13 @@ class ManipulatingTask(
     }
 
     private fun moveDirectory() {
-        if (request.newDirectory == file?.parent) return
+        if (request.newDirectoryPath == file?.parent) return
 
-        val directoryPath = request.newDirectory ?: return
+        val directoryPath = request.newDirectoryPath ?: return
         val fileName = file?.name ?: return
         val destination = File("$directoryPath/$fileName")
 
-        file = file?.moveToCertainly(destination)
+        file = file?.moveWhileAvoidingDuplication(destination)
     }
 
     private fun rename() {
@@ -39,7 +41,7 @@ class ManipulatingTask(
         val fileName = request.newName?.let { name -> "$name.$extension" } ?: return
         val destination = file?.let { oldFile -> File("${oldFile.parent}/$fileName") } ?: return
 
-        file = file?.moveToCertainly(destination)
+        file = file?.moveWhileAvoidingDuplication(destination)
     }
 
     private suspend fun scheduleDeletion() {
@@ -49,18 +51,29 @@ class ManipulatingTask(
         file?.deleteCertainly()
     }
 
-    private fun File.moveToCertainly(destination: File): File {
-        copyTo(destination, true)
-        deleteCertainly()
+    private fun File.moveWhileAvoidingDuplication(destination: File): File {
+        fun File.moveToCertainly(dest: File): File {
+            copyTo(dest, true)
+            deleteCertainly()
 
-        context.contentResolver.insert(
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            ContentValues().apply {
-                put(MediaStore.Images.Media.DATA, destination.absolutePath)
-            }
+            context.contentResolver.insert(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                ContentValues().apply {
+                    put(MediaStore.Images.Media.DATA, dest.absolutePath)
+                }
+            )
+
+            return dest
+        }
+
+        if (!destination.exists()) {
+            return moveToCertainly(destination)
+        }
+
+        val suffix = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMDDHmmss"))
+        return moveToCertainly(
+            File("${destination.parent}/${destination.nameWithoutExtension}_$suffix.${destination.extension}")
         )
-
-        return destination
     }
 
     private fun File.deleteCertainly() {
@@ -74,7 +87,7 @@ class ManipulatingTask(
     }
 
     data class TaskRequest(
-        val newDirectory: String?,
+        val newDirectoryPath: String?,
         val newName: String?,
         val secondsToDelete: Int?
     )
