@@ -1,6 +1,8 @@
 package black.bracken.picsorter
 
 import android.app.Application
+import androidx.room.Room
+import black.bracken.picsorter.db.PicSorterDatabase
 import black.bracken.picsorter.ext.notificationManager
 import black.bracken.picsorter.notification.DetectionNotification
 import black.bracken.picsorter.notification.ObservingNotification
@@ -20,12 +22,23 @@ import org.koin.dsl.module
 class PicSorterApp : Application() {
 
     private val koinModule = module {
+        // repositories
         single<SettingsRepository> { SettingsDataSource(get()) }
         single<ImageObserverRepository> { ImageObserverDataSource() }
 
+        // viewmodels
         viewModel { TopViewModel(get(), get()) }
         viewModel { DirectoriesChooserViewModel(get()) }
         factory { (imagePath: String) -> ManipulatingViewModel(imagePath, get()) }
+
+        // databases
+        single {
+            Room.databaseBuilder(
+                get(),
+                PicSorterDatabase::class.java,
+                "picsorter-database"
+            ).build()
+        }
     }
 
     override fun onCreate() {

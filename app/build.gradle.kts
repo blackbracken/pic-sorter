@@ -67,6 +67,10 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.3.0-alpha04")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:2.3.0-alpha04")
 
+    implementation("androidx.room:room-runtime:2.2.5")
+    kapt("androidx.room:room-compiler:2.2.5")
+    implementation("androidx.room:room-ktx:2.2.5")
+
     implementation("net.rdrei.android.dirchooser:library:3.2@aar")
     implementation("com.github.guardian:Option:-SNAPSHOT")
 
