@@ -12,8 +12,10 @@ class DirectoryItem(
     override fun getLayout(): Int = R.layout.item_directory
 
     override fun bind(viewBinding: ItemDirectoryBinding, position: Int) {
-        viewBinding.directoryPath = directoryPath
-        viewBinding.buttonRemoveDirectory.setOnClickListener { onClickButton() }
+        with(viewBinding) {
+            directoryPath = this@DirectoryItem.directoryPath
+            buttonRemoveDirectory.setOnClickListener { onClickButton() }
+        }
     }
 
 }

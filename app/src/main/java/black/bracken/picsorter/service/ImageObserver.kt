@@ -30,7 +30,9 @@ class ImageObserver : Service(), KoinComponent {
                 object : FileObserver(path, CLOSE_WRITE) {
                     override fun onEvent(id: Int, fileName: String?) {
                         launch {
-                            this@channelFlow.send("$path/${fileName ?: return@launch}")
+                            fileName ?: return@launch // for syntax hightlighting on GitHub
+
+                            send("$path/${fileName}")
                         }
                     }
                 }

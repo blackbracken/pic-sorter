@@ -26,12 +26,14 @@
     <string name="notification_detection_button_manipulate">Edit</string>
     <string name="notification_detection_description">The image added has been detected</string>
     <string name="observer_text_sub">Observes updating</string>
-    <string name="layout_settings_open_chooser">Choose the directories are observed</string>
+    <string name="layout_settings_open_chooser">Choose directories are observed</string>
     <string name="dialog_ok">OK</string>
     <string name="title_copyright">Copyright</string>
     <string name="layout_settings_open_notification_settings">Open a standard notification settings shows on taking screenshot</string>
-    <string name="layout_settings_description_open_notification_settings">Advanced: To disable Android standard notification</string>
+    <string name="layout_settings_description_open_notification_settings">Advanced: To disable Android standard notification.</string>
     <string name="dialog_permission_request_title">"Allow access to photos. "</string>
     <string name="dialog_permission_request_subtitle">This app doesn\'t work without permissions. Push a below button to allow.</string>
     <string name="layout_simplemanipulatingsettings_title">List of simple manipulation</string>
+    <string name="layout_settings_open_simple_manipulating_settings">Open a settings for simple manipulating</string>
+    <string name="layout_settings_description_open_simple_manipulating_settings">To omit manipulations by registering them.</string>
 </resources>
