@@ -9,10 +9,14 @@
             android:label="TopFragment">
         <action
                 android:id="@+id/action_topFragment_to_directoriesChooserFragment"
-                app:destination="@id/directoriesChooserFragment" />
+                app:destination="@id/directoriesChooserFragment"
+                app:enterAnim="@anim/fragment_fade_enter"
+                app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
             android:id="@+id/directoriesChooserFragment"
             android:name="black.bracken.picsorter.ui.dirchooser.DirectoriesChooserFragment"
-            android:label="DirectoriesChooserFragment" />
+            android:label="DirectoriesChooserFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
 </navigation>

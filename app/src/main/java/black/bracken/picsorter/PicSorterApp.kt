@@ -39,6 +39,7 @@ class PicSorterApp : Application() {
                 "picsorter-database"
             ).build()
         }
+        single { get<PicSorterDatabase>().simpleManipulatingsDao() }
     }
 
     override fun onCreate() {
