@@ -11,7 +11,7 @@ class SimpleManipulatingSettingsViewModel(
     private val manipulatingRepository: SimpleManipulatingRepository
 ) : ViewModel() {
 
-    val manipulatingNameList: LiveData<List<String>> get() = TODO()
+    val manipulatingNameList: LiveData<List<String>> get() = _manipulatingNameList
     private val _manipulatingNameList = MutableLiveData<List<String>>(listOf())
 
     init {
@@ -19,5 +19,7 @@ class SimpleManipulatingSettingsViewModel(
             _manipulatingNameList.value = manipulatingRepository.loadAllNames()
         }
     }
+
+    // TODO implement
 
 }

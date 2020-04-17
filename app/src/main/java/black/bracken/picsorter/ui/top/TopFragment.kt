@@ -52,6 +52,15 @@ class TopFragment : Fragment() {
         textDirectories.setOnClickListener { navigateDirChooser() }
         imageDirectoriesArrow.setOnClickListener { navigateDirChooser() }
 
+        fun navigateSimpleManipulatingSettings() =
+            findNavController().navigate(R.id.action_topFragment_to_simpleManipulatingSettingsFragment)
+        textOpenSimpleNotificationSettings
+            .setOnClickListener { navigateSimpleManipulatingSettings() }
+        imageOpenSimpleManipulatingSettingsArrow
+            .setOnClickListener { navigateSimpleManipulatingSettings() }
+        textDescriptionOpenSimpleManipulatingSettings
+            .setOnClickListener { navigateSimpleManipulatingSettings() }
+
         fun openAndroidNotificationSettings() =
             Intent()
                 .apply {
@@ -59,9 +68,12 @@ class TopFragment : Fragment() {
                     putExtra(Settings.EXTRA_APP_PACKAGE, "com.android.systemui")
                 }
                 .also { intent -> startActivity(intent); Unit }
-        textOpenNotificationSettings.setOnClickListener { openAndroidNotificationSettings() }
-        imageOpenNotificationSettingsArrow.setOnClickListener { openAndroidNotificationSettings() }
-        textDescriptionOpenNotificationSettings.setOnClickListener { openAndroidNotificationSettings() }
+        textOpenNotificationSettings
+            .setOnClickListener { openAndroidNotificationSettings() }
+        imageOpenNotificationSettingsArrow
+            .setOnClickListener { openAndroidNotificationSettings() }
+        textDescriptionOpenNotificationSettings
+            .setOnClickListener { openAndroidNotificationSettings() }
     }
 
     private fun requestPermissions() {

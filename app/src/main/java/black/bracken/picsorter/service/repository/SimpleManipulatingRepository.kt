@@ -12,7 +12,7 @@ interface SimpleManipulatingRepository {
 
     suspend fun add(manipulating: SimpleManipulating)
 
-    suspend fun removeBy(name: String)
+    suspend fun removeByName(name: String)
 
     suspend fun findByName(name: String): SimpleManipulating?
 
@@ -28,7 +28,7 @@ class SimpleManipulatingDataSource : SimpleManipulatingRepository, KoinComponent
         manipulatingDao.insertManipulating(manipulating.toEntity())
     }
 
-    override suspend fun removeBy(name: String) = withContext(Dispatchers.IO) {
+    override suspend fun removeByName(name: String) = withContext(Dispatchers.IO) {
         manipulatingDao.deleteManipulatingByName(name)
     }
 

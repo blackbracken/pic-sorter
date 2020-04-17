@@ -23,7 +23,7 @@ class SimpleManipulatingSettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<SimpleManipulatingSettingsFragmentBinding>(
-            inflater, R.layout.directories_chooser_fragment, container, false
+            inflater, R.layout.simple_manipulating_settings_fragment, container, false
         ).also { binding -> binding.viewModel = viewModel }
 
         return binding.root
