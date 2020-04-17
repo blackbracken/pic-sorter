@@ -12,6 +12,9 @@
                 app:destination="@id/directoriesChooserFragment"
                 app:enterAnim="@anim/fragment_fade_enter"
                 app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+                android:id="@+id/action_topFragment_to_simpleManipulatingSettingsFragment"
+                app:destination="@id/simpleManipulatingSettingsFragment" />
     </fragment>
     <fragment
             android:id="@+id/directoriesChooserFragment"
@@ -19,4 +22,8 @@
             android:label="DirectoriesChooserFragment"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+    <fragment
+            android:id="@+id/simpleManipulatingSettingsFragment"
+            android:name="black.bracken.picsorter.ui.simplemanipulatingsettings.SimpleManipulatingSettingsFragment"
+            android:label="SimpleManipulatingSettingsFragment" />
 </navigation>

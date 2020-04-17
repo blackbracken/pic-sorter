@@ -33,4 +33,5 @@
     <string name="layout_settings_description_open_notification_settings">Advanced: To disable Android standard notification</string>
     <string name="dialog_permission_request_title">"Allow access to photos. "</string>
     <string name="dialog_permission_request_subtitle">This app doesn\'t work without permissions. Push a below button to allow.</string>
+    <string name="layout_simplemanipulatingsettings_title">List of simple manipulation</string>
 </resources>

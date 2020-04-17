@@ -12,6 +12,7 @@ import black.bracken.picsorter.service.repository.SettingsDataSource
 import black.bracken.picsorter.service.repository.SettingsRepository
 import black.bracken.picsorter.ui.dirchooser.DirectoriesChooserViewModel
 import black.bracken.picsorter.ui.manipulating.ManipulatingViewModel
+import black.bracken.picsorter.ui.simplemanipulatingsettings.SimpleManipulatingSettingsViewModel
 import black.bracken.picsorter.ui.top.TopViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
@@ -29,6 +30,7 @@ class PicSorterApp : Application() {
         // viewmodels
         viewModel { TopViewModel(get(), get()) }
         viewModel { DirectoriesChooserViewModel(get()) }
+        viewModel { SimpleManipulatingSettingsViewModel() }
         factory { (imagePath: String) -> ManipulatingViewModel(imagePath, get()) }
 
         // databases
