@@ -28,6 +28,194 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:titleTextColor="#E0E0E0" />
+
+        <View
+                android:id="@+id/backgroundApply"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+
+                android:background="#B4B4B4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbarSimpleManipulatingRegisterer"
+
+                app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+                android:id="@+id/textManipulatingName"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="8dp"
+                android:gravity="center|end"
+
+                android:text="@string/layout_simple_manipulating_registerer_name"
+                app:layout_constraintBottom_toBottomOf="@id/backgroundApply"
+                app:layout_constraintEnd_toStartOf="@id/editManipulatingName"
+                app:layout_constraintStart_toStartOf="@id/backgroundApply"
+                app:layout_constraintTop_toTopOf="@id/backgroundApply" />
+
+        <EditText
+                android:id="@+id/editManipulatingName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+
+                app:layout_constraintBottom_toBottomOf="@id/backgroundApply"
+                app:layout_constraintEnd_toStartOf="@id/buttonApply"
+                app:layout_constraintStart_toEndOf="@id/textManipulatingName"
+                app:layout_constraintTop_toTopOf="@id/backgroundApply" />
+
+        <Button
+                android:id="@+id/buttonApply"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/layout_simple_manipulating_registerer_button_register"
+
+                app:layout_constraintBottom_toBottomOf="@id/backgroundApply"
+                app:layout_constraintEnd_toEndOf="@id/backgroundApply"
+                app:layout_constraintHorizontal_weight="5"
+                app:layout_constraintStart_toEndOf="@id/editManipulatingName"
+                app:layout_constraintTop_toTopOf="@id/backgroundApply" />
+
+        <View
+                android:id="@+id/backgroundDirectory"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="24dp"
+
+                android:background="#B4B4B4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/backgroundApply"
+
+                app:layout_constraintVertical_chainStyle="packed" />
+
+        <Button
+                android:id="@+id/buttonChangeDirectory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+
+                android:text="@string/layout_manipulating_button_change"
+
+                app:layout_constraintBottom_toTopOf="@id/textDescriptionDirectory"
+                app:layout_constraintEnd_toEndOf="@+id/textDescriptionDirectory"
+                app:layout_constraintStart_toEndOf="@id/textDirectoryPath"
+                app:layout_constraintTop_toTopOf="@id/backgroundDirectory" />
+
+        <TextView
+                android:id="@+id/textDirectoryPath"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+
+                android:breakStrategy="high_quality"
+                android:gravity="center|start"
+                android:textColor="#000000"
+                android:textSize="14sp"
+
+                app:layout_constraintBottom_toBottomOf="@id/buttonChangeDirectory"
+                app:layout_constraintEnd_toStartOf="@id/buttonChangeDirectory"
+                app:layout_constraintStart_toStartOf="@id/textDescriptionDirectory"
+                app:layout_constraintTop_toTopOf="@id/buttonChangeDirectory" />
+
+        <TextView
+                android:id="@+id/textDescriptionDirectory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center|start"
+
+                android:text="@string/layout_manipulating_description_directory"
+
+                app:layout_constraintBottom_toBottomOf="@id/backgroundDirectory"
+                app:layout_constraintEnd_toEndOf="@id/backgroundDirectory"
+                app:layout_constraintStart_toStartOf="@id/backgroundDirectory"
+                app:layout_constraintTop_toBottomOf="@id/buttonChangeDirectory" />
+
+        <View
+                android:id="@+id/backgroundDelayDeletion"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+
+                android:background="#B4B4B4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/backgroundDirectory"
+
+                app:layout_constraintVertical_chainStyle="packed" />
+
+        <Switch
+                android:id="@+id/switchToDeleteLater"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/layout_manipulating_switch_delay"
+                app:layout_constraintEnd_toEndOf="@+id/textDescriptionDelayedDeletion"
+                app:layout_constraintStart_toStartOf="@+id/textDescriptionDelayedDeletion"
+                app:layout_constraintTop_toTopOf="@+id/backgroundDelayDeletion" />
+
+        <Space
+                android:id="@+id/spaceDelayEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/textDescriptionDelayedDeletion"
+                app:layout_constraintEnd_toStartOf="@id/textDelayUnit"
+                app:layout_constraintHorizontal_weight="3"
+                app:layout_constraintStart_toStartOf="@id/textDescriptionDelayedDeletion"
+                app:layout_constraintTop_toBottomOf="@id/switchToDeleteLater" />
+
+        <TextView
+                android:id="@+id/textDelayUnit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center|end"
+                android:text="@string/layout_manipulating_text_delay_unit"
+                app:layout_constraintBottom_toBottomOf="@id/spaceDelayEdit"
+                app:layout_constraintEnd_toStartOf="@id/editDelaySeconds"
+                app:layout_constraintHorizontal_weight="3"
+                app:layout_constraintStart_toEndOf="@id/spaceDelayEdit"
+                app:layout_constraintTop_toTopOf="@id/spaceDelayEdit" />
+
+        <EditText
+                android:id="@+id/editDelaySeconds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:enabled="false"
+                android:inputType="numberSigned"
+                app:layout_constraintBottom_toBottomOf="@id/spaceDelayEdit"
+                app:layout_constraintEnd_toEndOf="@id/textDescriptionDelayedDeletion"
+                app:layout_constraintHorizontal_weight="2"
+                app:layout_constraintStart_toEndOf="@id/textDelayUnit"
+                app:layout_constraintTop_toTopOf="@id/spaceDelayEdit" />
+
+        <TextView
+                android:id="@+id/textDescriptionDelayedDeletion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/layout_manipulating_description_delay"
+                app:layout_constraintBottom_toBottomOf="@id/backgroundDelayDeletion"
+                app:layout_constraintEnd_toEndOf="@id/backgroundDelayDeletion"
+                app:layout_constraintStart_toStartOf="@id/backgroundDelayDeletion"
+                app:layout_constraintTop_toBottomOf="@id/editDelaySeconds" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

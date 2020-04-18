@@ -36,4 +36,6 @@
     <string name="layout_simplemanipulatingsettings_title">List of simple manipulation</string>
     <string name="layout_settings_open_simple_manipulating_settings">Open a settings for simple manipulating</string>
     <string name="layout_settings_description_open_simple_manipulating_settings">To omit manipulations by registering them.</string>
+    <string name="layout_simple_manipulating_registerer_name">Name:</string>
+    <string name="layout_simple_manipulating_registerer_button_register">REGISTER</string>
 </resources>
