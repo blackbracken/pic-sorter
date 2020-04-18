@@ -28,8 +28,8 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -38,7 +38,7 @@ android {
     }
 }
 
-tasks.withType < org.jetbrains.kotlin.gradle.tasks.KotlinCompile > {
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -63,9 +63,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.0-alpha02")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.3.0-alpha04")
-    implementation("androidx.navigation:navigation-ui:2.3.0-alpha04")
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.3.0-alpha04")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.0-alpha05")
+    implementation("androidx.navigation:navigation-ui:2.3.0-alpha05")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.3.0-alpha05")
 
     implementation("androidx.room:room-runtime:2.2.5")
     kapt("androidx.room:room-compiler:2.2.5")
@@ -93,4 +93,5 @@ dependencies {
     implementation("com.xwray:groupie-databinding:2.7.0")
 
     implementation("com.afollestad.material-dialogs:core:3.2.1")
+    implementation("com.afollestad.material-dialogs:files:3.2.1")
 }

@@ -30,7 +30,7 @@ class ManipulatingViewModel(
                 ManipulatingTask.TaskRequest(
                     imageDirectoryPath.value,
                     imageNewName.value
-                        ?.takeUnless { newName -> newName.isEmpty() },
+                        ?.takeIf { it.isNotEmpty() },
                     shouldDeleteLater.value
                         ?.takeIf { shouldDelete -> shouldDelete }
                         ?.let { secondsToDelete.value }
