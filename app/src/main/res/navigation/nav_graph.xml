@@ -25,5 +25,15 @@
     <fragment
             android:id="@+id/simpleManipulatingSettingsFragment"
             android:name="black.bracken.picsorter.ui.settings.simplemanipulating.top.SimpleManipulatingTopFragment"
-            android:label="SimpleManipulatingSettingsFragment" />
+            android:label="SimpleManipulatingSettingsFragment">
+        <action
+                android:id="@+id/action_simpleManipulatingSettingsFragment_to_simpleManipulatingRegistererFragment"
+                app:destination="@id/simpleManipulatingRegistererFragment"
+                app:enterAnim="@anim/fragment_fade_enter"
+                app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+            android:id="@+id/simpleManipulatingRegistererFragment"
+            android:name="black.bracken.picsorter.ui.settings.simplemanipulating.registerer.SimpleManipulatingRegistererFragment"
+            android:label="SimpleManipulatingRegistererFragment" />
 </navigation>

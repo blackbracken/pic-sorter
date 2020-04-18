@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.SimpleManipulatingTopFragmentBinding
 import black.bracken.picsorter.ext.observe
@@ -35,7 +36,9 @@ class SimpleManipulatingTopFragment : Fragment() {
         val groupAdapter = GroupAdapter<GroupieViewHolder>()
         recyclerManipulatings.adapter = groupAdapter
 
-        buttonAddManipulating.setOnClickListener { TODO("not implemented yet") }
+        buttonAddManipulating.setOnClickListener {
+            findNavController().navigate(R.id.action_simpleManipulatingSettingsFragment_to_simpleManipulatingRegistererFragment)
+        }
 
         viewModel.manipulatingNameList.observe(this) { manipulatingList ->
             with(groupAdapter) {
