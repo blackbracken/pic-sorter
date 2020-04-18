@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.dirchooser
+package black.bracken.picsorter.ui.settings.dirchooser
 
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.ItemDirectoryBinding

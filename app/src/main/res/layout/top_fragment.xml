@@ -7,14 +7,14 @@
 
         <variable
                 name="viewModel"
-                type="black.bracken.picsorter.ui.top.TopViewModel" />
+                type="black.bracken.picsorter.ui.settings.top.TopViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="black.bracken.picsorter.ui.top.TopFragment">
+            tools:context="black.bracken.picsorter.ui.settings.top.TopFragment">
 
         <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarSettings"

@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.simplemanipulatingsettings
+package black.bracken.picsorter.ui.settings.simplemanipulating.top
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import black.bracken.picsorter.service.repository.SimpleManipulatingRepository
 import kotlinx.coroutines.launch
 
-class SimpleManipulatingSettingsViewModel(
+class SimpleManipulatingTopViewModel(
     private val manipulatingRepository: SimpleManipulatingRepository
 ) : ViewModel() {
 

@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.top
+package black.bracken.picsorter.ui.settings.top
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

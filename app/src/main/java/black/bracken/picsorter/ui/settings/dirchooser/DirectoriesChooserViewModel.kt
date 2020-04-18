@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.dirchooser
+package black.bracken.picsorter.ui.settings.dirchooser
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

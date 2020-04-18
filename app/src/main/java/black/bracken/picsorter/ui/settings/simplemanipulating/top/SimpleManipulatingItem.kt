@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.simplemanipulatingsettings
+package black.bracken.picsorter.ui.settings.simplemanipulating.top
 
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.ItemSimpleManipulatingBinding

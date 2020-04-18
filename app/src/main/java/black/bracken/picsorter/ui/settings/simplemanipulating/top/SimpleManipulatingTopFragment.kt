@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.simplemanipulatingsettings
+package black.bracken.picsorter.ui.settings.simplemanipulating.top
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,24 +7,23 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import black.bracken.picsorter.R
-import black.bracken.picsorter.databinding.SimpleManipulatingSettingsFragmentBinding
+import black.bracken.picsorter.databinding.SimpleManipulatingTopFragmentBinding
 import black.bracken.picsorter.ext.observe
-import com.afollestad.materialdialogs.MaterialDialog
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import kotlinx.android.synthetic.main.simple_manipulating_settings_fragment.*
+import kotlinx.android.synthetic.main.simple_manipulating_top_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SimpleManipulatingSettingsFragment : Fragment() {
+class SimpleManipulatingTopFragment : Fragment() {
 
-    private val viewModel by viewModel<SimpleManipulatingSettingsViewModel>()
+    private val viewModel by viewModel<SimpleManipulatingTopViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<SimpleManipulatingSettingsFragmentBinding>(
-            inflater, R.layout.simple_manipulating_settings_fragment, container, false
+        val binding = DataBindingUtil.inflate<SimpleManipulatingTopFragmentBinding>(
+            inflater, R.layout.simple_manipulating_top_fragment, container, false
         ).also { binding -> binding.viewModel = viewModel }
 
         return binding.root
@@ -49,12 +48,6 @@ class SimpleManipulatingSettingsFragment : Fragment() {
                     )
                 })
             }
-        }
-    }
-
-    private fun showDialogToAddManipulating() {
-        MaterialDialog(context ?: return).show {
-
         }
     }
 

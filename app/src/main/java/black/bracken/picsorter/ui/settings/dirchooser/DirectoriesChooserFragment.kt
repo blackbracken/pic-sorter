@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.dirchooser
+package black.bracken.picsorter.ui.settings.dirchooser
 
 import android.content.Intent
 import android.os.Bundle
