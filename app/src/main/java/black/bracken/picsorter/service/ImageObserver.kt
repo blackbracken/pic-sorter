@@ -30,17 +30,15 @@ class ImageObserver : Service(), KoinComponent {
                 object : FileObserver(path, CLOSE_WRITE) {
                     override fun onEvent(id: Int, fileName: String?) {
                         launch {
-                            fileName ?: return@launch // for syntax hightlighting on GitHub
-
-                            send("$path/${fileName}")
+                            send("$path/${fileName ?: return@launch}")
                         }
                     }
                 }
             }
-            .onEach(FileObserver::startWatching)
+            .onEach { observer -> observer.startWatching() }
 
         awaitClose {
-            observers.forEach(FileObserver::stopWatching)
+            observers.forEach { observer -> observer.stopWatching() }
         }
     }
 
