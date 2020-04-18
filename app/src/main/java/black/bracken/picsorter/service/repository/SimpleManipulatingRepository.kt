@@ -24,21 +24,24 @@ class SimpleManipulatingDataSource : SimpleManipulatingRepository, KoinComponent
 
     private val manipulatingDao by inject<SimpleManipulatingsDao>()
 
-    override suspend fun add(manipulating: SimpleManipulating) = withContext(Dispatchers.IO) {
-        manipulatingDao.insertManipulating(manipulating.toEntity())
-    }
+    override suspend fun add(manipulating: SimpleManipulating) =
+        withContext(Dispatchers.IO) {
+            manipulatingDao.insertManipulating(manipulating.toEntity())
+        }
 
-    override suspend fun removeByName(name: String) = withContext(Dispatchers.IO) {
-        manipulatingDao.deleteManipulatingByName(name)
-    }
+    override suspend fun removeByName(name: String) =
+        withContext(Dispatchers.IO) {
+            manipulatingDao.deleteManipulatingByName(name)
+        }
 
     override suspend fun findByName(name: String): SimpleManipulating? =
         withContext(Dispatchers.IO) {
             manipulatingDao.findManipulatingByName(name)?.toModel()
         }
 
-    override suspend fun loadAllNames(): List<String> = withContext(Dispatchers.IO) {
-        manipulatingDao.getAllNames()
-    }
+    override suspend fun loadAllNames(): List<String> =
+        withContext(Dispatchers.IO) {
+            manipulatingDao.getAllNames()
+        }
 
 }

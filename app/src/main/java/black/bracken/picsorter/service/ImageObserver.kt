@@ -28,17 +28,15 @@ class ImageObserver : Service(), KoinComponent {
         val observers = pathList
             .map { path ->
                 object : FileObserver(path, CLOSE_WRITE) {
-                    override fun onEvent(id: Int, fileName: String?) {
-                        launch {
-                            send("$path/${fileName ?: return@launch}")
-                        }
+                    override fun onEvent(id: Int, fileName: String) {
+                        launch { send("$path/${fileName}") }
                     }
                 }
             }
-            .onEach { observer -> observer.startWatching() }
+            .onEach(FileObserver::startWatching)
 
         awaitClose {
-            observers.forEach { observer -> observer.stopWatching() }
+            observers.forEach(FileObserver::stopWatching)
         }
     }
 
