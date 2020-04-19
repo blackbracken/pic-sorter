@@ -31,6 +31,9 @@
                 app:destination="@id/simpleManipulatingRegistererFragment"
                 app:enterAnim="@anim/fragment_fade_enter"
                 app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+                android:id="@+id/action_simpleManipulatingSettingsFragment_to_topFragment"
+                app:destination="@id/topFragment" />
     </fragment>
     <fragment
             android:id="@+id/simpleManipulatingRegistererFragment"
