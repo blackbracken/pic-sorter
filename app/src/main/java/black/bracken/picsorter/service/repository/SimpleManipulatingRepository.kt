@@ -16,7 +16,7 @@ interface SimpleManipulatingRepository {
 
     suspend fun findByName(name: String): SimpleManipulating?
 
-    suspend fun loadAllNames(): List<String>
+    suspend fun loadAll(): List<SimpleManipulating>
 
 }
 
@@ -39,9 +39,9 @@ class SimpleManipulatingDataSource : SimpleManipulatingRepository, KoinComponent
             manipulatingDao.findManipulatingByName(name)?.toModel()
         }
 
-    override suspend fun loadAllNames(): List<String> =
+    override suspend fun loadAll(): List<SimpleManipulating> =
         withContext(Dispatchers.IO) {
-            manipulatingDao.getAllNames()
+            manipulatingDao.getAll().map { it.toModel() }
         }
 
 }

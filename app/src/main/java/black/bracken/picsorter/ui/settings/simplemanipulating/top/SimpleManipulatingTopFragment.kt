@@ -10,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.SimpleManipulatingTopFragmentBinding
 import black.bracken.picsorter.ext.observe
+import black.bracken.picsorter.service.model.SimpleManipulating
+import com.afollestad.materialdialogs.MaterialDialog
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.simple_manipulating_top_fragment.*
@@ -40,17 +42,27 @@ class SimpleManipulatingTopFragment : Fragment() {
             findNavController().navigate(R.id.action_simpleManipulatingSettingsFragment_to_simpleManipulatingRegistererFragment)
         }
 
-        viewModel.manipulatingNameList.observe(this) { manipulatingList ->
+        viewModel.manipulatingList.observe(this) { manipulatingList ->
             with(groupAdapter) {
                 clear()
-                addAll(manipulatingList.map { manipulating ->
-                    SimpleManipulatingItem(
-                        name = manipulating,
-                        onClickText = { TODO("show details") },
-                        onClickButton = { TODO("remove the simple manipulating") }
-                    )
-                })
+                manipulatingList
+                    .map { manipulating ->
+                        SimpleManipulatingItem(
+                            name = manipulating.name,
+                            onClickText = { /* TODO show details */ },
+                            onClickButton = { showConfirmationToRemove(manipulating) }
+                        )
+                    }
+                    .forEach { add(it) }
             }
+        }
+    }
+
+    private fun showConfirmationToRemove(manipulating: SimpleManipulating) {
+        MaterialDialog(context ?: return).show {
+            message(R.string.dialog_confirm_remove)
+            positiveButton(R.string.dialog_do_remove) { viewModel.removeManipulating(manipulating) }
+            negativeButton(R.string.dialog_cancel) { /* do nothing */ }
         }
     }
 

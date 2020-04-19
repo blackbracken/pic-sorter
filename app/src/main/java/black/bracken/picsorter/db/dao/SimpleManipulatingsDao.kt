@@ -18,7 +18,7 @@ interface SimpleManipulatingsDao {
     @Query("SELECT * FROM manipulatings WHERE name = :name LIMIT 1")
     suspend fun findManipulatingByName(name: String): SimpleManipulatingEntity?
 
-    @Query("SELECT name FROM manipulatings")
-    suspend fun getAllNames(): List<String>
+    @Query("SELECT * FROM manipulatings")
+    suspend fun getAll(): List<SimpleManipulatingEntity>
 
 }
