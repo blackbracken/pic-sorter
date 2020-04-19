@@ -7,7 +7,7 @@
     <string name="layout_settings_observed_list_text">List of observed directories</string>
     <string name="layout_settings_observed_list_button_add_description">Add observed directory</string>
     <string name="layout_settings_observed_button_remove_description">Exclude from observed list</string>
-    <string name="error_duplication">Error: The specified path is already registered</string>
+    <string name="error_duplication">Error: The value is already registered</string>
     <string name="dialog_confirm_remove">Are you sure you want to delete?</string>
     <string name="dialog_do_remove">Remove</string>
     <string name="dialog_cancel">Cancel</string>
@@ -38,4 +38,5 @@
     <string name="layout_settings_description_open_simple_manipulating_settings">To omit manipulations by registering them.</string>
     <string name="layout_simple_manipulating_registerer_name">Name:</string>
     <string name="layout_simple_manipulating_registerer_button_register">REGISTER</string>
+    <string name="error_must_not_empty">Error: The value must not be empty</string>
 </resources>
