@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import black.bracken.picsorter.R
-import black.bracken.picsorter.receiver.ChooseSimpleManipulatingReceiver
 import black.bracken.picsorter.ui.manipulating.ManipulatingActivity
 import black.bracken.picsorter.util.NOTIFICATION_COLOR
 import org.koin.core.KoinComponent
@@ -55,21 +54,27 @@ object DetectionNotification : KoinComponent {
                 )
             }
 
-        val actionToChooseSimpleManipulation =
-            Intent(context, ChooseSimpleManipulatingReceiver::class.java)
-                .apply {
-                    putExtra(ChooseSimpleManipulatingReceiver.EXTRA_IMAGE_PATH, filePath)
-                }
-                .let { intent ->
-                    PendingIntent.getBroadcast(context, 0, intent, 0)
-                }
-                .let { pendingIntent ->
-                    NotificationCompat.Action(
-                        R.drawable.app_icon,
-                        "OPEN_SIMPLE", // TODO replace
-                        pendingIntent
-                    )
-                }
+        val actionToChooseSimpleManipulation = Intent(context, ManipulatingActivity::class.java)
+            .apply {
+                putExtra(ManipulatingActivity.EXTRA_IMAGE_PATH, filePath)
+                putExtra(ManipulatingActivity.EXTRA_OPEN_SIMPLE_MANIPULATING, true)
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
+            }
+            .let { intent ->
+                PendingIntent.getActivity(
+                    context,
+                    CALLBACK_OPEN_MANIPULATOR,
+                    intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_ONE_SHOT
+                )
+            }
+            .let { pendingIntent ->
+                NotificationCompat.Action(
+                    R.drawable.app_icon,
+                    context.getString(R.string.notification_detection_button_manipulate),
+                    pendingIntent
+                )
+            }
 
         return NotificationCompat.Builder(context, CHANNEL_ID)
             .apply {

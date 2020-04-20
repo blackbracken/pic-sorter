@@ -31,7 +31,7 @@ class PicSorterApp : Application() {
         viewModel { DirectoriesChooserViewModel(get()) }
         viewModel { SimpleManipulatingTopViewModel(get()) }
         viewModel { SimpleManipulatingRegistererViewModel(get()) }
-        factory { (imagePath: String) -> ManipulatingViewModel(imagePath, get()) }
+        factory { (imagePath: String) -> ManipulatingViewModel(imagePath, get(), get()) }
 
         // databases
         single {

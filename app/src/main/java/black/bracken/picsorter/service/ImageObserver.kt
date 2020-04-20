@@ -28,7 +28,9 @@ class ImageObserver : Service(), KoinComponent {
         val observers = pathList
             .map { path ->
                 object : FileObserver(path, CLOSE_WRITE) {
-                    override fun onEvent(id: Int, fileName: String) {
+                    override fun onEvent(id: Int, fileName: String?) {
+                        fileName ?: return
+
                         launch { send("$path/${fileName}") }
                     }
                 }

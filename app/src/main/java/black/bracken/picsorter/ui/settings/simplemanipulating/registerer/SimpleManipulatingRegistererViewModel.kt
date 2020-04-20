@@ -11,7 +11,7 @@ class SimpleManipulatingRegistererViewModel(
 ) : ViewModel() {
 
     val manipulatingName = MutableLiveData("")
-    val directoryPath = MutableLiveData<String>("")
+    val directoryPath = MutableLiveData<String?>(null)
     val shouldDeleteLater = MutableLiveData(false)
     val secondsToDelete = MutableLiveData<Int?>()
 
@@ -25,7 +25,11 @@ class SimpleManipulatingRegistererViewModel(
         }
 
         simpleManipulatingsDao.insertManipulating(
-            SimpleManipulating(name, directoryPath.value, secondsToDelete.value).toEntity()
+            SimpleManipulating(
+                name,
+                directoryPath.value?.takeUnless { it.isBlank() },
+                secondsToDelete.value
+            ).toEntity()
         )
 
         return VerificationResult.SUCCEED
