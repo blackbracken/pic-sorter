@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.top
+package black.bracken.picsorter.ui.settings.top
 
 import android.Manifest
 import android.content.Intent
@@ -52,6 +52,15 @@ class TopFragment : Fragment() {
         textDirectories.setOnClickListener { navigateDirChooser() }
         imageDirectoriesArrow.setOnClickListener { navigateDirChooser() }
 
+        fun navigateSimpleManipulatingSettings() =
+            findNavController().navigate(R.id.action_topFragment_to_simpleManipulatingSettingsFragment)
+        textOpenSimpleNotificationSettings
+            .setOnClickListener { navigateSimpleManipulatingSettings() }
+        imageOpenSimpleManipulatingSettingsArrow
+            .setOnClickListener { navigateSimpleManipulatingSettings() }
+        textDescriptionOpenSimpleManipulatingSettings
+            .setOnClickListener { navigateSimpleManipulatingSettings() }
+
         fun openAndroidNotificationSettings() =
             Intent()
                 .apply {
@@ -59,9 +68,12 @@ class TopFragment : Fragment() {
                     putExtra(Settings.EXTRA_APP_PACKAGE, "com.android.systemui")
                 }
                 .also { intent -> startActivity(intent); Unit }
-        textOpenNotificationSettings.setOnClickListener { openAndroidNotificationSettings() }
-        imageOpenNotificationSettingsArrow.setOnClickListener { openAndroidNotificationSettings() }
-        textDescriptionOpenNotificationSettings.setOnClickListener { openAndroidNotificationSettings() }
+        textOpenNotificationSettings
+            .setOnClickListener { openAndroidNotificationSettings() }
+        imageOpenNotificationSettingsArrow
+            .setOnClickListener { openAndroidNotificationSettings() }
+        textDescriptionOpenNotificationSettings
+            .setOnClickListener { openAndroidNotificationSettings() }
     }
 
     private fun requestPermissions() {
@@ -73,8 +85,7 @@ class TopFragment : Fragment() {
             icon(R.drawable.ic_touch_app_black)
             title(R.string.dialog_permission_request_title)
             message(R.string.dialog_permission_request_subtitle)
-            positiveButton { dialog ->
-                dialog.dismiss()
+            positiveButton {
                 requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
             }
         }

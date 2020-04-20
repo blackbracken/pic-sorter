@@ -1,9 +1,9 @@
-package black.bracken.picsorter.ui.dirchooser
+package black.bracken.picsorter.ui.settings.dirchooser
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import black.bracken.picsorter.service.repository.settings.SettingsRepository
+import black.bracken.picsorter.service.repository.SettingsRepository
 
 class DirectoriesChooserViewModel(
     private val settingsRepository: SettingsRepository

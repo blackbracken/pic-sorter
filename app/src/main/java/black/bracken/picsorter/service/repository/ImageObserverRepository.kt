@@ -1,10 +1,20 @@
-package black.bracken.picsorter.service.repository.imageobserver
+package black.bracken.picsorter.service.repository
 
 import android.content.Context
 import android.content.Intent
 import black.bracken.picsorter.service.ImageObserver
 import org.koin.core.KoinComponent
 import org.koin.core.inject
+
+interface ImageObserverRepository {
+
+    fun enableObserver()
+
+    fun disableObserver()
+
+    fun verifyWhetherToRun(): Boolean
+
+}
 
 class ImageObserverDataSource : ImageObserverRepository, KoinComponent {
 

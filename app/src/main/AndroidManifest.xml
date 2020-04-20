@@ -8,6 +8,7 @@
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -43,6 +44,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
+        <receiver
+                android:name=".receiver.ChooseSimpleManipulatingReceiver"
+                android:exported="false" />
 
         <activity android:name="net.rdrei.android.dirchooser.DirectoryChooserActivity" />
     </application>

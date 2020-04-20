@@ -1,6 +1,5 @@
-package black.bracken.picsorter.ui.dirchooser
+package black.bracken.picsorter.ui.settings.dirchooser
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +12,7 @@ import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.DirectoriesChooserFragmentBinding
 import black.bracken.picsorter.ext.observe
 import black.bracken.picsorter.ext.startDirectoryChooser
+import com.afollestad.materialdialogs.MaterialDialog
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.directories_chooser_fragment.*
@@ -76,16 +76,11 @@ class DirectoriesChooserFragment : Fragment() {
     }
 
     private fun showConfirmationToRemoveDirectory(directoryPath: String) {
-        AlertDialog.Builder(context)
-            .setMessage(R.string.dialog_confirm_remove)
-            .setPositiveButton(R.string.dialog_do_remove) { _, _ ->
-                viewModel.removeDirectory(directoryPath)
-            }
-            .setNegativeButton(R.string.dialog_cancel) { _, _ ->
-                /* do nothing */
-            }
-            .create()
-            .show()
+        MaterialDialog(context ?: return).show {
+            message(R.string.dialog_confirm_remove)
+            positiveButton(R.string.dialog_do_remove) { viewModel.removeDirectory(directoryPath) }
+            negativeButton(R.string.dialog_cancel) { /* do nothing */ }
+        }
     }
 
     companion object {

@@ -7,7 +7,7 @@ import android.os.IBinder
 import black.bracken.picsorter.ext.notificationManager
 import black.bracken.picsorter.notification.DetectionNotification
 import black.bracken.picsorter.notification.ObservingNotification
-import black.bracken.picsorter.service.repository.settings.SettingsRepository
+import black.bracken.picsorter.service.repository.SettingsRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -24,12 +24,14 @@ class ImageObserver : Service(), KoinComponent {
     private lateinit var job: Job
 
     @ExperimentalCoroutinesApi
-    private fun flowOfAddedFilePaths(addedPaths: List<String>): Flow<String> = channelFlow {
-        val observers = addedPaths
+    private fun flowOfAddedFilePaths(pathList: List<String>): Flow<String> = channelFlow {
+        val observers = pathList
             .map { path ->
                 object : FileObserver(path, CLOSE_WRITE) {
                     override fun onEvent(id: Int, fileName: String?) {
-                        launch { send("$path/${fileName ?: return@launch}") }
+                        fileName ?: return
+
+                        launch { send("$path/${fileName}") }
                     }
                 }
             }
