@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="black.bracken.picsorter.ui.settings.simplemanipulating.top.SimpleManipulatingTopViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.settings.simplemanipulating.top.SimpleManipulatingTopFragment">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarSimpleManipulatingSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="#636363"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:titleTextColor="#E0E0E0" />
+
+        <View
+                android:id="@+id/backgroundManipulatings"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="12dp"
+
+                android:background="#B4B4B4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbarSimpleManipulatingSettings" />
+
+        <TextView
+                android:id="@+id/textAddButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="4dp"
+
+                android:gravity="center_vertical"
+                android:text="@string/layout_simplemanipulatingsettings_title"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="@id/buttonAddManipulating"
+                app:layout_constraintEnd_toStartOf="@id/buttonAddManipulating"
+
+                app:layout_constraintStart_toStartOf="@id/backgroundManipulatings"
+                app:layout_constraintTop_toTopOf="@id/buttonAddManipulating" />
+
+        <ImageButton
+                android:id="@+id/buttonAddManipulating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+
+                app:layout_constraintEnd_toEndOf="@id/backgroundManipulatings"
+                app:layout_constraintStart_toEndOf="@id/textAddButton"
+
+                app:layout_constraintTop_toTopOf="@id/backgroundManipulatings"
+                app:srcCompat="@drawable/baseline_add_black_24"
+                tools:ignore="ContentDescription" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerManipulatings"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="8dp"
+
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+                app:layout_constraintBottom_toBottomOf="@id/backgroundManipulatings"
+                app:layout_constraintEnd_toEndOf="@id/buttonAddManipulating"
+                app:layout_constraintStart_toStartOf="@id/textAddButton"
+                app:layout_constraintTop_toBottomOf="@id/buttonAddManipulating" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="black.bracken.picsorter.ui.settings.top.TopViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="black.bracken.picsorter.ui.settings.top.TopFragment">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarSettings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:background="#636363"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:titleTextColor="#E0E0E0" />
+
+        <View
+                android:id="@+id/backgroundEnable"
+                android:layout_width="0dp"
+                android:layout_height="74dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="18dp"
+                android:background="#CEA3A3"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbarSettings" />
+
+        <Switch
+                android:id="@+id/switchEnable"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="@={viewModel.enablesObserver}"
+                android:padding="10dp"
+                android:text="@string/layout_settings_switch_enable"
+
+                app:layout_constraintEnd_toEndOf="@id/backgroundEnable"
+                app:layout_constraintStart_toStartOf="@id/backgroundEnable"
+                app:layout_constraintTop_toTopOf="@id/backgroundEnable" />
+
+        <TextView
+                android:id="@+id/textDescriptionEnable"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:text="@string/layout_settings_switch_enables_description"
+                android:textSize="14sp"
+
+                app:layout_constraintBottom_toBottomOf="@id/backgroundEnable"
+                app:layout_constraintEnd_toEndOf="@id/switchEnable"
+                app:layout_constraintStart_toStartOf="@id/switchEnable"
+                app:layout_constraintTop_toBottomOf="@id/switchEnable" />
+
+        <View
+                android:id="@+id/backgroundRunOnBoot"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="18dp"
+                android:background="#B4B4B4"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/backgroundEnable" />
+
+        <Switch
+                android:id="@+id/switchRunOnBoot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="@={viewModel.runsOnBoot}"
+                android:padding="10dp"
+                android:text="@string/layout_settings_switch_run_on_boot"
+
+                app:layout_constraintBottom_toBottomOf="@id/backgroundRunOnBoot"
+                app:layout_constraintEnd_toEndOf="@id/backgroundRunOnBoot"
+                app:layout_constraintStart_toStartOf="@id/backgroundRunOnBoot"
+                app:layout_constraintTop_toTopOf="@id/backgroundRunOnBoot" />
+
+        <View
+                android:id="@+id/backgroundOpenChooser"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="18dp"
+                android:background="#B4B4B4"
+
+                app:layout_constraintBottom_toTopOf="@id/backgroundOpenSimpleManipulatingSettings"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/backgroundRunOnBoot" />
+
+        <TextView
+                android:id="@+id/textDirectories"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="@string/layout_settings_open_chooser"
+                android:textColor="#000000"
+
+                app:layout_constraintBottom_toBottomOf="@id/backgroundOpenChooser"
+                app:layout_constraintEnd_toStartOf="@id/imageDirectoriesArrow"
+                app:layout_constraintStart_toStartOf="@id/backgroundOpenChooser"
+                app:layout_constraintTop_toTopOf="@id/backgroundOpenChooser" />
+
+        <ImageView
+                android:id="@+id/imageDirectoriesArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@id/backgroundOpenChooser"
+
+                app:layout_constraintEnd_toEndOf="@id/backgroundOpenChooser"
+                app:layout_constraintStart_toEndOf="@id/textDirectories"
+                app:layout_constraintTop_toTopOf="@id/backgroundOpenChooser"
+                app:srcCompat="@drawable/baseline_chevron_right_24"
+
+                tools:ignore="ContentDescription" />
+
+        <View
+                android:id="@+id/backgroundOpenSimpleManipulatingSettings"
+                android:layout_width="0dp"
+                android:layout_height="74dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="18dp"
+                android:background="#B4B4B4"
+
+                app:layout_constraintBottom_toTopOf="@id/dividerAdvanced"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/backgroundOpenChooser" />
+
+        <TextView
+                android:id="@+id/textOpenSimpleNotificationSettings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:text="@string/layout_settings_open_simple_manipulating_settings"
+                android:textColor="#000000"
+
+                app:layout_constraintBottom_toTopOf="@id/textDescriptionOpenSimpleManipulatingSettings"
+                app:layout_constraintEnd_toStartOf="@id/imageOpenSimpleManipulatingSettingsArrow"
+                app:layout_constraintStart_toStartOf="@id/backgroundOpenSimpleManipulatingSettings"
+                app:layout_constraintTop_toTopOf="@id/backgroundOpenSimpleManipulatingSettings" />
+
+        <ImageView
+                android:id="@+id/imageOpenSimpleManipulatingSettingsArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:padding="10dp"
+
+                app:layout_constraintBottom_toTopOf="@id/textDescriptionOpenSimpleManipulatingSettings"
+                app:layout_constraintEnd_toEndOf="@id/backgroundOpenSimpleManipulatingSettings"
+                app:layout_constraintStart_toEndOf="@id/textOpenSimpleNotificationSettings"
+                app:layout_constraintTop_toTopOf="@id/backgroundOpenSimpleManipulatingSettings"
+                app:srcCompat="@drawable/baseline_chevron_right_24"
+
+                tools:ignore="ContentDescription" />
+
+        <TextView
+                android:id="@+id/textDescriptionOpenSimpleManipulatingSettings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:text="@string/layout_settings_description_open_simple_manipulating_settings"
+                android:textSize="14sp"
+
+                app:layout_constraintBottom_toBottomOf="@id/backgroundOpenSimpleManipulatingSettings"
+                app:layout_constraintEnd_toEndOf="@id/backgroundOpenSimpleManipulatingSettings"
+                app:layout_constraintStart_toStartOf="@id/backgroundOpenSimpleManipulatingSettings"
+                app:layout_constraintTop_toBottomOf="@id/textOpenSimpleNotificationSettings" />
+
+
+        <View
+                android:id="@+id/dividerAdvanced"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider"
+
+                app:layout_constraintBottom_toTopOf="@id/backgroundOpenNotificationSettings"
+                app:layout_constraintEnd_toEndOf="@id/backgroundOpenNotificationSettings"
+                app:layout_constraintStart_toStartOf="@id/backgroundOpenNotificationSettings"
+                app:layout_constraintTop_toBottomOf="@id/backgroundOpenSimpleManipulatingSettings" />
+
+        <View
+                android:id="@+id/backgroundOpenNotificationSettings"
+                android:layout_width="0dp"
+                android:layout_height="74dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="18dp"
+                android:background="#B4B4B4"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dividerAdvanced" />
+
+        <TextView
+                android:id="@+id/textOpenNotificationSettings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:text="@string/layout_settings_open_notification_settings"
+                android:textColor="#000000"
+
+                app:layout_constraintBottom_toTopOf="@id/textDescriptionOpenNotificationSettings"
+                app:layout_constraintEnd_toStartOf="@id/imageOpenNotificationSettingsArrow"
+                app:layout_constraintStart_toStartOf="@id/backgroundOpenNotificationSettings"
+                app:layout_constraintTop_toTopOf="@id/backgroundOpenNotificationSettings" />
+
+        <ImageView
+                android:id="@+id/imageOpenNotificationSettingsArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:padding="10dp"
+
+                app:layout_constraintBottom_toBottomOf="@id/textOpenNotificationSettings"
+                app:layout_constraintEnd_toEndOf="@id/backgroundOpenNotificationSettings"
+                app:layout_constraintStart_toEndOf="@id/textOpenNotificationSettings"
+                app:layout_constraintTop_toTopOf="@id/backgroundOpenNotificationSettings"
+                app:srcCompat="@drawable/baseline_chevron_right_24"
+
+                tools:ignore="ContentDescription" />
+
+        <TextView
+                android:id="@+id/textDescriptionOpenNotificationSettings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:text="@string/layout_settings_description_open_notification_settings"
+                android:textSize="14sp"
+
+                app:layout_constraintBottom_toBottomOf="@id/backgroundOpenNotificationSettings"
+                app:layout_constraintEnd_toEndOf="@id/backgroundOpenNotificationSettings"
+                app:layout_constraintStart_toStartOf="@id/backgroundOpenNotificationSettings"
+                app:layout_constraintTop_toBottomOf="@id/textOpenNotificationSettings" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
