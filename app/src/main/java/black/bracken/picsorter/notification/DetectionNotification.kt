@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import black.bracken.picsorter.R
+import black.bracken.picsorter.receiver.ChooseSimpleManipulatingReceiver
 import black.bracken.picsorter.ui.manipulating.ManipulatingActivity
 import black.bracken.picsorter.util.NOTIFICATION_COLOR
 import org.koin.core.KoinComponent
@@ -54,6 +55,22 @@ object DetectionNotification : KoinComponent {
                 )
             }
 
+        val actionToChooseSimpleManipulation =
+            Intent(context, ChooseSimpleManipulatingReceiver::class.java)
+                .apply {
+                    putExtra(ChooseSimpleManipulatingReceiver.EXTRA_IMAGE_PATH, filePath)
+                }
+                .let { intent ->
+                    PendingIntent.getBroadcast(context, 0, intent, 0)
+                }
+                .let { pendingIntent ->
+                    NotificationCompat.Action(
+                        R.drawable.app_icon,
+                        "OPEN_SIMPLE", // TODO replace
+                        pendingIntent
+                    )
+                }
+
         return NotificationCompat.Builder(context, CHANNEL_ID)
             .apply {
                 color = NOTIFICATION_COLOR
@@ -63,6 +80,7 @@ object DetectionNotification : KoinComponent {
                 setSmallIcon(R.drawable.app_icon)
                 setContentText(context.getString(R.string.notification_detection_description))
                 addAction(actionToOpenManipulatingView)
+                addAction(actionToChooseSimpleManipulation)
             }
             .build()
             .apply {
