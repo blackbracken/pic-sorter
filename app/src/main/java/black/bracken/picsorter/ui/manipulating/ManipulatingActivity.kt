@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.viewModelScope
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.ActivityManipulatingBinding
 import black.bracken.picsorter.ext.setOnTextChanged
@@ -14,8 +15,6 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.list.listItems
 import kotlinx.android.synthetic.main.activity_manipulating.*
 import kotlinx.android.synthetic.main.item_directory.textDirectoryPath
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import net.rdrei.android.dirchooser.DirectoryChooserActivity
 import org.koin.android.ext.android.inject
@@ -79,18 +78,21 @@ class ManipulatingActivity : AppCompatActivity() {
 
     private fun close() = finishAndRemoveTask()
 
-    private fun showOpenManipulatingDialog() = CoroutineScope(Dispatchers.Main).launch {
-        val manipulatings = viewModel.getAllSimpleManipulatings()
+    private fun showOpenManipulatingDialog() {
+        viewModel.viewModelScope.launch {
+            val manipulatings = viewModel.getAllSimpleManipulatings()
 
-        MaterialDialog(this@ManipulatingActivity).show {
-            listItems(items = manipulatings.map(SimpleManipulating::name)) { dialog, _, name ->
-                val manipulating = manipulatings.first { it.name == name }
+            MaterialDialog(this@ManipulatingActivity).show {
+                listItems(items = manipulatings.map(SimpleManipulating::name)) { dialog, _, name ->
+                    val manipulating = manipulatings.first { it.name == name }
 
-                viewModel.scheduleTask(manipulating)
-                dialog.cancel()
-                close()
+                    viewModel.scheduleTask(manipulating)
+
+                    dialog.cancel()
+                    close()
+                }
+                negativeButton(R.string.cancel_label) { /* do nothing */ }
             }
-            negativeButton(R.string.cancel_label) { /* do nothing */ }
         }
     }
 

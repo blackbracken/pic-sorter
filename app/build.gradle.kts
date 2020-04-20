@@ -20,7 +20,7 @@ android {
         applicationId = "black.bracken.picsorter"
         minSdkVersion(26)
         targetSdkVersion(28)
-        versionCode = 3
+        versionCode = 4
         versionName = "1.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

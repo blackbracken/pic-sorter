@@ -19,7 +19,7 @@ object DetectionNotification : KoinComponent {
 
     private const val CHANNEL_ID = "detection"
     private const val CHANNEL_NAME = "更新の検出通知"
-    private const val CALLBACK_OPEN_MANIPULATOR = 2145
+
     private val context by inject<Context>()
 
     val channel = NotificationChannel(
@@ -36,12 +36,14 @@ object DetectionNotification : KoinComponent {
         val actionToOpenManipulatingView = Intent(context, ManipulatingActivity::class.java)
             .apply {
                 putExtra(ManipulatingActivity.EXTRA_IMAGE_PATH, filePath)
+                putExtra(ManipulatingActivity.EXTRA_OPEN_SIMPLE_MANIPULATING, false)
+
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
             }
             .let { intent ->
                 PendingIntent.getActivity(
                     context,
-                    CALLBACK_OPEN_MANIPULATOR,
+                    0,
                     intent,
                     PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_ONE_SHOT
                 )
@@ -58,12 +60,13 @@ object DetectionNotification : KoinComponent {
             .apply {
                 putExtra(ManipulatingActivity.EXTRA_IMAGE_PATH, filePath)
                 putExtra(ManipulatingActivity.EXTRA_OPEN_SIMPLE_MANIPULATING, true)
+
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
             }
             .let { intent ->
                 PendingIntent.getActivity(
                     context,
-                    CALLBACK_OPEN_MANIPULATOR,
+                    1,
                     intent,
                     PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_ONE_SHOT
                 )
@@ -71,7 +74,7 @@ object DetectionNotification : KoinComponent {
             .let { pendingIntent ->
                 NotificationCompat.Action(
                     R.drawable.app_icon,
-                    context.getString(R.string.notification_detection_button_manipulate),
+                    context.getString(R.string.notification_detection_button_simple_manipulating),
                     pendingIntent
                 )
             }

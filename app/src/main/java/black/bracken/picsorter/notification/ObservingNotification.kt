@@ -16,6 +16,7 @@ object ObservingNotification : KoinComponent {
 
     private const val CHANNEL_ID = "observer"
     private const val CHANNEL_NAME = "常駐用の通知(非表示にして下さい)"
+
     private val context by inject<Context>()
 
     val channel = NotificationChannel(
