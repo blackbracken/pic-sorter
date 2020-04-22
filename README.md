@@ -22,9 +22,9 @@
 * Kotlin 1.3.41
 
 # スクリーンショット
-<img src="https://raw.githubusercontent.com/blackbracken/PicSorter/develop/screenshots/img1.png" width="40%" height="40%">
-<img src="https://raw.githubusercontent.com/blackbracken/PicSorter/develop/screenshots/img2.png" width="40%" height="40%">
-<img src="https://raw.githubusercontent.com/blackbracken/PicSorter/develop/screenshots/img3.png" width="40%" height="40%">
+<img src="https://raw.githubusercontent.com/blackbracken/PicSorter/develop/screenshots/img1.png" width="15%" height="15%">
+<img src="https://raw.githubusercontent.com/blackbracken/PicSorter/develop/screenshots/img2.png" width="15%" height="15%">
+<img src="https://raw.githubusercontent.com/blackbracken/PicSorter/develop/screenshots/img3.png" width="15%" height="15%">
 
 # ライセンス
 MIT license
