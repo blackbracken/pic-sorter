@@ -1,5 +1,6 @@
 ![Header](https://raw.githubusercontent.com/blackbracken/PicSorter/develop/header.png)
 # PicSorter
+<img src="https://img.shields.io/badge/version-1.2.1-BLUE">
 *An Android app for assisting to sort pictures*
 
 # 概要
