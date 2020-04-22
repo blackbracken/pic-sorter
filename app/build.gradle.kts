@@ -20,8 +20,8 @@ android {
         applicationId = "black.bracken.picsorter"
         minSdkVersion(26)
         targetSdkVersion(28)
-        versionCode = 3
-        versionName = "1.1"
+        versionCode = 5
+        versionName = "1.2.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -70,9 +70,6 @@ dependencies {
     implementation("androidx.room:room-runtime:2.2.5")
     kapt("androidx.room:room-compiler:2.2.5")
     implementation("androidx.room:room-ktx:2.2.5")
-
-    implementation("net.rdrei.android.dirchooser:library:3.2@aar")
-    implementation("com.github.guardian:Option:-SNAPSHOT")
 
     implementation("org.koin:koin-core:2.1.5")
     implementation("org.koin:koin-core-ext:2.1.5")

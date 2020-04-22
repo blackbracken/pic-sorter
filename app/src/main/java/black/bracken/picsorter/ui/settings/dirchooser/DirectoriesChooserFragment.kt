@@ -1,23 +1,23 @@
 package black.bracken.picsorter.ui.settings.dirchooser
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.DirectoriesChooserFragmentBinding
 import black.bracken.picsorter.ext.observe
-import black.bracken.picsorter.ext.startDirectoryChooser
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.files.folderChooser
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.directories_chooser_fragment.*
-import net.rdrei.android.dirchooser.DirectoryChooserActivity
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.io.File
 
 class DirectoriesChooserFragment : Fragment() {
 
@@ -36,11 +36,13 @@ class DirectoriesChooserFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        (activity as? AppCompatActivity)?.setSupportActionBar(toolbarDirectories)
+        toolbarDirectories.setTitle(R.string.title_directories_chooser)
 
         val groupAdapter = GroupAdapter<GroupieViewHolder>()
         recyclerDirectories.adapter = groupAdapter
 
-        buttonAddDirectory.setOnClickListener { openDirectoryChooser() }
+        buttonAddDirectory.setOnClickListener { showDialogToChooseDirectory() }
 
         viewModel.directoryPathObservedList.observe(this) { pathList ->
             with(groupAdapter) {
@@ -52,27 +54,20 @@ class DirectoriesChooserFragment : Fragment() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == CALLBACK_OPEN_DIR_CHOOSER) {
-            val chosenPath = data?.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR)
-                ?: return
-
-            if (!viewModel.tryAddDirectory(chosenPath)) {
-                showErrorDueToDuplication()
+    private fun showDialogToChooseDirectory() {
+        MaterialDialog(context ?: return).show {
+            folderChooser(
+                context,
+                initialDirectory = File("/storage/emulated/0/"),
+                allowFolderCreation = true
+            ) { _, file ->
+                if (!viewModel.tryAddDirectory(file.absolutePath)) {
+                    Toast
+                        .makeText(context, R.string.error_duplication, Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
         }
-    }
-
-    private fun openDirectoryChooser() {
-        startDirectoryChooser(CALLBACK_OPEN_DIR_CHOOSER)
-    }
-
-    private fun showErrorDueToDuplication() {
-        Toast
-            .makeText(context, R.string.error_duplication, Toast.LENGTH_SHORT)
-            .show()
     }
 
     private fun showConfirmationToRemoveDirectory(directoryPath: String) {
@@ -81,10 +76,6 @@ class DirectoriesChooserFragment : Fragment() {
             positiveButton(R.string.dialog_do_remove) { viewModel.removeDirectory(directoryPath) }
             negativeButton(R.string.dialog_cancel) { /* do nothing */ }
         }
-    }
-
-    companion object {
-        private const val CALLBACK_OPEN_DIR_CHOOSER = 2145
     }
 
 }

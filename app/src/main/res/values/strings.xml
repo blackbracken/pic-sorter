@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">PicSorter</string>
     <string name="observer_name" translatable="false">ObserverChannel</string>
-    <string name="observer_text">Hide the notification to hold down this.</string>
+    <string name="observer_text">Hide the notification to press below.</string>
     <string name="layout_settings_switch_enable">Enable PicSorter</string>
     <string name="layout_settings_switch_run_on_boot">Run PicSorter on booting</string>
     <string name="layout_settings_observed_list_text">List of observed directories</string>
@@ -39,4 +39,9 @@
     <string name="layout_simple_manipulating_registerer_name">Name:</string>
     <string name="layout_simple_manipulating_registerer_button_register">REGISTER</string>
     <string name="error_must_not_empty">Error: The value must not be empty</string>
+    <string name="notification_detection_button_simple_manipulating">ManipulateSimply</string>
+    <string name="title_simple_manipulating_top">Settings for simple manipulatings</string>
+    <string name="title_simple_manipulating_registerer">Register simple manipulating</string>
+    <string name="title_directories_chooser">Settings for directories observed</string>
+    <string name="notification_hide_self">Hide</string>
 </resources>

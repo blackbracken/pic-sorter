@@ -38,11 +38,10 @@ class TopFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         (activity as? AppCompatActivity)?.setSupportActionBar(toolbarSettings)
 
-        requestPermissions()
-
         viewModel.enablesObserver.observe(this) { isChecked ->
             viewModel.switchToEnableImageObserver(isChecked)
         }
+
         viewModel.runsOnBoot.observe(this) { isChecked ->
             viewModel.switchToRunOnBoot(isChecked)
         }
@@ -74,6 +73,8 @@ class TopFragment : Fragment() {
             .setOnClickListener { openAndroidNotificationSettings() }
         textDescriptionOpenNotificationSettings
             .setOnClickListener { openAndroidNotificationSettings() }
+
+        requestPermissions()
     }
 
     private fun requestPermissions() {

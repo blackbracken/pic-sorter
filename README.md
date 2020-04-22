@@ -21,5 +21,8 @@
 * Android 8+ (SDK 26+)
 * Kotlin 1.3.41
 
+# スクリーンショット
+<img src="https://raw.githubusercontent.com/blackbracken/PicSorter/develop/screenshots.png" width="20%" height="20%">
+
 # ライセンス
 MIT license

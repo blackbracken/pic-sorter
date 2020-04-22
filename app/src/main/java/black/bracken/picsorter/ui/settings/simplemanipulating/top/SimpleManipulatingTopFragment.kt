@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -43,6 +44,8 @@ class SimpleManipulatingTopFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        (activity as? AppCompatActivity)?.setSupportActionBar(toolbarSimpleManipulatingSettings)
+        toolbarSimpleManipulatingSettings.setTitle(R.string.title_simple_manipulating_top)
 
         val groupAdapter = GroupAdapter<GroupieViewHolder>()
         recyclerManipulatings.adapter = groupAdapter

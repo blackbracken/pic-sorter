@@ -10,8 +10,7 @@ class DirectoriesChooserViewModel(
 ) : ViewModel() {
 
     val directoryPathObservedList: LiveData<List<String>> get() = _directoryPathObservedList
-    private val _directoryPathObservedList =
-        MutableLiveData<List<String>>(settingsRepository.directoryPathList)
+    private val _directoryPathObservedList = MutableLiveData(settingsRepository.directoryPathList)
 
     fun tryAddDirectory(directoryPath: String): Boolean {
         if (directoryPath in directoryPathObservedList.value ?: listOf()) return false
