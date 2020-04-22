@@ -1,24 +1,23 @@
 package black.bracken.picsorter.ui.manipulating
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.viewModelScope
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.ActivityManipulatingBinding
+import black.bracken.picsorter.ext.observe
 import black.bracken.picsorter.ext.setOnTextChanged
-import black.bracken.picsorter.ext.startDirectoryChooserActivity
 import black.bracken.picsorter.service.model.SimpleManipulating
 import coil.api.load
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.files.folderChooser
 import com.afollestad.materialdialogs.list.listItems
 import kotlinx.android.synthetic.main.activity_manipulating.*
-import kotlinx.android.synthetic.main.item_directory.textDirectoryPath
 import kotlinx.coroutines.launch
-import net.rdrei.android.dirchooser.DirectoryChooserActivity
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
+import java.io.File
 
 class ManipulatingActivity : AppCompatActivity() {
 
@@ -47,9 +46,8 @@ class ManipulatingActivity : AppCompatActivity() {
             close()
         }
 
-        buttonChangeDirectory.setOnClickListener {
-            startDirectoryChooserActivity(CALLBACK_OPEN_DIR_SELECTOR)
-        }
+        viewModel.imageDirectoryPath.observe(this) { path -> textDirectoryPath.text = path }
+        buttonChangeDirectory.setOnClickListener { showDialogToChooseDirectory() }
 
         switchToDeleteLater.setOnCheckedChangeListener { _, isEnabled ->
             viewModel.shouldDeleteLater.value = isEnabled
@@ -62,23 +60,13 @@ class ManipulatingActivity : AppCompatActivity() {
         val shouldShowSimpleManipulatingDialog =
             intent.getBooleanExtra(EXTRA_OPEN_SIMPLE_MANIPULATING, false)
         if (shouldShowSimpleManipulatingDialog) {
-            showOpenManipulatingDialog()
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == CALLBACK_OPEN_DIR_SELECTOR) {
-            val path = data?.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR) ?: return
-
-            textDirectoryPath.text = path
+            showDialogToOpenSimpleManipulating()
         }
     }
 
     private fun close() = finishAndRemoveTask()
 
-    private fun showOpenManipulatingDialog() {
+    private fun showDialogToOpenSimpleManipulating() {
         viewModel.viewModelScope.launch {
             val manipulatings = viewModel.getAllSimpleManipulatings()
 
@@ -91,7 +79,19 @@ class ManipulatingActivity : AppCompatActivity() {
                     dialog.cancel()
                     close()
                 }
-                negativeButton(R.string.cancel_label) { /* do nothing */ }
+                negativeButton(R.string.dialog_cancel) { /* do nothing */ }
+            }
+        }
+    }
+
+    private fun showDialogToChooseDirectory() {
+        MaterialDialog(this).show {
+            folderChooser(
+                context,
+                initialDirectory = File("/storage/emulated/0/"),
+                allowFolderCreation = true
+            ) { _, file ->
+                viewModel.imageDirectoryPath.value = file.absolutePath
             }
         }
     }
@@ -99,8 +99,6 @@ class ManipulatingActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_IMAGE_PATH = "ImagePath"
         const val EXTRA_OPEN_SIMPLE_MANIPULATING = "OpenSimpleManipulating"
-
-        private const val CALLBACK_OPEN_DIR_SELECTOR = 2045
     }
 
 }
