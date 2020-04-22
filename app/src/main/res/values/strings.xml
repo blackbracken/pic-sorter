@@ -40,4 +40,7 @@
     <string name="layout_simple_manipulating_registerer_button_register">REGISTER</string>
     <string name="error_must_not_empty">Error: The value must not be empty</string>
     <string name="notification_detection_button_simple_manipulating">ManipulateSimply</string>
+    <string name="title_simple_manipulating_top">Settings for simple manipulatings</string>
+    <string name="title_simple_manipulating_registerer">Register simple manipulating</string>
+    <string name="title_directories_chooser">Settings for directories observed</string>
 </resources>

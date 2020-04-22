@@ -37,4 +37,7 @@
     <string name="layout_simple_manipulating_registerer_button_register">登録する</string>
     <string name="error_must_not_empty">エラー: 値が入力されていません</string>
     <string name="notification_detection_button_simple_manipulating">簡易操作</string>
+    <string name="title_simple_manipulating_top">簡易操作の設定</string>
+    <string name="title_simple_manipulating_registerer">簡易操作の登録</string>
+    <string name="title_directories_chooser">監視ディレクトリの設定</string>
 </resources>
