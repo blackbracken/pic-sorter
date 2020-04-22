@@ -9,9 +9,7 @@
             android:label="TopFragment">
         <action
                 android:id="@+id/action_topFragment_to_directoriesChooserFragment"
-                app:destination="@id/directoriesChooserFragment"
-                app:enterAnim="@anim/fragment_fade_enter"
-                app:exitAnim="@anim/fragment_fade_exit" />
+                app:destination="@id/directoriesChooserFragment" />
         <action
                 android:id="@+id/action_topFragment_to_simpleManipulatingSettingsFragment"
                 app:destination="@id/simpleManipulatingSettingsFragment" />
@@ -19,18 +17,14 @@
     <fragment
             android:id="@+id/directoriesChooserFragment"
             android:name="black.bracken.picsorter.ui.settings.dirchooser.DirectoriesChooserFragment"
-            android:label="DirectoriesChooserFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/fragment_fade_exit" />
+            android:label="DirectoriesChooserFragment" />
     <fragment
             android:id="@+id/simpleManipulatingSettingsFragment"
             android:name="black.bracken.picsorter.ui.settings.simplemanipulating.top.SimpleManipulatingTopFragment"
             android:label="SimpleManipulatingSettingsFragment">
         <action
                 android:id="@+id/action_simpleManipulatingSettingsFragment_to_simpleManipulatingRegistererFragment"
-                app:destination="@id/simpleManipulatingRegistererFragment"
-                app:enterAnim="@anim/fragment_fade_enter"
-                app:exitAnim="@anim/fragment_fade_exit" />
+                app:destination="@id/simpleManipulatingRegistererFragment" />
         <action
                 android:id="@+id/action_simpleManipulatingSettingsFragment_to_topFragment"
                 app:destination="@id/topFragment" />
@@ -38,7 +32,7 @@
     <fragment
             android:id="@+id/simpleManipulatingRegistererFragment"
             android:name="black.bracken.picsorter.ui.settings.simplemanipulating.registerer.SimpleManipulatingRegistererFragment"
-            android:label="SimpleManipulatingRegistererFragment" >
+            android:label="SimpleManipulatingRegistererFragment">
         <action
                 android:id="@+id/action_simpleManipulatingRegistererFragment_to_simpleManipulatingSettingsFragment"
                 app:destination="@id/simpleManipulatingSettingsFragment" />
