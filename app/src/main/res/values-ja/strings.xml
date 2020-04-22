@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="observer_text">長押しして設定からこの通知は隠すことができます</string>
+    <string name="observer_text">下のボタンからこの通知は隠すことができます</string>
     <string name="layout_settings_switch_enable">PicSorterを有効にする</string>
     <string name="layout_settings_switch_enables_description">"指定されたディレクトリ内の画像ファイル更新を監視します"</string>
     <string name="layout_settings_switch_run_on_boot">Android起動時にPicSorterを起動する</string>
@@ -40,4 +40,5 @@
     <string name="title_simple_manipulating_top">簡易操作の設定</string>
     <string name="title_simple_manipulating_registerer">簡易操作の登録</string>
     <string name="title_directories_chooser">監視ディレクトリの設定</string>
+    <string name="notification_hide_self">隠す</string>
 </resources>
