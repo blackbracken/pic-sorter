@@ -1,7 +1,7 @@
 package black.bracken.picsorter.service.repository
 
 import android.content.Context
-import black.bracken.picsorter.ext.write
+import android.content.SharedPreferences
 
 interface SettingsRepository {
 
@@ -53,5 +53,15 @@ class SettingsDataSource(context: Context) :
     }
 
     override fun containsDirectoryPath(path: String): Boolean = path in directoryPathList
+
+    private fun SharedPreferences.write(writing: (SharedPreferences.Editor).() -> Unit) {
+        val editor = this.edit()
+
+        try {
+            writing(editor)
+        } finally {
+            editor.apply()
+        }
+    }
 
 }
