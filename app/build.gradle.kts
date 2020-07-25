@@ -36,7 +36,9 @@ android {
     dataBinding {
         isEnabled = true
     }
-
+    testOptions {
+        testOptions.unitTests.isIncludeAndroidResources = true
+    }
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -50,14 +52,16 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6")
 
     testImplementation("junit:junit:4.12")
-    androidTestImplementation("com.google.truth:truth:1.0.1")
-    androidTestImplementation("com.android.support:support-annotations:28.0.0")
-    androidTestImplementation("com.android.support.test:runner:1.0.2")
-    androidTestImplementation("androidx.test:runner:1.2.0")
-    androidTestImplementation("androidx.test:rules:1.2.0")
-    androidTestImplementation("org.hamcrest:hamcrest-library:1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
-    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
+    testImplementation("androidx.test:core:1.2.0")
+    testImplementation("androidx.test:runner:1.2.0")
+    testImplementation("androidx.test:rules:1.2.0")
+    testImplementation("com.google.truth:truth:1.0.1")
+    testImplementation("com.android.support:support-annotations:28.0.0")
+    testImplementation("com.android.support.test:runner:1.0.2")
+    testImplementation("org.robolectric:robolectric:4.3.1")
+    testImplementation("org.hamcrest:hamcrest-library:1.3")
+    testImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    testImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
 
     implementation("androidx.appcompat:appcompat:1.3.0-alpha01")
 
@@ -80,9 +84,9 @@ dependencies {
     implementation("androidx.room:room-ktx:2.2.5")
     kapt("androidx.room:room-compiler:2.2.5")
 
-    implementation("org.koin:koin-core:2.1.5")
+    implementation("org.koin:koin-core:2.1.6")
     implementation("org.koin:koin-core-ext:2.1.5")
-    testImplementation("org.koin:koin-test:2.1.5")
+    testImplementation("org.koin:koin-test:2.1.6")
     implementation("org.koin:koin-android:2.1.5")
     implementation("org.koin:koin-android-scope:2.1.5")
     implementation("org.koin:koin-android-viewmodel:2.1.5")

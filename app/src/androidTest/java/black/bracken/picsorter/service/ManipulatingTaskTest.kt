@@ -1,7 +1,7 @@
 package black.bracken.picsorter.service
 
 import android.content.Context
-import androidx.test.filters.SmallTest
+import androidx.test.filters.MediumTest
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import com.google.common.truth.Truth.assertThat
@@ -17,7 +17,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 @RunWith(AndroidJUnit4ClassRunner::class)
-@SmallTest
+@MediumTest
 class ManipulatingTaskTest {
     private lateinit var context: Context
     private lateinit var dummyFile: File
