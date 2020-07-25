@@ -7,6 +7,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class ManipulatingTask(
     private var file: File?,
@@ -29,7 +31,7 @@ class ManipulatingTask(
         val fileName = file?.name ?: return
         val destination = File("$directoryPath/$fileName")
 
-        file = file?.moveWhileAvoidingDuplication(destination)
+        file = file?.moveOrDoWithRenamingIfDuplicated(destination)
     }
 
     private fun rename() {
@@ -39,7 +41,7 @@ class ManipulatingTask(
         val fileName = request.newName?.let { name -> "$name.$extension" } ?: return
         val destination = file?.let { oldFile -> File("${oldFile.parent}/$fileName") } ?: return
 
-        file = file?.moveWhileAvoidingDuplication(destination)
+        file = file?.moveOrDoWithRenamingIfDuplicated(destination)
     }
 
     private suspend fun scheduleDeletion() {
@@ -49,7 +51,7 @@ class ManipulatingTask(
         file?.deleteCertainly()
     }
 
-    private fun File.moveWhileAvoidingDuplication(destination: File): File {
+    private fun File.moveOrDoWithRenamingIfDuplicated(destination: File): File {
         fun File.moveToCertainly(dest: File): File {
             copyTo(dest, true)
             deleteCertainly()
@@ -64,14 +66,14 @@ class ManipulatingTask(
             return dest
         }
 
-        if (!destination.exists()) {
-            return moveToCertainly(destination)
+        return if (!destination.exists()) {
+            moveToCertainly(destination)
+        } else {
+            val suffix = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))
+            moveToCertainly(
+                File("${destination.parent}/${destination.nameWithoutExtension}_$suffix.${destination.extension}")
+            )
         }
-
-        // val suffix = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMDDHHmmss"))
-        return moveToCertainly(
-            File("${destination.parent}/${destination.nameWithoutExtension}.${destination.extension}")
-        )
     }
 
     private fun File.deleteCertainly() {

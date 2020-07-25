@@ -13,6 +13,8 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.File
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 @SmallTest
@@ -73,6 +75,28 @@ class ManipulatingTaskTest {
         }
 
         assertThat(dummyFile.exists()).isFalse()
+    }
+
+    @Test
+    fun shouldRenameIfDestinationAlreadyExists() {
+        val newName = "new_dummy"
+        val destination = File(context.getExternalFilesDir("/"), "$newName.png").apply {
+            createNewFile()
+        }
+        val request = ManipulatingTask.TaskRequest(destination.parent, newName, null)
+
+        runBlocking {
+            ManipulatingTask(dummyFile, context, request).execute()
+        }
+
+        assertThat(dummyFile.exists()).isFalse()
+
+        val suffix = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))
+        val renamedDestination = File(
+            "${destination.parent}/${destination.nameWithoutExtension}_$suffix.${destination.extension}"
+        )
+
+        assertThat(renamedDestination.exists()).isTrue()
     }
 
 }
