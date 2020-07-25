@@ -7,8 +7,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import java.io.File
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 class ManipulatingTask(
     private var file: File?,
@@ -70,9 +68,9 @@ class ManipulatingTask(
             return moveToCertainly(destination)
         }
 
-        val suffix = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMDDHmmss"))
+        // val suffix = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMDDHHmmss"))
         return moveToCertainly(
-            File("${destination.parent}/${destination.nameWithoutExtension}_$suffix.${destination.extension}")
+            File("${destination.parent}/${destination.nameWithoutExtension}.${destination.extension}")
         )
     }
 
