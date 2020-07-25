@@ -44,8 +44,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
-
-        <activity android:name="net.rdrei.android.dirchooser.DirectoryChooserActivity" />
     </application>
 
 </manifest>
