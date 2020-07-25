@@ -36,6 +36,7 @@ android {
     dataBinding {
         isEnabled = true
     }
+
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -45,8 +46,6 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versionKotlin")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3")
     implementation("androidx.appcompat:appcompat:1.2.0-beta01")
@@ -59,16 +58,23 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-common-java8:2.2.0")
 
     testImplementation("junit:junit:4.12")
+    androidTestImplementation("com.google.truth:truth:1.0.1")
+    androidTestImplementation("com.android.support:support-annotations:28.0.0")
+    androidTestImplementation("com.android.support.test:runner:1.0.2")
     androidTestImplementation("androidx.test:runner:1.2.0")
+    androidTestImplementation("androidx.test:rules:1.2.0")
+    androidTestImplementation("org.hamcrest:hamcrest-library:1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
+
     implementation("androidx.recyclerview:recyclerview:1.2.0-alpha02")
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.0-alpha05")
     implementation("androidx.navigation:navigation-ui:2.3.0-alpha05")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:2.3.0-alpha05")
 
-    implementation("androidx.room:room-runtime:2.2.5")
     kapt("androidx.room:room-compiler:2.2.5")
+    implementation("androidx.room:room-runtime:2.2.5")
     implementation("androidx.room:room-ktx:2.2.5")
 
     implementation("org.koin:koin-core:2.1.5")

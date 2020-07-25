@@ -1,5 +1,5 @@
 buildscript {
-    val versionGradle: String by extra("3.4.1")
+    val versionGradle: String by extra("4.0.1")
     val versionKotlin: String by extra("1.3.41")
     val versionKoin: String by extra("2.1.5")
 
