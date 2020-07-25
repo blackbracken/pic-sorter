@@ -47,15 +47,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versionKotlin")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3")
-    implementation("androidx.appcompat:appcompat:1.2.0-beta01")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.0-beta4")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.2.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6")
 
     testImplementation("junit:junit:4.12")
     androidTestImplementation("com.google.truth:truth:1.0.1")
@@ -67,15 +59,26 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
 
-    implementation("androidx.recyclerview:recyclerview:1.2.0-alpha02")
+    implementation("androidx.appcompat:appcompat:1.3.0-alpha01")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.3.0-alpha05")
-    implementation("androidx.navigation:navigation-ui:2.3.0-alpha05")
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.3.0-alpha05")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
-    kapt("androidx.room:room-compiler:2.2.5")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.2.0")
+
+    implementation("androidx.constraintlayout:constraintlayout:2.0.0-beta8")
+    implementation("androidx.recyclerview:recyclerview:1.2.0-alpha05")
+
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.0")
+    implementation("androidx.navigation:navigation-ui:2.3.0")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.3.0")
+
     implementation("androidx.room:room-runtime:2.2.5")
     implementation("androidx.room:room-ktx:2.2.5")
+    kapt("androidx.room:room-compiler:2.2.5")
 
     implementation("org.koin:koin-core:2.1.5")
     implementation("org.koin:koin-core-ext:2.1.5")

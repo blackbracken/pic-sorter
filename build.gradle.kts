@@ -1,7 +1,6 @@
 buildscript {
-    val versionGradle: String by extra("4.0.1")
-    val versionKotlin: String by extra("1.3.41")
-    val versionKoin: String by extra("2.1.5")
+    val versionKotlin: String by extra("1.3.72")
+    val versionKoin: String by extra("2.1.6")
 
     repositories {
         google()
@@ -9,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:$versionGradle")
+        classpath("com.android.tools.build:gradle:4.0.1")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$versionKotlin")
         classpath("org.koin:koin-gradle-plugin:$versionKoin")
     }
