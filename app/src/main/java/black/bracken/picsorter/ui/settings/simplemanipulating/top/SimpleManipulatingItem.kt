@@ -1,20 +1,21 @@
 package black.bracken.picsorter.ui.settings.simplemanipulating.top
 
 import black.bracken.picsorter.R
-import black.bracken.picsorter.databinding.ItemSimpleManipulatingBinding
-import com.xwray.groupie.databinding.BindableItem
+import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
+import com.xwray.groupie.kotlinandroidextensions.Item
+import kotlinx.android.synthetic.main.item_simple_manipulating.*
 
 class SimpleManipulatingItem(
     private val name: String,
     private val onClickText: () -> Unit,
     private val onClickButton: () -> Unit
-) : BindableItem<ItemSimpleManipulatingBinding>() {
+) : Item() {
 
     override fun getLayout(): Int = R.layout.item_simple_manipulating
 
-    override fun bind(viewBinding: ItemSimpleManipulatingBinding, position: Int) {
-        with(viewBinding) {
-            name = this@SimpleManipulatingItem.name
+    override fun bind(viewHolder: GroupieViewHolder, position: Int) {
+        with(viewHolder) {
+            textManipulatingName.text = name
             textManipulatingName.setOnClickListener { onClickText() }
             buttonRemoveManipulating.setOnClickListener { onClickButton() }
         }

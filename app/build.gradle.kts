@@ -33,8 +33,12 @@ android {
             )
         }
     }
-    dataBinding {
-        isEnabled = true
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+    androidExtensions {
+        isExperimental = true
     }
     testOptions {
         testOptions.unitTests.isIncludeAndroidResources = true
@@ -98,9 +102,8 @@ dependencies {
 
     implementation("io.coil-kt:coil:0.9.5")
 
-    implementation("com.xwray:groupie:2.7.0")
-    implementation("com.xwray:groupie-kotlin-android-extensions:2.7.0")
-    implementation("com.xwray:groupie-databinding:2.7.0")
+    implementation("com.xwray:groupie:2.8.0")
+    implementation("com.xwray:groupie-kotlin-android-extensions:2.8.0")
 
     implementation("com.afollestad.material-dialogs:core:3.2.1")
     implementation("com.afollestad.material-dialogs:files:3.2.1")
