@@ -36,24 +36,6 @@ class AddAndRemoveObservedDirectory {
 
     @Test
     fun addAndRemoveObservedDirectory() {
-        val dialogActionButton = onView(
-            allOf(
-                withId(R.id.md_button_positive), withText("OK"),
-                childAtPosition(
-                    allOf(
-                        withId(R.id.md_button_layout),
-                        childAtPosition(
-                            withId(R.id.md_root),
-                            2
-                        )
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
-        dialogActionButton.perform(click())
-
         val appCompatTextView = onView(
             allOf(
                 withId(R.id.textDirectories), withText("監視するディレクトリを指定"),
