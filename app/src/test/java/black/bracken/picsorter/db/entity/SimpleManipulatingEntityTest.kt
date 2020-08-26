@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.MediumTest
+import black.bracken.picsorter.data.SimpleManipulating
 import black.bracken.picsorter.db.PicSorterDatabase
 import black.bracken.picsorter.db.dao.SimpleManipulatingsDao
-import black.bracken.picsorter.service.model.SimpleManipulating
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -42,7 +42,11 @@ class SimpleManipulatingEntityTest {
         val newDirectoryPath = "this/is/a/dummy/path"
         val delaySeconds: Int? = null
 
-        val entity = SimpleManipulating(name, newDirectoryPath, delaySeconds).toEntity()
+        val entity = SimpleManipulating(
+            name,
+            newDirectoryPath,
+            delaySeconds
+        ).toEntity()
 
         runBlocking {
             simpleManipulatingsDao.insertManipulating(entity)

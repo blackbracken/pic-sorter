@@ -1,4 +1,4 @@
-package black.bracken.picsorter.service.model
+package black.bracken.picsorter.data
 
 data class SimpleManipulating(
     val name: String,

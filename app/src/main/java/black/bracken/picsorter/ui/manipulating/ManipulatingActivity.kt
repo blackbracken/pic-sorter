@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.viewModelScope
 import black.bracken.picsorter.R
+import black.bracken.picsorter.data.SimpleManipulating
 import black.bracken.picsorter.databinding.ActivityManipulatingBinding
 import black.bracken.picsorter.ext.observe
 import black.bracken.picsorter.ext.setOnTextChanged
-import black.bracken.picsorter.service.model.SimpleManipulating
 import coil.api.load
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.files.folderChooser

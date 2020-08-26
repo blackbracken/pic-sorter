@@ -18,7 +18,7 @@ android {
     }
     defaultConfig {
         applicationId = "black.bracken.picsorter"
-        minSdkVersion(26)
+        minSdkVersion(28)
         targetSdkVersion(28)
         versionCode = 5
         versionName = "1.2.1"
@@ -54,6 +54,8 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versionKotlin")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6")
+
+    implementation(project(":data"))
 
     testImplementation("junit:junit:4.12")
     testImplementation("androidx.test:core:1.2.0")
