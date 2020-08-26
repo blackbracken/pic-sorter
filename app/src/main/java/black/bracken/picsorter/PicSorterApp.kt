@@ -2,11 +2,16 @@ package black.bracken.picsorter
 
 import android.app.Application
 import androidx.room.Room
+import black.bracken.picsorter.data.repository.ImageObserverRepository
+import black.bracken.picsorter.data.repository.SettingsRepository
+import black.bracken.picsorter.data.repository.SimpleManipulatingRepository
 import black.bracken.picsorter.db.PicSorterDatabase
 import black.bracken.picsorter.ext.notificationManager
 import black.bracken.picsorter.notification.DetectionNotification
 import black.bracken.picsorter.notification.ObservingNotification
-import black.bracken.picsorter.service.repository.*
+import black.bracken.picsorter.service.repository.ImageObserverSwitcher
+import black.bracken.picsorter.service.repository.SettingsPreferences
+import black.bracken.picsorter.service.repository.SimpleManipulatingDatabase
 import black.bracken.picsorter.ui.manipulating.ManipulatingViewModel
 import black.bracken.picsorter.ui.settings.dirchooser.DirectoriesChooserViewModel
 import black.bracken.picsorter.ui.settings.simplemanipulating.registerer.SimpleManipulatingRegistererViewModel
@@ -22,9 +27,9 @@ class PicSorterApp : Application() {
 
     private val koinModule = module {
         // repositories
-        single<SettingsRepository> { SettingsDataSource(get()) }
-        single<ImageObserverRepository> { ImageObserverDataSource() }
-        single<SimpleManipulatingRepository> { SimpleManipulatingDataSource() }
+        single<SettingsRepository> { SettingsPreferences(get()) }
+        single<ImageObserverRepository> { ImageObserverSwitcher() }
+        single<SimpleManipulatingRepository> { SimpleManipulatingDatabase() }
 
         // viewmodels
         viewModel { TopViewModel(get(), get()) }
