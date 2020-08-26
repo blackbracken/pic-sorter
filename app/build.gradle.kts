@@ -58,9 +58,9 @@ dependencies {
     implementation(project(":data"))
 
     testImplementation("junit:junit:4.12")
-    testImplementation("androidx.test:core:1.2.0")
-    testImplementation("androidx.test:runner:1.2.0")
-    testImplementation("androidx.test:rules:1.2.0")
+    testImplementation("androidx.test:core:1.3.0")
+    testImplementation("androidx.test:runner:1.3.0")
+    testImplementation("androidx.test:rules:1.3.0")
     testImplementation("com.google.truth:truth:1.0.1")
     testImplementation("com.android.support:support-annotations:28.0.0")
     testImplementation("com.android.support.test:runner:1.0.2")
@@ -68,14 +68,14 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest-library:1.3")
 
     androidTestImplementation("junit:junit:4.12")
-    androidTestImplementation("androidx.test:core:1.2.0")
-    androidTestImplementation("androidx.test:runner:1.2.0")
-    androidTestImplementation("androidx.test:rules:1.2.0")
+    androidTestImplementation("androidx.test:core:1.3.0")
+    androidTestImplementation("androidx.test:runner:1.3.0")
+    androidTestImplementation("androidx.test:rules:1.3.0")
     androidTestImplementation("com.google.truth:truth:1.0.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
 
-    implementation("androidx.appcompat:appcompat:1.3.0-alpha01")
+    implementation("androidx.appcompat:appcompat:1.3.0-alpha02")
 
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
@@ -85,7 +85,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.2.0")
 
-    implementation("androidx.constraintlayout:constraintlayout:2.0.0-beta8")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
     implementation("androidx.recyclerview:recyclerview:1.2.0-alpha05")
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.0")
