@@ -3,11 +3,11 @@ package black.bracken.picsorter.ui.manipulating
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import black.bracken.picsorter.data.SimpleManipulating
 import black.bracken.picsorter.db.dao.SimpleManipulatingsDao
 import black.bracken.picsorter.ext.notificationManager
 import black.bracken.picsorter.notification.DetectionNotification
 import black.bracken.picsorter.service.ManipulatingTask
-import black.bracken.picsorter.service.model.SimpleManipulating
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

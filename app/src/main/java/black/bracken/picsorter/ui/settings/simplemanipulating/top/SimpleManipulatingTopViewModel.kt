@@ -3,7 +3,7 @@ package black.bracken.picsorter.ui.settings.simplemanipulating.top
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import black.bracken.picsorter.service.model.SimpleManipulating
+import black.bracken.picsorter.data.SimpleManipulating
 import black.bracken.picsorter.service.repository.SimpleManipulatingRepository
 import kotlinx.coroutines.launch
 

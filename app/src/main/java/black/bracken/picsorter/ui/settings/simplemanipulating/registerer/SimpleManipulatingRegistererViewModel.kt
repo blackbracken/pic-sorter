@@ -2,9 +2,9 @@ package black.bracken.picsorter.ui.settings.simplemanipulating.registerer
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import black.bracken.picsorter.data.SimpleManipulating
 import black.bracken.picsorter.db.dao.SimpleManipulatingsDao
 import black.bracken.picsorter.db.entity.toEntity
-import black.bracken.picsorter.service.model.SimpleManipulating
 
 class SimpleManipulatingRegistererViewModel(
     private val simpleManipulatingsDao: SimpleManipulatingsDao

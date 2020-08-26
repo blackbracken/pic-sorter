@@ -1,6 +1,7 @@
 buildscript {
     val versionKotlin: String by extra("1.3.72")
     val versionKoin: String by extra("2.1.6")
+    val kotlin_version by extra("1.3.72")
 
     repositories {
         google()

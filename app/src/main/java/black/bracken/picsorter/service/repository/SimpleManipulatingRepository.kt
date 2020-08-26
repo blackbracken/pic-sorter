@@ -1,8 +1,8 @@
 package black.bracken.picsorter.service.repository
 
+import black.bracken.picsorter.data.SimpleManipulating
 import black.bracken.picsorter.db.dao.SimpleManipulatingsDao
 import black.bracken.picsorter.db.entity.toEntity
-import black.bracken.picsorter.service.model.SimpleManipulating
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.koin.core.KoinComponent
