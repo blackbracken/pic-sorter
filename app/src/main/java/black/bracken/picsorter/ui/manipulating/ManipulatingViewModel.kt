@@ -53,7 +53,7 @@ class ManipulatingViewModel(
                 ManipulatingTask.TaskRequest(
                     null,
                     null,
-                    0
+                    0,
                 )
             ).execute()
         }

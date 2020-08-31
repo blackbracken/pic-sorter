@@ -18,7 +18,7 @@
 
 # 環境
 * Android 9 (SDK 28)
-* Kotlin 1.3.72
+* Kotlin 1.4.0
 
 # スクリーンショット
 <img src="https://raw.githubusercontent.com/blackbracken/PicSorter/develop/screenshots.png" width="70%" height="70%">

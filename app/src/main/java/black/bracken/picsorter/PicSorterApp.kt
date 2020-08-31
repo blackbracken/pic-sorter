@@ -43,7 +43,7 @@ class PicSorterApp : Application() {
             Room.databaseBuilder(
                 get(),
                 PicSorterDatabase::class.java,
-                "picsorter-database"
+                "picsorter-database",
             ).build()
         }
         single { get<PicSorterDatabase>().simpleManipulatingsDao() }
@@ -60,7 +60,7 @@ class PicSorterApp : Application() {
         notificationManager.createNotificationChannels(
             listOf(
                 ObservingNotification.channel,
-                DetectionNotification.channel
+                DetectionNotification.channel,
             )
         )
     }
