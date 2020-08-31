@@ -1,9 +1,11 @@
 package black.bracken.picsorter.ui.settings.simplemanipulating.registerer
 
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -58,6 +60,7 @@ class SimpleManipulatingRegistererFragment : Fragment() {
     private fun onPressedRegisterButton() = viewModel.viewModelScope.launch {
         when (viewModel.register()) {
             VerificationResult.SUCCEED -> {
+                setOf(editManipulatingName, editDelaySeconds).forEach(::closeSoftKeyboard)
                 findNavController().navigate(R.id.action_simpleManipulatingRegistererFragment_to_simpleManipulatingSettingsFragment)
             }
             VerificationResult.MUST_NOT_EMPTY -> {
@@ -87,6 +90,11 @@ class SimpleManipulatingRegistererFragment : Fragment() {
                 viewModel.directoryPath.value = file.absolutePath
             }
         }
+    }
+
+    private fun closeSoftKeyboard(view: View) {
+        (activity?.getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)
+            ?.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 }
