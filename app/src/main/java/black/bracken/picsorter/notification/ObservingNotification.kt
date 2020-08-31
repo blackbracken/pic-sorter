@@ -47,7 +47,7 @@ object ObservingNotification : KoinComponent {
             }
             .let { pendingIntent ->
                 NotificationCompat.Action(
-                    R.drawable.app_icon,
+                    R.mipmap.ic_stat_notification_icon,
                     context.getString(R.string.notification_hide_self),
                     pendingIntent
                 )
@@ -58,7 +58,7 @@ object ObservingNotification : KoinComponent {
                 color = NOTIFICATION_COLOR
                 setColorized(true)
                 setOngoing(true)
-                setSmallIcon(R.drawable.app_icon)
+                setSmallIcon(R.mipmap.ic_stat_notification_icon)
                 setContentText(context.getString(R.string.observer_text))
                 setSubText(context.getString(R.string.observer_text_sub))
                 addAction(actionToOpenNotificationSettings)

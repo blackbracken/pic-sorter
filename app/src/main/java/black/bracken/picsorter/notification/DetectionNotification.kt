@@ -50,7 +50,7 @@ object DetectionNotification : KoinComponent {
             }
             .let { pendingIntent ->
                 NotificationCompat.Action(
-                    R.drawable.app_icon,
+                    R.mipmap.ic_stat_notification_icon,
                     context.getString(R.string.notification_detection_button_manipulate),
                     pendingIntent
                 )
@@ -73,7 +73,7 @@ object DetectionNotification : KoinComponent {
             }
             .let { pendingIntent ->
                 NotificationCompat.Action(
-                    R.drawable.app_icon,
+                    R.mipmap.ic_stat_notification_icon,
                     context.getString(R.string.notification_detection_button_simple_manipulating),
                     pendingIntent
                 )
@@ -85,7 +85,7 @@ object DetectionNotification : KoinComponent {
                 setAutoCancel(true)
                 setColorized(true)
                 setDefaults(0)
-                setSmallIcon(R.drawable.app_icon)
+                setSmallIcon(R.mipmap.ic_stat_notification_icon)
                 setContentText(context.getString(R.string.notification_detection_description))
                 addAction(actionToOpenManipulatingView)
                 addAction(actionToChooseSimpleManipulation)
