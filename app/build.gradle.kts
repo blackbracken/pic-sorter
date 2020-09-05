@@ -1,3 +1,5 @@
+import dependencies.Dep
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -52,8 +54,10 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versionKotlin")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
+    with(Dep.Kotlin) {
+        implementation(stdlib)
+        implementation(coroutines)
+    }
 
     implementation(project(":data"))
 
