@@ -6,11 +6,6 @@ object Dep {
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7"
     }
 
-    const val junit = "junit:junit:4.12"
-    const val truth = "com.google.truth:truth:1.0.1"
-    const val robolectric = "org.robolectric:robolectric:4.3.1"
-    const val hamcrest = "org.hamcrest:hamcrest-library:1.3"
-
     object AndroidX {
         const val testCore = "androidx.test:core:1.3.0"
         const val testRunner = "androidx.test:runner:1.3.0"
@@ -46,6 +41,22 @@ object Dep {
     object AndroidSupport {
         const val supportAnnotations = "com.android.support:support-annotations:28.0.0"
         const val testRunner = "com.android.support.test:runner:1.0.2"
+    }
+
+    object JUnit {
+        const val core = "junit:junit:4.12"
+    }
+
+    object Truth {
+        const val core = "com.google.truth:truth:1.0.1"
+    }
+
+    object Robolectric {
+        const val core = "org.robolectric:robolectric:4.3.1"
+    }
+
+    object Hamcrest {
+        const val core = "org.hamcrest:hamcrest-library:1.3"
     }
 
     object Koin {
