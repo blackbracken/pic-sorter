@@ -1,7 +1,4 @@
 buildscript {
-    val versionKotlin: String by extra("1.4.0")
-    val versionKoin: String by extra("2.1.6")
-
     repositories {
         google()
         jcenter()
@@ -9,8 +6,8 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:4.0.1")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$versionKotlin")
-        classpath("org.koin:koin-gradle-plugin:$versionKoin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.0")
+        classpath("org.koin:koin-gradle-plugin:2.1.6")
     }
 }
 
