@@ -1,16 +1,19 @@
 package black.bracken.picsorter.ui.settings.dirchooser
 
+import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.DirectoriesChooserFragmentBinding
-import black.bracken.picsorter.ext.observe
+import black.bracken.picsorter.util.hasExternalStoragePermission
+import black.bracken.picsorter.util.openDialogForExternalStoragePermission
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.files.folderChooser
 import com.xwray.groupie.GroupAdapter
@@ -23,28 +26,47 @@ class DirectoriesChooserFragment : Fragment() {
 
     private val viewModel by viewModel<DirectoriesChooserViewModel>()
 
+    private val requestPermissionToOpenDirChooserIntent =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isAllowed ->
+            if (isAllowed) {
+                showDialogToChooseDirectory()
+            } else if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                openDialogForExternalStoragePermission(this)
+            }
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<DirectoriesChooserFragmentBinding>(
             inflater, R.layout.directories_chooser_fragment, container, false
-        ).also { binding -> binding.viewModel = viewModel }
+        ).also { binding ->
+            binding.viewModel = viewModel
+            binding.lifecycleOwner = this
+        }
 
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         (activity as? AppCompatActivity)?.setSupportActionBar(toolbarDirectories)
         toolbarDirectories.setTitle(R.string.title_directories_chooser)
 
         val groupAdapter = GroupAdapter<GroupieViewHolder>()
         recyclerDirectories.adapter = groupAdapter
 
-        buttonAddDirectory.setOnClickListener { showDialogToChooseDirectory() }
+        buttonAddDirectory.setOnClickListener {
+            if (hasExternalStoragePermission()) {
+                showDialogToChooseDirectory()
+            } else {
+                requestPermissionToOpenDirChooserIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+        }
 
-        viewModel.directoryPathObservedList.observe(this) { pathList ->
+        viewModel.directoryPathObservedList.observe(viewLifecycleOwner) { pathList ->
             with(groupAdapter) {
                 clear()
                 addAll(pathList.map { path ->

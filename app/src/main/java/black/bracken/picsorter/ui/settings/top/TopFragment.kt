@@ -2,7 +2,6 @@ package black.bracken.picsorter.ui.settings.top
 
 import android.Manifest
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
@@ -15,9 +14,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.TopFragmentBinding
-import black.bracken.picsorter.ext.observe
 import black.bracken.picsorter.util.hasExternalStoragePermission
-import com.afollestad.materialdialogs.MaterialDialog
+import black.bracken.picsorter.util.openDialogForExternalStoragePermission
 import kotlinx.android.synthetic.main.top_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -31,21 +29,7 @@ class TopFragment : Fragment() {
                 viewModel.enablesObserver.postValue(true)
                 viewModel.switchToEnableImageObserver(true)
             } else if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                MaterialDialog(requireContext()).show {
-                    icon(R.drawable.ic_touch_app_black)
-                    title(R.string.dialog_permission_request_title)
-                    message(R.string.dialog_permission_request_subtitle)
-
-                    positiveButton {
-                        Intent(
-                            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                            Uri.parse("package:${activity?.packageName}")
-                        ).apply {
-                            addCategory(Intent.CATEGORY_DEFAULT)
-                            flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                        }.let { startActivity(it) }
-                    }
-                }
+                openDialogForExternalStoragePermission(this)
             }
         }
 
@@ -67,7 +51,7 @@ class TopFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as? AppCompatActivity)?.setSupportActionBar(toolbarSettings)
 
-        viewModel.enablesObserver.observe(this) { isChecked ->
+        viewModel.enablesObserver.observe(viewLifecycleOwner) { isChecked ->
             if (isChecked && !hasExternalStoragePermission()) {
                 viewModel.enablesObserver.value = false
                 requestPermissionToEnableObserverIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -76,7 +60,7 @@ class TopFragment : Fragment() {
             }
         }
 
-        viewModel.runsOnBoot.observe(this) { isChecked ->
+        viewModel.runsOnBoot.observe(viewLifecycleOwner) { isChecked ->
             viewModel.switchToRunOnBoot(isChecked)
         }
 
