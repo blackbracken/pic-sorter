@@ -1,5 +1,6 @@
 package black.bracken.picsorter.ui.settings.simplemanipulating.registerer
 
+import android.Manifest
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -14,9 +16,10 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.SimpleManipulatingRegistererFragmentBinding
-import black.bracken.picsorter.ext.observe
 import black.bracken.picsorter.ext.setOnTextChanged
 import black.bracken.picsorter.ui.settings.simplemanipulating.registerer.SimpleManipulatingRegistererViewModel.VerificationResult
+import black.bracken.picsorter.util.hasExternalStoragePermission
+import black.bracken.picsorter.util.openDialogForExternalStoragePermission
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.files.folderChooser
 import kotlinx.android.synthetic.main.simple_manipulating_registerer_fragment.*
@@ -28,24 +31,43 @@ class SimpleManipulatingRegistererFragment : Fragment() {
 
     private val viewModel by viewModel<SimpleManipulatingRegistererViewModel>()
 
+    private val requestPermissionToOpenDirChooserIntent =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isAllowed ->
+            if (isAllowed) {
+                showDialogToChooseDirectory()
+            } else if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                openDialogForExternalStoragePermission(this)
+            }
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<SimpleManipulatingRegistererFragmentBinding>(
             inflater, R.layout.simple_manipulating_registerer_fragment, container, false
-        ).also { binding -> binding.viewModel = viewModel }
+        ).also { binding ->
+            binding.viewModel = viewModel
+            binding.lifecycleOwner = this
+        }
 
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         (activity as? AppCompatActivity)?.setSupportActionBar(toolbarSimpleManipulatingRegisterer)
         toolbarSimpleManipulatingRegisterer.setTitle(R.string.title_simple_manipulating_registerer)
 
         buttonRegister.setOnClickListener { onPressedRegisterButton() }
-        buttonChangeDirectory.setOnClickListener { showDialogToChooseDirectory() }
+        buttonChangeDirectory.setOnClickListener {
+            if (hasExternalStoragePermission()) {
+                showDialogToChooseDirectory()
+            } else {
+                requestPermissionToOpenDirChooserIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+        }
         editDelaySeconds.setOnTextChanged { secondsText ->
             viewModel.secondsToDelete.value = secondsText.toIntOrNull()
         }
@@ -54,7 +76,7 @@ class SimpleManipulatingRegistererFragment : Fragment() {
             editDelaySeconds.isEnabled = isEnabled
         }
 
-        viewModel.directoryPath.observe(this) { textDirectoryPath.text = it }
+        viewModel.directoryPath.observe(viewLifecycleOwner) { textDirectoryPath.text = it }
     }
 
     private fun onPressedRegisterButton() = viewModel.viewModelScope.launch {
