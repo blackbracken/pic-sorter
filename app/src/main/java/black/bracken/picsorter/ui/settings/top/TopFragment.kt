@@ -26,17 +26,7 @@ class TopFragment : Fragment() {
     private val viewModel by viewModel<TopViewModel>()
 
     private val requestPermissionsIntent =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isAllowed ->
-            if (!isAllowed) {
-                Intent(
-                    Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                    Uri.parse("package:${activity?.packageName}")
-                ).apply {
-                    addCategory(Intent.CATEGORY_DEFAULT)
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                }.let { startActivity(it) }
-            }
-        }
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -102,7 +92,17 @@ class TopFragment : Fragment() {
             title(R.string.dialog_permission_request_title)
             message(R.string.dialog_permission_request_subtitle)
             positiveButton {
-                requestPermissionsIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    requestPermissionsIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                } else {
+                    Intent(
+                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                        Uri.parse("package:${activity?.packageName}")
+                    ).apply {
+                        addCategory(Intent.CATEGORY_DEFAULT)
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    }.let { startActivity(it) }
+                }
             }
         }
     }
