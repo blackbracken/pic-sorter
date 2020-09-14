@@ -26,7 +26,25 @@ class TopFragment : Fragment() {
     private val viewModel by viewModel<TopViewModel>()
 
     private val requestPermissionsIntent =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) {}
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isAllowed ->
+            if (!isAllowed && !shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                MaterialDialog(requireContext()).show {
+                    icon(R.drawable.ic_touch_app_black)
+                    title(R.string.dialog_permission_request_title)
+                    message(R.string.dialog_permission_request_subtitle)
+
+                    positiveButton {
+                        Intent(
+                            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                            Uri.parse("package:${activity?.packageName}")
+                        ).apply {
+                            addCategory(Intent.CATEGORY_DEFAULT)
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        }.let { startActivity(it) }
+                    }
+                }
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -79,31 +97,8 @@ class TopFragment : Fragment() {
         textDescriptionOpenNotificationSettings
             .setOnClickListener { openAndroidNotificationSettings() }
 
-        requestPermissions()
-    }
-
-    private fun requestPermissions() {
-        if (context?.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            return
-        }
-
-        MaterialDialog(context ?: return).show {
-            icon(R.drawable.ic_touch_app_black)
-            title(R.string.dialog_permission_request_title)
-            message(R.string.dialog_permission_request_subtitle)
-            positiveButton {
-                if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    requestPermissionsIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                } else {
-                    Intent(
-                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                        Uri.parse("package:${activity?.packageName}")
-                    ).apply {
-                        addCategory(Intent.CATEGORY_DEFAULT)
-                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                    }.let { startActivity(it) }
-                }
-            }
+        if (context?.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissionsIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
     }
 
