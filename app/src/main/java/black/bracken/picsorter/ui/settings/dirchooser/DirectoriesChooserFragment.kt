@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.DirectoriesChooserFragmentBinding
+import black.bracken.picsorter.util.createIntentForExternalStoragePermission
 import black.bracken.picsorter.util.hasExternalStoragePermission
-import black.bracken.picsorter.util.openDialogForExternalStoragePermission
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.files.folderChooser
 import com.xwray.groupie.GroupAdapter
@@ -26,14 +25,9 @@ class DirectoriesChooserFragment : Fragment() {
 
     private val viewModel by viewModel<DirectoriesChooserViewModel>()
 
-    private val requestPermissionToOpenDirChooserIntent =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isAllowed ->
-            if (isAllowed) {
-                showDialogToChooseDirectory()
-            } else if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                openDialogForExternalStoragePermission(this)
-            }
-        }
+    private val requestPermissionToOpenDirChooserIntent = createIntentForExternalStoragePermission {
+        showDialogToChooseDirectory()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

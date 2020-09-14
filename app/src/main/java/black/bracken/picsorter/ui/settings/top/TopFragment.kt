@@ -7,15 +7,14 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.TopFragmentBinding
+import black.bracken.picsorter.util.createIntentForExternalStoragePermission
 import black.bracken.picsorter.util.hasExternalStoragePermission
-import black.bracken.picsorter.util.openDialogForExternalStoragePermission
 import kotlinx.android.synthetic.main.top_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -23,15 +22,10 @@ class TopFragment : Fragment() {
 
     private val viewModel by viewModel<TopViewModel>()
 
-    private val requestPermissionToEnableObserverIntent =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isAllowed ->
-            if (isAllowed) {
-                viewModel.enablesObserver.postValue(true)
-                viewModel.switchToEnableImageObserver(true)
-            } else if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                openDialogForExternalStoragePermission(this)
-            }
-        }
+    private val requestPermissionToEnableObserverIntent = createIntentForExternalStoragePermission {
+        viewModel.enablesObserver.postValue(true)
+        viewModel.switchToEnableImageObserver(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
