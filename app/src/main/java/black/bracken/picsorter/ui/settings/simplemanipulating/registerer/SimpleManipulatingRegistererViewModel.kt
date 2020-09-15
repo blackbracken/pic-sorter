@@ -5,12 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import black.bracken.picsorter.data.SimpleManipulating
-import black.bracken.picsorter.db.dao.SimpleManipulatingsDao
-import black.bracken.picsorter.db.entity.toEntity
+import black.bracken.picsorter.data.repository.SimpleManipulatingRepository
 import kotlinx.coroutines.launch
 
 class SimpleManipulatingRegistererViewModel(
-    private val simpleManipulatingsDao: SimpleManipulatingsDao
+    private val simpleManipulatingRepository: SimpleManipulatingRepository
 ) : ViewModel() {
     private val _verificationResult = MutableLiveData<VerificationResult>()
     val verificationResult: LiveData<VerificationResult> get() = _verificationResult
@@ -26,7 +25,7 @@ class SimpleManipulatingRegistererViewModel(
                 .takeUnless { it.isNullOrBlank() }
                 ?: return VerificationResult.MustNotEmpty
 
-            if (simpleManipulatingsDao.findManipulatingByName(name) != null) {
+            if (simpleManipulatingRepository.findByName(name) != null) {
                 return VerificationResult.AlreadyRegisteredUnderSameName
             }
 
@@ -41,7 +40,7 @@ class SimpleManipulatingRegistererViewModel(
 
         val verificationResult = verifyInput()
         if (verificationResult is VerificationResult.Succeed) {
-            simpleManipulatingsDao.insertManipulating(verificationResult.simpleManipulating.toEntity())
+            simpleManipulatingRepository.add(verificationResult.simpleManipulating)
         }
 
         _verificationResult.postValue(verificationResult)
