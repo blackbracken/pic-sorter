@@ -50,121 +50,119 @@
             <View
                     android:id="@+id/backgroundApply"
                     android:layout_width="0dp"
-                    android:layout_height="64dp"
-                    android:layout_marginHorizontal="12dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_height="0dp"
                     android:background="#B4B4B4"
 
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imageManipulated"
+                    app:layout_constraintBottom_toBottomOf="@id/buttonApply"
+                    app:layout_constraintEnd_toEndOf="@id/buttonApply"
+                    app:layout_constraintStart_toStartOf="@id/buttonTrash"
+                    app:layout_constraintTop_toTopOf="@id/buttonApply"
                     app:layout_constraintVertical_chainStyle="packed" />
 
             <ImageButton
                     android:id="@+id/buttonTrash"
                     android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="12dp"
                     android:backgroundTint="@color/colorWarn"
                     android:contentDescription="@string/layout_manipulating_content_description_button_delete"
+                    android:scaleType="center"
 
                     app:layout_constraintBottom_toBottomOf="@id/backgroundApply"
                     app:layout_constraintEnd_toStartOf="@id/buttonApply"
-                    app:layout_constraintHorizontal_weight="2"
-                    app:layout_constraintStart_toStartOf="@id/backgroundApply"
+                    app:layout_constraintHorizontal_weight="3"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/backgroundApply"
                     app:srcCompat="@drawable/baseline_delete_black_24" />
 
             <Button
                     android:id="@+id/buttonApply"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="12dp"
                     android:text="@string/layout_manipulating_button_apply"
 
-                    app:layout_constraintBottom_toBottomOf="@id/buttonTrash"
-                    app:layout_constraintEnd_toEndOf="@id/backgroundApply"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_weight="5"
                     app:layout_constraintStart_toEndOf="@id/buttonTrash"
-                    app:layout_constraintTop_toTopOf="@id/buttonTrash" />
+                    app:layout_constraintTop_toBottomOf="@id/imageManipulated" />
 
             <View
                     android:id="@+id/backgroundDirectory"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_marginHorizontal="12dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_height="0dp"
                     android:background="#B4B4B4"
 
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/backgroundApply"
+                    app:layout_constraintBottom_toBottomOf="@id/textDescriptionDirectory"
+                    app:layout_constraintEnd_toEndOf="@id/buttonChangeDirectory"
+                    app:layout_constraintStart_toStartOf="@id/textDirectoryPath"
+                    app:layout_constraintTop_toTopOf="@id/buttonChangeDirectory"
                     app:layout_constraintVertical_chainStyle="packed" />
 
             <Button
                     android:id="@+id/buttonChangeDirectory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="12dp"
                     android:text="@string/layout_manipulating_button_change"
 
                     app:layout_constraintBottom_toTopOf="@id/textDescriptionDirectory"
-                    app:layout_constraintEnd_toEndOf="@+id/textDescriptionDirectory"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/textDirectoryPath"
-                    app:layout_constraintTop_toTopOf="@id/backgroundDirectory" />
+                    app:layout_constraintTop_toBottomOf="@id/buttonApply" />
 
             <TextView
                     android:id="@+id/textDirectoryPath"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
                     android:breakStrategy="high_quality"
                     android:gravity="center|start"
+                    android:padding="10dp"
                     android:text="@{viewModel.imageDirectoryPath}"
                     android:textColor="#000000"
                     android:textSize="14sp"
 
                     app:layout_constraintBottom_toBottomOf="@id/buttonChangeDirectory"
                     app:layout_constraintEnd_toStartOf="@id/buttonChangeDirectory"
-                    app:layout_constraintStart_toStartOf="@id/textDescriptionDirectory"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/buttonChangeDirectory" />
 
             <TextView
                     android:id="@+id/textDescriptionDirectory"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginHorizontal="12dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="8dp"
                     android:gravity="center|start"
+                    android:padding="10dp"
                     android:text="@string/layout_manipulating_description_directory"
 
-                    app:layout_constraintBottom_toBottomOf="@id/backgroundDirectory"
-                    app:layout_constraintEnd_toEndOf="@id/backgroundDirectory"
-                    app:layout_constraintStart_toStartOf="@id/backgroundDirectory"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/buttonChangeDirectory" />
 
             <View
                     android:id="@+id/backgroundRename"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_marginHorizontal="12dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_height="0dp"
                     android:background="#B4B4B4"
 
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/backgroundDirectory"
+                    app:layout_constraintBottom_toBottomOf="@id/textDescriptionRename"
+                    app:layout_constraintEnd_toEndOf="@id/textExtension"
+                    app:layout_constraintStart_toStartOf="@id/editNewName"
+                    app:layout_constraintTop_toTopOf="@id/editNewName"
                     app:layout_constraintVertical_chainStyle="packed" />
 
             <EditText
                     android:id="@+id/editNewName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
                     android:autofillHints=""
                     android:ems="10"
                     android:gravity="center|end"
@@ -172,11 +170,10 @@
                     android:text="@={viewModel.imageNewName}"
                     android:textSize="18sp"
 
-                    app:layout_constraintBottom_toTopOf="@id/textDescriptionRename"
                     app:layout_constraintEnd_toStartOf="@id/textExtension"
-                    app:layout_constraintHorizontal_weight="6"
-                    app:layout_constraintStart_toStartOf="@id/textDescriptionRename"
-                    app:layout_constraintTop_toTopOf="@+id/backgroundRename"
+                    app:layout_constraintHorizontal_weight="4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textDescriptionDirectory"
 
                     tools:ignore="LabelFor" />
 
@@ -184,14 +181,14 @@
                     android:id="@+id/textExtension"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="12dp"
                     android:gravity="center|start"
+                    android:padding="10dp"
                     android:text="@{viewModel.imageExtension}"
                     android:textSize="18sp"
 
                     app:layout_constraintBottom_toBottomOf="@id/editNewName"
-                    app:layout_constraintEnd_toEndOf="@id/textDescriptionRename"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@id/editNewName"
                     app:layout_constraintTop_toTopOf="@id/editNewName" />
@@ -200,51 +197,49 @@
                     android:id="@+id/textDescriptionRename"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:padding="10dp"
                     android:text="@string/layout_manipulating_description_rename"
 
-                    app:layout_constraintBottom_toBottomOf="@id/backgroundRename"
-                    app:layout_constraintEnd_toEndOf="@id/backgroundRename"
-                    app:layout_constraintStart_toStartOf="@id/backgroundRename"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editNewName" />
 
             <View
                     android:id="@+id/backgroundDelayDeletion"
                     android:layout_width="0dp"
-                    android:layout_height="112dp"
-                    android:layout_marginHorizontal="12dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_height="0dp"
                     android:background="#B4B4B4"
 
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/backgroundRename"
-                    app:layout_constraintVertical_chainStyle="packed" />
+                    app:layout_constraintBottom_toBottomOf="@id/textDescriptionDelayedDeletion"
+                    app:layout_constraintEnd_toEndOf="@id/switchToDeleteLater"
+                    app:layout_constraintStart_toStartOf="@id/switchToDeleteLater"
+                    app:layout_constraintTop_toTopOf="@id/switchToDeleteLater" />
 
             <Switch
                     android:id="@+id/switchToDeleteLater"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="16dp"
+                    android:padding="10dp"
                     android:text="@string/layout_manipulating_switch_delay"
 
-                    app:layout_constraintEnd_toEndOf="@+id/textDescriptionDelayedDeletion"
-                    app:layout_constraintStart_toStartOf="@+id/textDescriptionDelayedDeletion"
-                    app:layout_constraintTop_toTopOf="@+id/backgroundDelayDeletion" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textDescriptionRename" />
 
             <Space
                     android:id="@+id/spaceDelayEdit"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
 
-                    app:layout_constraintBottom_toTopOf="@id/textDescriptionDelayedDeletion"
+                    app:layout_constraintBottom_toBottomOf="@id/editDelaySeconds"
                     app:layout_constraintEnd_toStartOf="@id/textDelayUnit"
                     app:layout_constraintHorizontal_weight="3"
                     app:layout_constraintStart_toStartOf="@id/textDescriptionDelayedDeletion"
-                    app:layout_constraintTop_toBottomOf="@id/switchToDeleteLater" />
+                    app:layout_constraintTop_toTopOf="@id/editDelaySeconds" />
 
             <TextView
                     android:id="@+id/textDelayUnit"
@@ -263,15 +258,15 @@
                     android:id="@+id/editDelaySeconds"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
                     android:layout_marginBottom="4dp"
                     android:autofillHints="30"
-
                     android:inputType="numberSigned"
-                    app:layout_constraintBottom_toBottomOf="@id/spaceDelayEdit"
-                    app:layout_constraintEnd_toEndOf="@+id/textDescriptionDelayedDeletion"
+
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_weight="2"
-                    app:layout_constraintStart_toEndOf="@+id/textDelayUnit"
-                    app:layout_constraintTop_toTopOf="@id/spaceDelayEdit"
+                    app:layout_constraintStart_toEndOf="@id/textDelayUnit"
+                    app:layout_constraintTop_toBottomOf="@id/switchToDeleteLater"
 
                     tools:ignore="LabelFor" />
 
@@ -280,13 +275,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:padding="10dp"
                     android:text="@string/layout_manipulating_description_delay"
 
-                    app:layout_constraintTop_toBottomOf="@id/textDelayUnit"
-                    app:layout_constraintBottom_toBottomOf="@+id/backgroundDelayDeletion"
-                    app:layout_constraintEnd_toEndOf="@+id/backgroundDelayDeletion"
-                    app:layout_constraintStart_toStartOf="@+id/backgroundDelayDeletion" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/editDelaySeconds" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
