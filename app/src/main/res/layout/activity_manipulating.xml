@@ -56,8 +56,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/buttonApply"
                     app:layout_constraintEnd_toEndOf="@id/buttonApply"
                     app:layout_constraintStart_toStartOf="@id/buttonTrash"
-                    app:layout_constraintTop_toTopOf="@id/buttonApply"
-                    app:layout_constraintVertical_chainStyle="packed" />
+                    app:layout_constraintTop_toTopOf="@id/buttonApply" />
 
             <ImageButton
                     android:id="@+id/buttonTrash"
@@ -97,8 +96,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/textDescriptionDirectory"
                     app:layout_constraintEnd_toEndOf="@id/buttonChangeDirectory"
                     app:layout_constraintStart_toStartOf="@id/textDirectoryPath"
-                    app:layout_constraintTop_toTopOf="@id/buttonChangeDirectory"
-                    app:layout_constraintVertical_chainStyle="packed" />
+                    app:layout_constraintTop_toTopOf="@id/buttonChangeDirectory" />
 
             <Button
                     android:id="@+id/buttonChangeDirectory"
@@ -118,7 +116,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:breakStrategy="high_quality"
                     android:gravity="center|start"
                     android:padding="10dp"
                     android:text="@{viewModel.imageDirectoryPath}"
@@ -154,8 +151,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/textDescriptionRename"
                     app:layout_constraintEnd_toEndOf="@id/textExtension"
                     app:layout_constraintStart_toStartOf="@id/editNewName"
-                    app:layout_constraintTop_toTopOf="@id/editNewName"
-                    app:layout_constraintVertical_chainStyle="packed" />
+                    app:layout_constraintTop_toTopOf="@id/editNewName" />
 
             <EditText
                     android:id="@+id/editNewName"
