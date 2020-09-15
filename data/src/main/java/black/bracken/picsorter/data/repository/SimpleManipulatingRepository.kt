@@ -1,6 +1,7 @@
 package black.bracken.picsorter.data.repository
 
 import black.bracken.picsorter.data.SimpleManipulating
+import kotlinx.coroutines.flow.Flow
 
 interface SimpleManipulatingRepository {
 
@@ -10,6 +11,6 @@ interface SimpleManipulatingRepository {
 
     suspend fun findByName(name: String): SimpleManipulating?
 
-    suspend fun loadAll(): List<SimpleManipulating>
+    fun getSimpleManipulatingsFlow(): Flow<List<SimpleManipulating>>
 
 }

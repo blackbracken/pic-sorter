@@ -5,6 +5,8 @@ import black.bracken.picsorter.data.repository.SimpleManipulatingRepository
 import black.bracken.picsorter.db.dao.SimpleManipulatingsDao
 import black.bracken.picsorter.db.entity.toEntity
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import org.koin.core.KoinComponent
 import org.koin.core.inject
@@ -28,9 +30,9 @@ class SimpleManipulatingDatabase : SimpleManipulatingRepository, KoinComponent {
             manipulatingDao.findManipulatingByName(name)?.toModel()
         }
 
-    override suspend fun loadAll(): List<SimpleManipulating> =
-        withContext(Dispatchers.IO) {
-            manipulatingDao.getAll().map { it.toModel() }
+    override fun getSimpleManipulatingsFlow(): Flow<List<SimpleManipulating>> =
+        manipulatingDao.getAllSimpleManipulatingsFlow().map { list ->
+            list.map { entity -> entity.toModel() }
         }
 
 }

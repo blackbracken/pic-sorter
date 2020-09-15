@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import black.bracken.picsorter.db.entity.SimpleManipulatingEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SimpleManipulatingsDao {
@@ -19,6 +20,6 @@ interface SimpleManipulatingsDao {
     suspend fun findManipulatingByName(name: String): SimpleManipulatingEntity?
 
     @Query("SELECT * FROM manipulatings")
-    suspend fun getAll(): List<SimpleManipulatingEntity>
+    fun getAllSimpleManipulatingsFlow(): Flow<List<SimpleManipulatingEntity>>
 
 }

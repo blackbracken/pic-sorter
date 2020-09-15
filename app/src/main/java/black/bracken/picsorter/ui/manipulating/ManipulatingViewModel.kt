@@ -3,24 +3,24 @@ package black.bracken.picsorter.ui.manipulating
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import black.bracken.picsorter.data.SimpleManipulating
-import black.bracken.picsorter.db.dao.SimpleManipulatingsDao
+import black.bracken.picsorter.data.repository.SimpleManipulatingRepository
 import black.bracken.picsorter.ext.notificationManager
 import black.bracken.picsorter.notification.DetectionNotification
 import black.bracken.picsorter.service.ManipulatingTask
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.io.File
 
 class ManipulatingViewModel(
     imagePath: String,
     private val context: Context,
-    private val simpleManipulatingsDao: SimpleManipulatingsDao
+    simpleManipulatingRepository: SimpleManipulatingRepository
 ) : ViewModel() {
-
     val image = File(imagePath)
+
+    val simpleManipulatings = simpleManipulatingRepository.getSimpleManipulatingsFlow().asLiveData()
 
     val imageDirectoryPath = MutableLiveData(image.parent)
     val imageNewName = MutableLiveData(image.nameWithoutExtension)
@@ -61,10 +61,6 @@ class ManipulatingViewModel(
 
     fun removeNotificationIfExists() {
         context.notificationManager.cancel(DetectionNotification.NOTIFICATION_ID)
-    }
-
-    suspend fun getAllSimpleManipulatings() = withContext(Dispatchers.IO) {
-        simpleManipulatingsDao.getAll().map { it.toModel() }
     }
 
     fun scheduleTask(manipulating: SimpleManipulating) = GlobalScope.launch {

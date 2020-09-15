@@ -3,18 +3,16 @@ package black.bracken.picsorter.ui.manipulating
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.viewModelScope
 import black.bracken.picsorter.R
 import black.bracken.picsorter.data.SimpleManipulating
 import black.bracken.picsorter.databinding.ActivityManipulatingBinding
-import black.bracken.picsorter.ext.observe
+import black.bracken.picsorter.ext.observeOnce
 import black.bracken.picsorter.ext.setOnTextChanged
 import coil.api.load
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.files.folderChooser
 import com.afollestad.materialdialogs.list.listItems
 import kotlinx.android.synthetic.main.activity_manipulating.*
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.io.File
@@ -60,27 +58,25 @@ class ManipulatingActivity : AppCompatActivity() {
         val shouldShowSimpleManipulatingDialog =
             intent.getBooleanExtra(EXTRA_OPEN_SIMPLE_MANIPULATING, false)
         if (shouldShowSimpleManipulatingDialog) {
-            showDialogToOpenSimpleManipulating()
+            viewModel.simpleManipulatings.observeOnce(this) { manipulatings ->
+                showDialogToOpenSimpleManipulating(manipulatings)
+            }
         }
     }
 
     private fun close() = finishAndRemoveTask()
 
-    private fun showDialogToOpenSimpleManipulating() {
-        viewModel.viewModelScope.launch {
-            val manipulatings = viewModel.getAllSimpleManipulatings()
+    private fun showDialogToOpenSimpleManipulating(manipulatings: List<SimpleManipulating>) {
+        MaterialDialog(this@ManipulatingActivity).show {
+            listItems(items = manipulatings.map(SimpleManipulating::name)) { dialog, _, name ->
+                val manipulating = manipulatings.first { it.name == name }
 
-            MaterialDialog(this@ManipulatingActivity).show {
-                listItems(items = manipulatings.map(SimpleManipulating::name)) { dialog, _, name ->
-                    val manipulating = manipulatings.first { it.name == name }
+                viewModel.scheduleTask(manipulating)
 
-                    viewModel.scheduleTask(manipulating)
-
-                    dialog.cancel()
-                    close()
-                }
-                negativeButton(R.string.dialog_cancel) { /* do nothing */ }
+                dialog.cancel()
+                close()
             }
+            negativeButton(R.string.dialog_cancel) { /* do nothing */ }
         }
     }
 
