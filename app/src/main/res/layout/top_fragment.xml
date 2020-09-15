@@ -33,39 +33,38 @@
         <View
                 android:id="@+id/backgroundEnable"
                 android:layout_width="0dp"
-                android:layout_height="96dp"
+                android:layout_height="0dp"
                 android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="18dp"
                 android:background="#CEA3A3"
 
+                app:layout_constraintBottom_toBottomOf="@id/textDescriptionEnable"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbarSettings" />
+                app:layout_constraintTop_toTopOf="@id/switchEnable" />
 
         <Switch
                 android:id="@+id/switchEnable"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="18dp"
                 android:checked="@={viewModel.enablesObserver}"
                 android:padding="10dp"
                 android:text="@string/layout_settings_switch_enable"
 
-                app:layout_constraintEnd_toEndOf="@id/backgroundEnable"
-                app:layout_constraintStart_toStartOf="@id/backgroundEnable"
-                app:layout_constraintBottom_toTopOf="@id/textDescriptionEnable"
-                app:layout_constraintTop_toTopOf="@id/backgroundEnable" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbarSettings" />
 
         <TextView
                 android:id="@+id/textDescriptionEnable"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:breakStrategy="simple"
-                android:maxLines="2"
+                android:layout_marginBottom="18dp"
                 android:padding="10dp"
                 android:text="@string/layout_settings_switch_enables_description"
-
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/backgroundEnable"
+
                 app:layout_constraintEnd_toEndOf="@id/switchEnable"
                 app:layout_constraintStart_toStartOf="@id/switchEnable"
                 app:layout_constraintTop_toBottomOf="@id/switchEnable" />
@@ -73,109 +72,111 @@
         <View
                 android:id="@+id/backgroundRunOnBoot"
                 android:layout_width="0dp"
-                android:layout_height="38dp"
+                android:layout_height="0dp"
                 android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="18dp"
                 android:background="#B4B4B4"
 
+                app:layout_constraintBottom_toBottomOf="@id/switchRunOnBoot"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/backgroundEnable" />
+                app:layout_constraintTop_toTopOf="@id/switchRunOnBoot" />
 
         <Switch
                 android:id="@+id/switchRunOnBoot"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="18dp"
                 android:checked="@={viewModel.runsOnBoot}"
                 android:padding="10dp"
                 android:text="@string/layout_settings_switch_run_on_boot"
 
-                app:layout_constraintBottom_toBottomOf="@id/backgroundRunOnBoot"
-                app:layout_constraintEnd_toEndOf="@id/backgroundRunOnBoot"
-                app:layout_constraintStart_toStartOf="@id/backgroundRunOnBoot"
-                app:layout_constraintTop_toTopOf="@id/backgroundRunOnBoot" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textDescriptionEnable" />
 
         <View
                 android:id="@+id/backgroundOpenChooser"
                 android:layout_width="0dp"
-                android:layout_height="38dp"
+                android:layout_height="0dp"
                 android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="18dp"
                 android:background="#B4B4B4"
 
-                app:layout_constraintBottom_toTopOf="@id/backgroundOpenSimpleManipulatingSettings"
+                app:layout_constraintBottom_toBottomOf="@id/textDirectories"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/backgroundRunOnBoot" />
+                app:layout_constraintTop_toTopOf="@id/textDirectories" />
 
         <TextView
                 android:id="@+id/textDirectories"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="18dp"
                 android:clickable="true"
                 android:gravity="center_vertical"
                 android:padding="10dp"
                 android:text="@string/layout_settings_open_chooser"
                 android:textColor="#000000"
 
-                app:layout_constraintBottom_toBottomOf="@id/backgroundOpenChooser"
                 app:layout_constraintEnd_toStartOf="@id/imageDirectoriesArrow"
-                app:layout_constraintStart_toStartOf="@id/backgroundOpenChooser"
-                app:layout_constraintTop_toTopOf="@id/backgroundOpenChooser" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/switchRunOnBoot" />
 
         <ImageView
                 android:id="@+id/imageDirectoriesArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
                 android:clickable="true"
                 android:padding="10dp"
-                app:layout_constraintBottom_toBottomOf="@id/backgroundOpenChooser"
 
-                app:layout_constraintEnd_toEndOf="@id/backgroundOpenChooser"
+                app:layout_constraintBottom_toBottomOf="@id/textDirectories"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/textDirectories"
-                app:layout_constraintTop_toTopOf="@id/backgroundOpenChooser"
-                app:srcCompat="@drawable/baseline_chevron_right_24"
+                app:layout_constraintTop_toTopOf="@id/textDirectories"
 
+                app:srcCompat="@drawable/baseline_chevron_right_24"
                 tools:ignore="ContentDescription" />
 
         <View
                 android:id="@+id/backgroundOpenSimpleManipulatingSettings"
                 android:layout_width="0dp"
-                android:layout_height="96dp"
-                android:layout_marginHorizontal="12dp"
-                android:layout_marginVertical="18dp"
+                android:layout_height="0dp"
                 android:background="#B4B4B4"
 
-                app:layout_constraintBottom_toTopOf="@id/dividerAdvanced"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/backgroundOpenChooser" />
+                app:layout_constraintBottom_toBottomOf="@id/textDescriptionOpenSimpleManipulatingSettings"
+                app:layout_constraintEnd_toEndOf="@id/imageOpenSimpleManipulatingSettingsArrow"
+                app:layout_constraintStart_toStartOf="@id/textOpenSimpleNotificationSettings"
+                app:layout_constraintTop_toTopOf="@id/textOpenSimpleNotificationSettings" />
 
         <TextView
                 android:id="@+id/textOpenSimpleNotificationSettings"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="18dp"
                 android:clickable="true"
                 android:gravity="center_vertical"
-                android:maxLines="1"
                 android:padding="10dp"
                 android:text="@string/layout_settings_open_simple_manipulating_settings"
                 android:textColor="#000000"
 
                 app:layout_constraintBottom_toTopOf="@id/textDescriptionOpenSimpleManipulatingSettings"
                 app:layout_constraintEnd_toStartOf="@id/imageOpenSimpleManipulatingSettingsArrow"
-                app:layout_constraintStart_toStartOf="@id/backgroundOpenSimpleManipulatingSettings"
-                app:layout_constraintTop_toTopOf="@id/backgroundOpenSimpleManipulatingSettings" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textDirectories" />
 
         <ImageView
                 android:id="@+id/imageOpenSimpleManipulatingSettingsArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
                 android:clickable="true"
                 android:padding="10dp"
 
                 app:layout_constraintBottom_toTopOf="@id/textDescriptionOpenSimpleManipulatingSettings"
-                app:layout_constraintEnd_toEndOf="@id/backgroundOpenSimpleManipulatingSettings"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/textOpenSimpleNotificationSettings"
                 app:layout_constraintTop_toTopOf="@id/backgroundOpenSimpleManipulatingSettings"
                 app:srcCompat="@drawable/baseline_chevron_right_24"
@@ -186,67 +187,67 @@
                 android:id="@+id/textDescriptionOpenSimpleManipulatingSettings"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
                 android:padding="10dp"
-                android:breakStrategy="simple"
-                android:maxLines="2"
                 android:text="@string/layout_settings_description_open_simple_manipulating_settings"
                 android:textSize="14sp"
 
                 app:layout_constraintBottom_toBottomOf="@id/backgroundOpenSimpleManipulatingSettings"
-                app:layout_constraintEnd_toEndOf="@id/backgroundOpenSimpleManipulatingSettings"
-                app:layout_constraintStart_toStartOf="@id/backgroundOpenSimpleManipulatingSettings"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textOpenSimpleNotificationSettings" />
-
 
         <View
                 android:id="@+id/dividerAdvanced"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="18dp"
                 android:background="?android:attr/listDivider"
 
-                app:layout_constraintBottom_toTopOf="@id/backgroundOpenNotificationSettings"
-                app:layout_constraintEnd_toEndOf="@id/backgroundOpenNotificationSettings"
-                app:layout_constraintStart_toStartOf="@id/backgroundOpenNotificationSettings"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/backgroundOpenSimpleManipulatingSettings" />
 
         <View
                 android:id="@+id/backgroundOpenNotificationSettings"
                 android:layout_width="0dp"
-                android:layout_height="112dp"
-                android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="18dp"
+                android:layout_height="0dp"
+
                 android:background="#B4B4B4"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dividerAdvanced" />
+                app:layout_constraintBottom_toBottomOf="@id/textDescriptionOpenNotificationSettings"
+                app:layout_constraintEnd_toEndOf="@id/imageOpenNotificationSettingsArrow"
+                app:layout_constraintStart_toStartOf="@id/textOpenNotificationSettings"
+                app:layout_constraintTop_toTopOf="@id/textOpenNotificationSettings" />
 
         <TextView
                 android:id="@+id/textOpenNotificationSettings"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="18dp"
+
                 android:clickable="true"
                 android:gravity="center_vertical"
-                android:breakStrategy="simple"
-                android:maxLines="2"
                 android:padding="10dp"
                 android:text="@string/layout_settings_open_notification_settings"
                 android:textColor="#000000"
 
-                app:layout_constraintBottom_toTopOf="@id/textDescriptionOpenNotificationSettings"
                 app:layout_constraintEnd_toStartOf="@id/imageOpenNotificationSettingsArrow"
-                app:layout_constraintStart_toStartOf="@id/backgroundOpenNotificationSettings"
-                app:layout_constraintTop_toTopOf="@id/backgroundOpenNotificationSettings" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dividerAdvanced" />
 
         <ImageView
                 android:id="@+id/imageOpenNotificationSettingsArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
                 android:clickable="true"
                 android:padding="10dp"
 
                 app:layout_constraintBottom_toBottomOf="@id/textOpenNotificationSettings"
-                app:layout_constraintEnd_toEndOf="@id/backgroundOpenNotificationSettings"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/textOpenNotificationSettings"
                 app:layout_constraintTop_toTopOf="@id/textOpenNotificationSettings"
                 app:srcCompat="@drawable/baseline_chevron_right_24"
@@ -257,15 +258,13 @@
                 android:id="@+id/textDescriptionOpenNotificationSettings"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:breakStrategy="simple"
-                android:maxLines="2"
+                android:layout_marginHorizontal="12dp"
                 android:padding="10dp"
                 android:text="@string/layout_settings_description_open_notification_settings"
                 android:textSize="14sp"
 
-                app:layout_constraintBottom_toBottomOf="@id/backgroundOpenNotificationSettings"
-                app:layout_constraintEnd_toEndOf="@id/backgroundOpenNotificationSettings"
-                app:layout_constraintStart_toStartOf="@id/backgroundOpenNotificationSettings"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textOpenNotificationSettings" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
