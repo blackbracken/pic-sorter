@@ -27,6 +27,11 @@ class TopFragment : Fragment() {
         viewModel.switchToEnableImageObserver(true)
     }
 
+    private val requestPermissionToRunOnBootIntent = createIntentForExternalStoragePermission {
+        viewModel.runsOnBoot.postValue(true)
+        viewModel.switchToRunOnBoot(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,6 +60,12 @@ class TopFragment : Fragment() {
         }
 
         viewModel.runsOnBoot.observe(viewLifecycleOwner) { isChecked ->
+            if (isChecked && !hasExternalStoragePermission()) {
+                viewModel.runsOnBoot.value = false
+                requestPermissionToRunOnBootIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            } else {
+                viewModel.switchToRunOnBoot(isChecked)
+            }
             viewModel.switchToRunOnBoot(isChecked)
         }
 
