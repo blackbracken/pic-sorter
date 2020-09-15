@@ -35,6 +35,7 @@
             android:label="SimpleManipulatingRegistererFragment">
         <action
                 android:id="@+id/action_simpleManipulatingRegistererFragment_to_simpleManipulatingSettingsFragment"
+                app:popUpTo="@id/simpleManipulatingSettingsFragment"
                 app:destination="@id/simpleManipulatingSettingsFragment" />
     </fragment>
 </navigation>
