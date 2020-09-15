@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.TopFragmentBinding
-import black.bracken.picsorter.util.createIntentForExternalStoragePermission
-import black.bracken.picsorter.util.hasExternalStoragePermission
+import black.bracken.picsorter.ext.createIntentForExternalStoragePermission
+import black.bracken.picsorter.ext.hasExternalStoragePermission
 import kotlinx.android.synthetic.main.top_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 

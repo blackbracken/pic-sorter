@@ -11,8 +11,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.DirectoriesChooserFragmentBinding
-import black.bracken.picsorter.util.createIntentForExternalStoragePermission
-import black.bracken.picsorter.util.hasExternalStoragePermission
+import black.bracken.picsorter.ext.createIntentForExternalStoragePermission
+import black.bracken.picsorter.ext.hasExternalStoragePermission
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.files.folderChooser
 import com.xwray.groupie.GroupAdapter

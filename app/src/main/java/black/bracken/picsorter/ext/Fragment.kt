@@ -1,6 +1,6 @@
-package black.bracken.picsorter.util
+package black.bracken.picsorter.ext
 
-import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
@@ -10,16 +10,14 @@ import androidx.fragment.app.Fragment
 import black.bracken.picsorter.R
 import com.afollestad.materialdialogs.MaterialDialog
 
-// TODO: rename and move into better
-
 fun Fragment.hasExternalStoragePermission(): Boolean =
-    context?.checkSelfPermission(WRITE_EXTERNAL_STORAGE) == android.content.pm.PackageManager.PERMISSION_GRANTED
+    context?.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == android.content.pm.PackageManager.PERMISSION_GRANTED
 
 fun Fragment.createIntentForExternalStoragePermission(onAllowed: () -> Unit): ActivityResultLauncher<String> =
     registerForActivityResult(ActivityResultContracts.RequestPermission()) { isAllowed ->
         if (isAllowed) {
             onAllowed()
-        } else if (!shouldShowRequestPermissionRationale(WRITE_EXTERNAL_STORAGE)) {
+        } else if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             MaterialDialog(requireContext()).show {
                 icon(R.drawable.ic_touch_app_black)
                 title(R.string.dialog_permission_request_title)
