@@ -10,22 +10,15 @@ plugins {
     id("kotlin-kapt")
 }
 
-val versionKotlin: String by project
+apply(from = rootProject.file("gradle/android.gradle"))
 
 android {
-    compileSdkVersion(28)
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
     defaultConfig {
         applicationId = "black.bracken.picsorter"
-        minSdkVersion(28)
-        targetSdkVersion(28)
         versionCode = 5
         versionName = "1.2.1"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
@@ -39,9 +32,11 @@ android {
         dataBinding = true
         viewBinding = true
     }
+
     androidExtensions {
         isExperimental = true
     }
+
     testOptions {
         testOptions.unitTests.isIncludeAndroidResources = true
     }
@@ -52,6 +47,8 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         jvmTarget = "1.8"
     }
 }
+
+val versionKotlin: String by project
 
 dependencies {
     implementation(Deps.Kotlin.stdlib)
