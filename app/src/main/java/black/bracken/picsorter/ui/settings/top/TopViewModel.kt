@@ -10,8 +10,8 @@ class TopViewModel(
     private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
-    val enablesObserver by lazy { MutableLiveData<Boolean>(imageObserverRepository.verifyWhetherToRun()) }
-    val runsOnBoot by lazy { MutableLiveData<Boolean>(settingsRepository.shouldRunOnBoot) }
+    val enablesObserver by lazy { MutableLiveData(imageObserverRepository.verifyWhetherToRun()) }
+    val runsOnBoot by lazy { MutableLiveData(settingsRepository.shouldRunOnBoot) }
 
     fun switchToEnableImageObserver(isEnabled: Boolean) {
         if (isEnabled) {
