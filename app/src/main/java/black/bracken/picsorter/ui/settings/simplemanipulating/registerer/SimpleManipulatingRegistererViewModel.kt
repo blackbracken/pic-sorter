@@ -47,7 +47,7 @@ class SimpleManipulatingRegistererViewModel(
     }
 
     sealed class VerificationResult {
-        class Succeed(val simpleManipulating: SimpleManipulating) : VerificationResult()
+        data class Succeed(val simpleManipulating: SimpleManipulating) : VerificationResult()
         object MustNotEmpty : VerificationResult()
         object AlreadyRegisteredUnderSameName : VerificationResult()
     }
