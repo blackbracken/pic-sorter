@@ -264,10 +264,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
+                    android:layout_marginBottom="18dp"
                     android:padding="10dp"
                     android:text="@string/layout_settings_description_open_notification_settings"
                     android:textSize="14sp"
 
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textOpenNotificationSettings" />
