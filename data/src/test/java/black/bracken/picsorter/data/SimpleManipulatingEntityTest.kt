@@ -1,12 +1,13 @@
-package black.bracken.picsorter.db.entity
+package black.bracken.picsorter.data
 
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.MediumTest
-import black.bracken.picsorter.data.SimpleManipulating
-import black.bracken.picsorter.db.PicSorterDatabase
-import black.bracken.picsorter.db.dao.SimpleManipulatingsDao
+import black.bracken.picsorter.data.db.PicSorterDatabase
+import black.bracken.picsorter.data.db.dao.SimpleManipulatingsDao
+import black.bracken.picsorter.data.db.entity.toEntity
+import black.bracken.picsorter.data.model.SimpleManipulating
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After

@@ -1,14 +1,14 @@
-package black.bracken.picsorter.db.dao
+package black.bracken.picsorter.data.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import black.bracken.picsorter.db.entity.SimpleManipulatingEntity
+import black.bracken.picsorter.data.db.entity.SimpleManipulatingEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface SimpleManipulatingsDao {
+internal interface SimpleManipulatingsDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertManipulating(manipulating: SimpleManipulatingEntity)

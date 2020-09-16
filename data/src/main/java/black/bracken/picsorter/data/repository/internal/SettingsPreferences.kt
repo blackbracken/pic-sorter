@@ -1,4 +1,4 @@
-package black.bracken.picsorter.service.repository
+package black.bracken.picsorter.data.repository.internal
 
 import android.content.Context
 import android.content.SharedPreferences

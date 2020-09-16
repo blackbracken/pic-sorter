@@ -1,6 +1,6 @@
 package black.bracken.picsorter.data.repository
 
-import black.bracken.picsorter.data.SimpleManipulating
+import black.bracken.picsorter.data.model.SimpleManipulating
 import kotlinx.coroutines.flow.Flow
 
 interface SimpleManipulatingRepository {

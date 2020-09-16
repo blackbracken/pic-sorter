@@ -1,12 +1,12 @@
-package black.bracken.picsorter.db.entity
+package black.bracken.picsorter.data.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import black.bracken.picsorter.data.SimpleManipulating
+import black.bracken.picsorter.data.model.SimpleManipulating
 
 @Entity(tableName = "manipulatings")
-data class SimpleManipulatingEntity(
+internal data class SimpleManipulatingEntity(
     @PrimaryKey val name: String,
     @ColumnInfo(name = "new_directory_path") val newDirectoryPath: String?,
     @ColumnInfo(name = "seconds_to_delete") val secondsToDelete: Int?
@@ -21,5 +21,5 @@ data class SimpleManipulatingEntity(
 
 }
 
-fun SimpleManipulating.toEntity(): SimpleManipulatingEntity =
+internal fun SimpleManipulating.toEntity(): SimpleManipulatingEntity =
     SimpleManipulatingEntity(name, newDirectoryPath, secondsToDelete)
