@@ -1,7 +1,7 @@
 package black.bracken.picsorter.ui.settings.simplemanipulating.top
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import black.bracken.picsorter.data.SimpleManipulating
 import black.bracken.picsorter.data.repository.SimpleManipulatingRepository
@@ -11,17 +11,9 @@ class SimpleManipulatingTopViewModel(
     private val manipulatingRepository: SimpleManipulatingRepository
 ) : ViewModel() {
 
-    val manipulatingList = MutableLiveData<List<SimpleManipulating>>(listOf())
-
-    init {
-        viewModelScope.launch {
-            manipulatingList.value = manipulatingRepository.loadAll()
-        }
-    }
+    val manipulatingList = manipulatingRepository.getSimpleManipulatingsFlow().asLiveData()
 
     fun removeManipulating(manipulating: SimpleManipulating) {
-        manipulatingList.value = manipulatingList.value?.minus(manipulating) ?: listOf()
-
         viewModelScope.launch {
             manipulatingRepository.removeByName(manipulating.name)
         }

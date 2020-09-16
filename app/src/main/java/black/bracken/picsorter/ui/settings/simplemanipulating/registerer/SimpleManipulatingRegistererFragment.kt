@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.SimpleManipulatingRegistererFragmentBinding
@@ -22,7 +21,6 @@ import black.bracken.picsorter.ui.settings.simplemanipulating.registerer.SimpleM
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.files.folderChooser
 import kotlinx.android.synthetic.main.simple_manipulating_registerer_fragment.*
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -42,7 +40,7 @@ class SimpleManipulatingRegistererFragment : Fragment() {
             inflater, R.layout.simple_manipulating_registerer_fragment, container, false
         ).also { binding ->
             binding.viewModel = viewModel
-            binding.lifecycleOwner = this
+            binding.lifecycleOwner = viewLifecycleOwner
         }
 
         return binding.root
@@ -50,11 +48,10 @@ class SimpleManipulatingRegistererFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         (activity as? AppCompatActivity)?.setSupportActionBar(toolbarSimpleManipulatingRegisterer)
         toolbarSimpleManipulatingRegisterer.setTitle(R.string.title_simple_manipulating_registerer)
 
-        buttonRegister.setOnClickListener { onPressedRegisterButton() }
+        buttonRegister.setOnClickListener { viewModel.register() }
         buttonChangeDirectory.setOnClickListener {
             if (hasExternalStoragePermission()) {
                 showDialogToChooseDirectory()
@@ -62,6 +59,7 @@ class SimpleManipulatingRegistererFragment : Fragment() {
                 requestPermissionToOpenDirChooserIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }
         }
+
         editDelaySeconds.setOnTextChanged { secondsText ->
             viewModel.secondsToDelete.value = secondsText.toIntOrNull()
         }
@@ -71,24 +69,25 @@ class SimpleManipulatingRegistererFragment : Fragment() {
         }
 
         viewModel.directoryPath.observe(viewLifecycleOwner) { textDirectoryPath.text = it }
+        viewModel.verificationResult.observe(viewLifecycleOwner) { goBackOrShowError(it) }
     }
 
-    private fun onPressedRegisterButton() = viewModel.viewModelScope.launch {
-        when (viewModel.register()) {
-            VerificationResult.SUCCEED -> {
+    private fun goBackOrShowError(result: VerificationResult) {
+        when (result) {
+            is VerificationResult.Succeed -> {
                 setOf(editManipulatingName, editDelaySeconds).forEach(::closeSoftKeyboard)
                 findNavController().navigate(R.id.action_simpleManipulatingRegistererFragment_to_simpleManipulatingSettingsFragment)
             }
-            VerificationResult.MUST_NOT_EMPTY -> {
+            is VerificationResult.MustNotEmpty -> {
                 Toast.makeText(
-                    context ?: return@launch,
+                    requireContext(),
                     R.string.error_must_not_empty,
                     Toast.LENGTH_SHORT
                 ).show()
             }
-            VerificationResult.ALREADY_REGISTERED_UNDER_SAME_NAME -> {
+            is VerificationResult.AlreadyRegisteredUnderSameName -> {
                 Toast.makeText(
-                    context ?: return@launch,
+                    requireContext(),
                     R.string.error_duplication,
                     Toast.LENGTH_SHORT
                 ).show()
