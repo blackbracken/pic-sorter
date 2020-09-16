@@ -1,5 +1,6 @@
 package black.bracken.picsorter.ui.settings.simplemanipulating.registerer
 
+import android.Manifest
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +14,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.SimpleManipulatingRegistererFragmentBinding
+import black.bracken.picsorter.ext.createIntentForExternalStoragePermission
+import black.bracken.picsorter.ext.hasExternalStoragePermission
 import black.bracken.picsorter.ext.setOnTextChanged
 import black.bracken.picsorter.ui.settings.simplemanipulating.registerer.SimpleManipulatingRegistererViewModel.VerificationResult
 import com.afollestad.materialdialogs.MaterialDialog
@@ -24,6 +27,10 @@ import java.io.File
 class SimpleManipulatingRegistererFragment : Fragment() {
 
     private val viewModel by viewModel<SimpleManipulatingRegistererViewModel>()
+
+    private val requestPermissionToOpenDirChooserIntent = createIntentForExternalStoragePermission {
+        showDialogToChooseDirectory()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +52,14 @@ class SimpleManipulatingRegistererFragment : Fragment() {
         toolbarSimpleManipulatingRegisterer.setTitle(R.string.title_simple_manipulating_registerer)
 
         buttonRegister.setOnClickListener { viewModel.register() }
-        buttonChangeDirectory.setOnClickListener { showDialogToChooseDirectory() }
+        buttonChangeDirectory.setOnClickListener {
+            if (hasExternalStoragePermission()) {
+                showDialogToChooseDirectory()
+            } else {
+                requestPermissionToOpenDirChooserIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+        }
+
         editDelaySeconds.setOnTextChanged { secondsText ->
             viewModel.secondsToDelete.value = secondsText.toIntOrNull()
         }

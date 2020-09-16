@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -12,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.data.SimpleManipulating
 import black.bracken.picsorter.databinding.SimpleManipulatingTopFragmentBinding
-import black.bracken.picsorter.ext.observe
 import com.afollestad.materialdialogs.MaterialDialog
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -23,27 +21,23 @@ class SimpleManipulatingTopFragment : Fragment() {
 
     private val viewModel by viewModel<SimpleManipulatingTopViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        requireActivity().onBackPressedDispatcher.addCallback(this) {
-            findNavController().navigate(R.id.action_simpleManipulatingSettingsFragment_to_topFragment)
-        }.apply { isEnabled = true }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<SimpleManipulatingTopFragmentBinding>(
             inflater, R.layout.simple_manipulating_top_fragment, container, false
-        ).also { binding -> binding.viewModel = viewModel }
+        ).also { binding ->
+            binding.viewModel = viewModel
+            binding.lifecycleOwner = viewLifecycleOwner
+        }
 
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         (activity as? AppCompatActivity)?.setSupportActionBar(toolbarSimpleManipulatingSettings)
         toolbarSimpleManipulatingSettings.setTitle(R.string.title_simple_manipulating_top)
 
@@ -54,7 +48,7 @@ class SimpleManipulatingTopFragment : Fragment() {
             findNavController().navigate(R.id.action_simpleManipulatingSettingsFragment_to_simpleManipulatingRegistererFragment)
         }
 
-        viewModel.manipulatingList.observe(this) { manipulatingList ->
+        viewModel.manipulatingList.observe(viewLifecycleOwner) { manipulatingList ->
             with(groupAdapter) {
                 clear()
                 manipulatingList

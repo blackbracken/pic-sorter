@@ -2,7 +2,6 @@ package black.bracken.picsorter.ui.settings.top
 
 import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
@@ -14,8 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.TopFragmentBinding
-import black.bracken.picsorter.ext.observe
-import com.afollestad.materialdialogs.MaterialDialog
+import black.bracken.picsorter.ext.createIntentForExternalStoragePermission
+import black.bracken.picsorter.ext.hasExternalStoragePermission
 import kotlinx.android.synthetic.main.top_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -23,26 +22,50 @@ class TopFragment : Fragment() {
 
     private val viewModel by viewModel<TopViewModel>()
 
+    private val requestPermissionToEnableObserverIntent = createIntentForExternalStoragePermission {
+        viewModel.enablesObserver.postValue(true)
+        viewModel.switchToEnableImageObserver(true)
+    }
+
+    private val requestPermissionToRunOnBootIntent = createIntentForExternalStoragePermission {
+        viewModel.runsOnBoot.postValue(true)
+        viewModel.switchToRunOnBoot(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<TopFragmentBinding>(
             inflater, R.layout.top_fragment, container, false
-        ).also { binding -> binding.viewModel = viewModel }
+        ).also { binding ->
+            binding.viewModel = viewModel
+            binding.lifecycleOwner = this
+        }
 
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         (activity as? AppCompatActivity)?.setSupportActionBar(toolbarSettings)
 
-        viewModel.enablesObserver.observe(this) { isChecked ->
-            viewModel.switchToEnableImageObserver(isChecked)
+        viewModel.enablesObserver.observe(viewLifecycleOwner) { isChecked ->
+            if (isChecked && !hasExternalStoragePermission()) {
+                viewModel.enablesObserver.value = false
+                requestPermissionToEnableObserverIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            } else {
+                viewModel.switchToEnableImageObserver(isChecked)
+            }
         }
 
-        viewModel.runsOnBoot.observe(this) { isChecked ->
+        viewModel.runsOnBoot.observe(viewLifecycleOwner) { isChecked ->
+            if (isChecked && !hasExternalStoragePermission()) {
+                viewModel.runsOnBoot.value = false
+                requestPermissionToRunOnBootIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            } else {
+                viewModel.switchToRunOnBoot(isChecked)
+            }
             viewModel.switchToRunOnBoot(isChecked)
         }
 
@@ -73,23 +96,6 @@ class TopFragment : Fragment() {
             .setOnClickListener { openAndroidNotificationSettings() }
         textDescriptionOpenNotificationSettings
             .setOnClickListener { openAndroidNotificationSettings() }
-
-        requestPermissions()
-    }
-
-    private fun requestPermissions() {
-        if (context?.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            return
-        }
-
-        MaterialDialog(context ?: return).show {
-            icon(R.drawable.ic_touch_app_black)
-            title(R.string.dialog_permission_request_title)
-            message(R.string.dialog_permission_request_subtitle)
-            positiveButton {
-                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
-            }
-        }
     }
 
 }
