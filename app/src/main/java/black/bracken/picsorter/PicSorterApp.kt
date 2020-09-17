@@ -3,10 +3,6 @@ package black.bracken.picsorter
 import android.app.Application
 import black.bracken.picsorter.data.koinDataModule
 import black.bracken.picsorter.data.repository.ImageObserverRepository
-import black.bracken.picsorter.data.repository.SettingsRepository
-import black.bracken.picsorter.data.repository.SimpleManipulatingRepository
-import black.bracken.picsorter.data.repository.internal.SettingsPreferences
-import black.bracken.picsorter.data.repository.internal.SimpleManipulatingDatabase
 import black.bracken.picsorter.ext.notificationManager
 import black.bracken.picsorter.notification.DetectionNotification
 import black.bracken.picsorter.notification.ObservingNotification
@@ -25,12 +21,8 @@ import org.koin.dsl.module
 class PicSorterApp : Application() {
 
     private val koinAppModule = module {
-        // repositories
-        single<SettingsRepository> { SettingsPreferences(get()) }
         single<ImageObserverRepository> { ImageObserverSwitcher() }
-        single<SimpleManipulatingRepository> { SimpleManipulatingDatabase() }
 
-        // viewmodels
         viewModel { TopViewModel(get(), get()) }
         viewModel { DirectoriesChooserViewModel(get()) }
         viewModel { SimpleManipulatingTopViewModel(get()) }

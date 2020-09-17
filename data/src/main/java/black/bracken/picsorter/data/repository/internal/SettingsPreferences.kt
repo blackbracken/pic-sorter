@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import black.bracken.picsorter.data.repository.SettingsRepository
 
-class SettingsPreferences(context: Context) : SettingsRepository {
+internal class SettingsPreferences(context: Context) : SettingsRepository {
 
     companion object {
         private const val KEY_RUN_ON_BOOT = "RunOnBoot"

@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class SimpleManipulatingDatabase : SimpleManipulatingRepository, KoinComponent {
+internal class SimpleManipulatingDatabase : SimpleManipulatingRepository, KoinComponent {
 
     private val manipulatingDao by inject<SimpleManipulatingsDao>()
 
