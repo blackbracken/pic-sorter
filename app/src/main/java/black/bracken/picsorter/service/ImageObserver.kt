@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.FileObserver
 import android.os.IBinder
 import black.bracken.picsorter.data.repository.SettingsRepository
-import black.bracken.picsorter.ext.notificationManager
+import black.bracken.picsorter.feature_common.ext.notificationManager
 import black.bracken.picsorter.notification.DetectionNotification
 import black.bracken.picsorter.notification.ObservingNotification
 import kotlinx.coroutines.*

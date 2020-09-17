@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_permission_request_title">ファイルへのアクセスを許可してください</string>
+    <string name="dialog_permission_request_subtitle">このアプリは権限無しでは動作しません。下のokボタンを押し許可してください。</string>
+</resources>

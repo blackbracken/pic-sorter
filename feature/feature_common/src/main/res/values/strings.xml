@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_permission_request_title">"Allow access to photos. "</string>
+    <string name="dialog_permission_request_subtitle">This app doesn\'t work without permissions. Push a below button to allow.</string>
+</resources>

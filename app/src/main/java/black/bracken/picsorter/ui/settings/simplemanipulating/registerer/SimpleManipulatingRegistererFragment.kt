@@ -14,9 +14,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
 import black.bracken.picsorter.databinding.SimpleManipulatingRegistererFragmentBinding
-import black.bracken.picsorter.ext.createIntentForExternalStoragePermission
-import black.bracken.picsorter.ext.hasExternalStoragePermission
-import black.bracken.picsorter.ext.setOnTextChanged
+import black.bracken.picsorter.feature_common.ext.createIntentForExternalStoragePermission
+import black.bracken.picsorter.feature_common.ext.hasExternalStoragePermission
+import black.bracken.picsorter.feature_common.ext.setOnTextChanged
 import black.bracken.picsorter.ui.settings.simplemanipulating.registerer.SimpleManipulatingRegistererViewModel.VerificationResult
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.files.folderChooser

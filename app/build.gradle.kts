@@ -1,4 +1,4 @@
-import dependencies.Deps
+import dependencies.Dep
 
 plugins {
     id("com.android.application")
@@ -28,14 +28,6 @@ android {
             )
         }
     }
-    buildFeatures {
-        dataBinding = true
-        viewBinding = true
-    }
-
-    androidExtensions {
-        isExperimental = true
-    }
 
     testOptions {
         testOptions.unitTests.isIncludeAndroidResources = true
@@ -51,67 +43,70 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 val versionKotlin: String by project
 
 dependencies {
-    implementation(Deps.Kotlin.stdlib)
-    implementation(Deps.Kotlin.coroutines)
+    implementation(Dep.Kotlin.stdlib)
+    implementation(Dep.Kotlin.coroutines)
 
+    implementation(project(":core"))
     implementation(project(":data"))
+    implementation(project(":feature:feature_common"))
+    implementation(project(":feature:settings_top"))
 
-    testImplementation(Deps.JUnit.core)
-    testImplementation(Deps.Truth.core)
-    testImplementation(Deps.Robolectric.core)
-    testImplementation(Deps.Hamcrest.core)
-    testImplementation(Deps.AndroidX.testCore)
-    testImplementation(Deps.AndroidX.testRunner)
-    testImplementation(Deps.AndroidX.testRules)
-    testImplementation(Deps.AndroidSupport.supportAnnotations)
-    testImplementation(Deps.AndroidSupport.testRunner)
+    testImplementation(Dep.JUnit.core)
+    testImplementation(Dep.Truth.core)
+    testImplementation(Dep.Robolectric.core)
+    testImplementation(Dep.Hamcrest.core)
+    testImplementation(Dep.AndroidX.testCore)
+    testImplementation(Dep.AndroidX.testRunner)
+    testImplementation(Dep.AndroidX.testRules)
+    testImplementation(Dep.AndroidSupport.supportAnnotations)
+    testImplementation(Dep.AndroidSupport.testRunner)
 
-    androidTestImplementation(Deps.JUnit.core)
-    androidTestImplementation(Deps.Truth.core)
-    androidTestImplementation(Deps.AndroidX.testCore)
-    androidTestImplementation(Deps.AndroidX.testRunner)
-    androidTestImplementation(Deps.AndroidX.testRules)
-    androidTestImplementation(Deps.AndroidX.testEspresso)
-    androidTestImplementation(Deps.AndroidX.testUiAutomator)
+    androidTestImplementation(Dep.JUnit.core)
+    androidTestImplementation(Dep.Truth.core)
+    androidTestImplementation(Dep.AndroidX.testCore)
+    androidTestImplementation(Dep.AndroidX.testRunner)
+    androidTestImplementation(Dep.AndroidX.testRules)
+    androidTestImplementation(Dep.AndroidX.testEspresso)
+    androidTestImplementation(Dep.AndroidX.testUiAutomator)
 
-    implementation(Deps.AndroidX.appCompat)
+    implementation(Dep.AndroidX.appCompat)
 
-    implementation(Deps.AndroidX.legacySupport)
+    implementation(Dep.AndroidX.legacySupport)
 
-    implementation(Deps.AndroidX.lifecycleCommonJava8)
-    implementation(Deps.AndroidX.lifecycleExtensions)
-    implementation(Deps.AndroidX.lifecycleLiveDataKtx)
-    implementation(Deps.AndroidX.lifecycleViewModelKtx)
-    implementation(Deps.AndroidX.lifecycleViewModelSavedState)
+    implementation(Dep.AndroidX.lifecycleCommonJava8)
+    implementation(Dep.AndroidX.lifecycleExtensions)
+    implementation(Dep.AndroidX.lifecycleLiveDataKtx)
+    implementation(Dep.AndroidX.lifecycleViewModelKtx)
+    implementation(Dep.AndroidX.lifecycleViewModelSavedState)
 
-    implementation(Deps.AndroidX.constraintLayout)
-    implementation(Deps.AndroidX.recyclerView)
+    implementation(Dep.AndroidX.constraintLayout)
+    implementation(Dep.AndroidX.recyclerView)
 
-    implementation(Deps.AndroidX.navigationDynamicFeaturesFragment)
-    implementation(Deps.AndroidX.navigationFragmentKtx)
-    implementation(Deps.AndroidX.navigationUi)
+    implementation(Dep.AndroidX.navigationDynamicFeaturesFragment)
+    implementation(Dep.AndroidX.navigationFragmentKtx)
+    implementation(Dep.AndroidX.navigationUi)
 
-    kapt(Deps.AndroidX.roomCompiler)
-    implementation(Deps.AndroidX.roomKtx)
-    implementation(Deps.AndroidX.roomRuntime)
+    kapt(Dep.AndroidX.roomCompiler)
+    implementation(Dep.AndroidX.roomKtx)
+    implementation(Dep.AndroidX.roomRuntime)
 
-    implementation(Deps.Koin.core)
-    implementation(Deps.Koin.coreExt)
-    implementation(Deps.Koin.android)
-    implementation(Deps.Koin.androidExt)
-    implementation(Deps.Koin.androidScope)
-    implementation(Deps.Koin.androidViewModel)
-    implementation(Deps.Koin.androidXExt)
-    implementation(Deps.Koin.androidXScope)
-    implementation(Deps.Koin.androidXViewModel)
-    implementation(Deps.Koin.androidXFragment)
-    testImplementation(Deps.Koin.test)
+    implementation(Dep.Koin.core)
+    implementation(Dep.Koin.coreExt)
+    implementation(Dep.Koin.android)
+    implementation(Dep.Koin.androidExt)
+    implementation(Dep.Koin.androidScope)
+    implementation(Dep.Koin.androidViewModel)
+    implementation(Dep.Koin.androidXExt)
+    implementation(Dep.Koin.androidXScope)
+    implementation(Dep.Koin.androidXViewModel)
+    implementation(Dep.Koin.androidXFragment)
+    testImplementation(Dep.Koin.test)
 
-    implementation(Deps.Coil.core)
+    implementation(Dep.Coil.core)
 
-    implementation(Deps.Groupie.core)
-    implementation(Deps.Groupie.kotlinAndroidExtensions)
+    implementation(Dep.Groupie.core)
+    implementation(Dep.Groupie.kotlinAndroidExtensions)
 
-    implementation(Deps.MaterialDialogs.core)
-    implementation(Deps.MaterialDialogs.files)
+    implementation(Dep.MaterialDialogs.core)
+    implementation(Dep.MaterialDialogs.files)
 }

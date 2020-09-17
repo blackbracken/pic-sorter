@@ -3,15 +3,15 @@ package black.bracken.picsorter
 import android.app.Application
 import black.bracken.picsorter.data.koinDataModule
 import black.bracken.picsorter.data.repository.ImageObserverRepository
-import black.bracken.picsorter.ext.notificationManager
+import black.bracken.picsorter.feature_common.ext.notificationManager
 import black.bracken.picsorter.notification.DetectionNotification
 import black.bracken.picsorter.notification.ObservingNotification
 import black.bracken.picsorter.service.repository.ImageObserverSwitcher
+import black.bracken.picsorter.settings_top.ui.viewmodel.TopViewModel
 import black.bracken.picsorter.ui.manipulating.ManipulatingViewModel
 import black.bracken.picsorter.ui.settings.dirchooser.DirectoriesChooserViewModel
 import black.bracken.picsorter.ui.settings.simplemanipulating.registerer.SimpleManipulatingRegistererViewModel
 import black.bracken.picsorter.ui.settings.simplemanipulating.top.SimpleManipulatingTopViewModel
-import black.bracken.picsorter.ui.settings.top.TopViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin

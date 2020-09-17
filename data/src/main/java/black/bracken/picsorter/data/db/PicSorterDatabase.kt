@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import black.bracken.picsorter.data.db.dao.SimpleManipulatingsDao
 import black.bracken.picsorter.data.db.entity.SimpleManipulatingEntity
 
-@Database(entities = [SimpleManipulatingEntity::class], version = 1)
+@Database(entities = [SimpleManipulatingEntity::class], version = 1, exportSchema = false)
 internal abstract class PicSorterDatabase : RoomDatabase() {
 
     abstract fun simpleManipulatingsDao(): SimpleManipulatingsDao
