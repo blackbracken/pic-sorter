@@ -7,6 +7,7 @@ import black.bracken.picsorter.service.ImageObserver
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
+// TODO: consider whether switch should be repository
 class ImageObserverSwitcher : ImageObserverRepository, KoinComponent {
 
     private val context by inject<Context>()

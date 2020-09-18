@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import black.bracken.picsorter.data.SimpleManipulating
+import black.bracken.picsorter.data.model.SimpleManipulating
 import black.bracken.picsorter.data.repository.SimpleManipulatingRepository
-import black.bracken.picsorter.ext.notificationManager
+import black.bracken.picsorter.feature_common.ext.notificationManager
 import black.bracken.picsorter.notification.DetectionNotification
 import black.bracken.picsorter.service.ManipulatingTask
 import kotlinx.coroutines.GlobalScope

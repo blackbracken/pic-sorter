@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.R
-import black.bracken.picsorter.data.SimpleManipulating
+import black.bracken.picsorter.data.model.SimpleManipulating
 import black.bracken.picsorter.databinding.SimpleManipulatingTopFragmentBinding
 import com.afollestad.materialdialogs.MaterialDialog
 import com.xwray.groupie.GroupAdapter
