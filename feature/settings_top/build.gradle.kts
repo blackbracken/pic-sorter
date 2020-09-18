@@ -16,8 +16,8 @@ dependencies {
 
     Dep.corePackages.forEach { implementation(it) }
     Dep.androidCorePackages.forEach { implementation(it) }
-    Dep.testPackages.forEach { implementation(it) }
-    Dep.androidTestPackages.forEach { implementation(it) }
+    Dep.testPackages.forEach { testImplementation(it) }
+    Dep.androidTestPackages.forEach { androidTestImplementation(it) }
 
     implementation(Dep.AndroidX.lifecycleCommonJava8)
     implementation(Dep.AndroidX.lifecycleExtensions)

@@ -86,10 +86,6 @@ dependencies {
     implementation(Dep.AndroidX.navigationFragmentKtx)
     implementation(Dep.AndroidX.navigationUi)
 
-    kapt(Dep.AndroidX.roomCompiler)
-    implementation(Dep.AndroidX.roomKtx)
-    implementation(Dep.AndroidX.roomRuntime)
-
     implementation(Dep.Koin.core)
     implementation(Dep.Koin.coreExt)
     implementation(Dep.Koin.android)

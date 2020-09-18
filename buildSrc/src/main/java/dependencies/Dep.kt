@@ -21,8 +21,7 @@ object Dep {
         Koin.androidXFragment
     )
 
-    // TODO resolve
-    val testPackages = emptyList<String>() /* listOf(
+    val testPackages = listOf(
         JUnit.core,
         Truth.core,
         Robolectric.core,
@@ -32,9 +31,9 @@ object Dep {
         AndroidX.testRules,
         AndroidSupport.supportAnnotations,
         AndroidSupport.testRunner
-    ) */
+    )
 
-    val androidTestPackages = emptyList<String>() /* listOf(
+    val androidTestPackages = listOf(
         JUnit.core,
         Truth.core,
         AndroidX.testCore,
@@ -42,7 +41,7 @@ object Dep {
         AndroidX.testRules,
         AndroidX.testEspresso,
         AndroidX.testUiAutomator
-    ) */
+    )
 
     object Kotlin {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.0"
