@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.settings.dirchooser
+package black.bracken.picsorter.settings_observed_directory
 
 import android.Manifest
 import android.os.Bundle
@@ -9,10 +9,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import black.bracken.picsorter.R
-import black.bracken.picsorter.databinding.DirectoriesChooserFragmentBinding
+import androidx.lifecycle.observe
 import black.bracken.picsorter.feature_common.ext.createIntentForExternalStoragePermission
 import black.bracken.picsorter.feature_common.ext.hasExternalStoragePermission
+import black.bracken.picsorter.settings_observed_directory.databinding.DirectoriesChooserFragmentBinding
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.files.folderChooser
 import com.xwray.groupie.GroupAdapter
@@ -64,7 +64,9 @@ class DirectoriesChooserFragment : Fragment() {
             with(groupAdapter) {
                 clear()
                 addAll(pathList.map { path ->
-                    DirectoryItem(path) { showConfirmationToRemoveDirectory(path) }
+                    black.bracken.picsorter.settings_observed_directory.DirectoryItem(
+                        path
+                    ) { showConfirmationToRemoveDirectory(path) }
                 })
             }
         }

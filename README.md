@@ -11,6 +11,7 @@
 # 技術概要
 アーキテクチャはMVVM, ライブラリは[build.gradle.kts](https://github.com/blackbracken/PicSorter/blob/develop/app/build.gradle.kts)を参照してください.
 
+
 モジュールは現状ほぼモノリシックで, モデルのみ`:data`に切り分けられ他は`:app`に存在します.
 
 # インストール

@@ -2,4 +2,8 @@
 <resources>
     <string name="dialog_permission_request_title">"Allow access to photos. "</string>
     <string name="dialog_permission_request_subtitle">This app doesn\'t work without permissions. Push a below button to allow.</string>
+    <string name="error_duplication">Error: The value has been already registered</string>
+    <string name="dialog_confirm_remove">Are you sure you want to delete?</string>
+    <string name="dialog_do_remove">Remove</string>
+    <string name="dialog_cancel">Cancel</string>
 </resources>

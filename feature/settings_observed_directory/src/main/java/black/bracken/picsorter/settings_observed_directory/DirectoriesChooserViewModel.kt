@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.settings.dirchooser
+package black.bracken.picsorter.settings_observed_directory
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

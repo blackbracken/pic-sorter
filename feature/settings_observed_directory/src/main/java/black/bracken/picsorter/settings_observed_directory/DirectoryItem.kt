@@ -1,6 +1,5 @@
-package black.bracken.picsorter.ui.settings.dirchooser
+package black.bracken.picsorter.settings_observed_directory
 
-import black.bracken.picsorter.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.item_directory.*

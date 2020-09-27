@@ -16,7 +16,7 @@
     </fragment>
     <fragment
             android:id="@+id/directoriesChooserFragment"
-            android:name="black.bracken.picsorter.ui.settings.dirchooser.DirectoriesChooserFragment"
+            android:name="black.bracken.picsorter.settings_observed_directory.DirectoriesChooserFragment"
             android:label="DirectoriesChooserFragment" />
     <fragment
             android:id="@+id/simpleManipulatingSettingsFragment"

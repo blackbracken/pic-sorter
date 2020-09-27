@@ -50,6 +50,7 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":feature:feature_common"))
     implementation(project(":feature:settings_top"))
+    implementation(project(":feature:settings_observed_directory"))
 
     testImplementation(Dep.JUnit.core)
     testImplementation(Dep.Truth.core)

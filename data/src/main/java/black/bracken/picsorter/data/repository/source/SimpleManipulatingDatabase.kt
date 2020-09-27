@@ -1,4 +1,4 @@
-package black.bracken.picsorter.data.repository.internal
+package black.bracken.picsorter.data.repository.source
 
 import black.bracken.picsorter.data.db.dao.SimpleManipulatingsDao
 import black.bracken.picsorter.data.db.entity.toEntity

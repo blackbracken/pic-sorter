@@ -9,7 +9,6 @@ import black.bracken.picsorter.notification.ObservingNotification
 import black.bracken.picsorter.service.repository.ImageObserverSwitcher
 import black.bracken.picsorter.settings_top.ui.viewmodel.TopViewModel
 import black.bracken.picsorter.ui.manipulating.ManipulatingViewModel
-import black.bracken.picsorter.ui.settings.dirchooser.DirectoriesChooserViewModel
 import black.bracken.picsorter.ui.settings.simplemanipulating.registerer.SimpleManipulatingRegistererViewModel
 import black.bracken.picsorter.ui.settings.simplemanipulating.top.SimpleManipulatingTopViewModel
 import org.koin.android.ext.koin.androidContext
@@ -24,7 +23,11 @@ class PicSorterApp : Application() {
         single<ImageObserverRepository> { ImageObserverSwitcher() }
 
         viewModel { TopViewModel(get(), get()) }
-        viewModel { DirectoriesChooserViewModel(get()) }
+        viewModel {
+            black.bracken.picsorter.settings_observed_directory.DirectoriesChooserViewModel(
+                get()
+            )
+        }
         viewModel { SimpleManipulatingTopViewModel(get()) }
         viewModel { SimpleManipulatingRegistererViewModel(get()) }
         factory { (imagePath: String) -> ManipulatingViewModel(imagePath, get(), get()) }
