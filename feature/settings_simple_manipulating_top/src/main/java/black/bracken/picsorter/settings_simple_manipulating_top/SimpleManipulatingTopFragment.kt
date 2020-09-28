@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.settings.simplemanipulating.top
+package black.bracken.picsorter.settings_simple_manipulating_top
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import black.bracken.picsorter.R
 import black.bracken.picsorter.data.model.SimpleManipulating
-import black.bracken.picsorter.databinding.SimpleManipulatingTopFragmentBinding
+import black.bracken.picsorter.settings_simple_manipulating_top.databinding.SimpleManipulatingTopFragmentBinding
 import com.afollestad.materialdialogs.MaterialDialog
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder

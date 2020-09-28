@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.settings.simplemanipulating.top
+package black.bracken.picsorter.settings_simple_manipulating_top
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

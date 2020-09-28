@@ -51,6 +51,7 @@ dependencies {
     implementation(project(":feature:feature_common"))
     implementation(project(":feature:settings_top"))
     implementation(project(":feature:settings_observed_directory"))
+    implementation(project(":feature:settings_simple_manipulating_top"))
 
     testImplementation(Dep.JUnit.core)
     testImplementation(Dep.Truth.core)

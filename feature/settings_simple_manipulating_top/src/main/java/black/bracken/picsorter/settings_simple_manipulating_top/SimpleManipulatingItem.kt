@@ -1,6 +1,5 @@
-package black.bracken.picsorter.ui.settings.simplemanipulating.top
+package black.bracken.picsorter.settings_simple_manipulating_top
 
-import black.bracken.picsorter.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.item_simple_manipulating.*

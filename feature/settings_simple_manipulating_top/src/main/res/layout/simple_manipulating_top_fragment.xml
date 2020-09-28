@@ -7,14 +7,14 @@
 
         <variable
                 name="viewModel"
-                type="black.bracken.picsorter.ui.settings.simplemanipulating.top.SimpleManipulatingTopViewModel" />
+                type="black.bracken.picsorter.settings_simple_manipulating_top.SimpleManipulatingTopViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.settings.simplemanipulating.top.SimpleManipulatingTopFragment">
+            tools:context=".settings_simple_manipulating_top.SimpleManipulatingTopFragment">
 
         <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarSimpleManipulatingSettings"
