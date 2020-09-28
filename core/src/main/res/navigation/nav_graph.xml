@@ -31,7 +31,7 @@
     </fragment>
     <fragment
             android:id="@+id/simpleManipulatingRegistererFragment"
-            android:name="black.bracken.picsorter.ui.settings.simplemanipulating.registerer.SimpleManipulatingRegistererFragment"
+            android:name="black.bracken.picsorter.settings_simple_manipulating_registerer.SimpleManipulatingRegistererFragment"
             android:label="SimpleManipulatingRegistererFragment">
         <action
                 android:id="@+id/action_simpleManipulatingRegistererFragment_to_simpleManipulatingSettingsFragment"

@@ -1,0 +1,4 @@
+<resources>
+    <string name="title_simple_manipulating_registerer">簡易操作の登録</string>
+    <string name="error_must_not_empty">エラー: 値が入力されていません</string>
+</resources>

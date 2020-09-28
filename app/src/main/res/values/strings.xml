@@ -36,7 +36,6 @@
     <string name="layout_settings_description_open_simple_manipulating_settings">To omit manipulations by registering them.</string>
     <string name="layout_simple_manipulating_registerer_name">Name:</string>
     <string name="layout_simple_manipulating_registerer_button_register">REGISTER</string>
-    <string name="error_must_not_empty">Error: The value must not be empty</string>
     <string name="notification_detection_button_simple_manipulating">ManipulateSimply</string>
     <string name="title_simple_manipulating_top">Settings for simple manipulatings</string>
     <string name="title_simple_manipulating_registerer">Register simple manipulating</string>

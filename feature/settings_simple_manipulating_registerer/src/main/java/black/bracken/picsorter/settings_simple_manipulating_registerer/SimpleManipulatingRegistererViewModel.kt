@@ -1,4 +1,4 @@
-package black.bracken.picsorter.ui.settings.simplemanipulating.registerer
+package black.bracken.picsorter.settings_simple_manipulating_registerer
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

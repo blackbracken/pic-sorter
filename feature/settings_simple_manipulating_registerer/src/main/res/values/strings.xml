@@ -1,0 +1,4 @@
+<resources>
+    <string name="title_simple_manipulating_registerer">Register simple manipulating</string>
+    <string name="error_must_not_empty">Error: The value must not be empty</string>
+</resources>

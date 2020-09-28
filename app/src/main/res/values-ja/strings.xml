@@ -33,8 +33,6 @@
     <string name="layout_settings_description_open_simple_manipulating_settings">通知から呼び出せる簡易操作を登録できます</string>
     <string name="layout_simple_manipulating_registerer_name">名前:</string>
     <string name="layout_simple_manipulating_registerer_button_register">登録する</string>
-    <string name="error_must_not_empty">エラー: 値が入力されていません</string>
     <string name="notification_detection_button_simple_manipulating">簡易操作</string>
-    <string name="title_simple_manipulating_registerer">簡易操作の登録</string>
     <string name="notification_hide_self">隠す</string>
 </resources>

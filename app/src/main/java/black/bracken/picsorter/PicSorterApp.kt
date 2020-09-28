@@ -8,10 +8,10 @@ import black.bracken.picsorter.notification.DetectionNotification
 import black.bracken.picsorter.notification.ObservingNotification
 import black.bracken.picsorter.service.repository.ImageObserverSwitcher
 import black.bracken.picsorter.settings_observed_directory.DirectoriesChooserViewModel
+import black.bracken.picsorter.settings_simple_manipulating_registerer.SimpleManipulatingRegistererViewModel
 import black.bracken.picsorter.settings_simple_manipulating_top.SimpleManipulatingTopViewModel
 import black.bracken.picsorter.settings_top.ui.viewmodel.TopViewModel
 import black.bracken.picsorter.ui.manipulating.ManipulatingViewModel
-import black.bracken.picsorter.ui.settings.simplemanipulating.registerer.SimpleManipulatingRegistererViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin

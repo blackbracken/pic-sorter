@@ -34,12 +34,6 @@ android {
     }
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
-
 val versionKotlin: String by project
 
 dependencies {
@@ -52,6 +46,7 @@ dependencies {
     implementation(project(":feature:settings_top"))
     implementation(project(":feature:settings_observed_directory"))
     implementation(project(":feature:settings_simple_manipulating_top"))
+    implementation(project(":feature:settings_simple_manipulating_registerer"))
 
     testImplementation(Dep.JUnit.core)
     testImplementation(Dep.Truth.core)
@@ -107,4 +102,10 @@ dependencies {
 
     implementation(Dep.MaterialDialogs.core)
     implementation(Dep.MaterialDialogs.files)
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }

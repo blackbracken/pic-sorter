@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/feature_common" />
             <option value="$PROJECT_DIR$/feature/settings_observed_directory" />
+            <option value="$PROJECT_DIR$/feature/settings_simple_manipulating_registerer" />
             <option value="$PROJECT_DIR$/feature/settings_simple_manipulating_top" />
             <option value="$PROJECT_DIR$/feature/settings_top" />
           </set>
