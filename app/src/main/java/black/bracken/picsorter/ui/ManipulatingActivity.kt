@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import black.bracken.picsorter.R
 
-class AppActivity : AppCompatActivity() {
+class ManipulatingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.app_activity)
+        setContentView(R.layout.manipulating_activity)
     }
 
 }

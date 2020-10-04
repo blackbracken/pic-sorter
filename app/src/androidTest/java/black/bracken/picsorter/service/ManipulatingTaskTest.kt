@@ -34,10 +34,18 @@ class ManipulatingTaskTest {
     @Test
     fun shouldMoveFileAnother() {
         val destination = File(context.getExternalFilesDir("/"), "dummy_dest.png")
-        val request = ManipulatingTask.TaskRequest(destination.absolutePath, null, null)
+        val request = black.bracken.picsorter.manipulating.service.ManipulatingTask.TaskRequest(
+            destination.absolutePath,
+            null,
+            null
+        )
 
         runBlocking {
-            ManipulatingTask(dummyFile, context, request).execute()
+            black.bracken.picsorter.manipulating.service.ManipulatingTask(
+                dummyFile,
+                context,
+                request
+            ).execute()
         }
 
         assertThat(dummyFile.exists()).isFalse()
@@ -48,10 +56,18 @@ class ManipulatingTaskTest {
     fun shouldRename() {
         val newName = "new_dummy"
         val destination = File(context.getExternalFilesDir("/"), "$newName.png")
-        val request = ManipulatingTask.TaskRequest(null, newName, null)
+        val request = black.bracken.picsorter.manipulating.service.ManipulatingTask.TaskRequest(
+            null,
+            newName,
+            null
+        )
 
         runBlocking {
-            ManipulatingTask(dummyFile, context, request).execute()
+            black.bracken.picsorter.manipulating.service.ManipulatingTask(
+                dummyFile,
+                context,
+                request
+            ).execute()
         }
 
         assertThat(destination.nameWithoutExtension).isEqualTo(newName)
@@ -62,10 +78,18 @@ class ManipulatingTaskTest {
     @Test
     fun shouldDeleteLater() {
         val delaySeconds = 3
-        val request = ManipulatingTask.TaskRequest(null, null, delaySeconds)
+        val request = black.bracken.picsorter.manipulating.service.ManipulatingTask.TaskRequest(
+            null,
+            null,
+            delaySeconds
+        )
 
         GlobalScope.launch {
-            ManipulatingTask(dummyFile, context, request).execute()
+            black.bracken.picsorter.manipulating.service.ManipulatingTask(
+                dummyFile,
+                context,
+                request
+            ).execute()
         }
 
         assertThat(dummyFile.exists()).isTrue()
@@ -83,10 +107,18 @@ class ManipulatingTaskTest {
         val destination = File(context.getExternalFilesDir("/"), "$newName.png").apply {
             createNewFile()
         }
-        val request = ManipulatingTask.TaskRequest(destination.parent, newName, null)
+        val request = black.bracken.picsorter.manipulating.service.ManipulatingTask.TaskRequest(
+            destination.parent,
+            newName,
+            null
+        )
 
         runBlocking {
-            ManipulatingTask(dummyFile, context, request).execute()
+            black.bracken.picsorter.manipulating.service.ManipulatingTask(
+                dummyFile,
+                context,
+                request
+            ).execute()
         }
 
         assertThat(dummyFile.exists()).isFalse()

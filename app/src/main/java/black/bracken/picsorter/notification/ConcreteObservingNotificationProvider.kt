@@ -6,23 +6,18 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.provider.Settings
 import androidx.core.app.NotificationCompat
 import black.bracken.picsorter.R
-import black.bracken.picsorter.util.NOTIFICATION_COLOR
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import black.bracken.picsorter.manipulating.notification.ObservingNotificationProvider
 
-object ObservingNotification : KoinComponent {
+internal class ConcreteObservingNotificationProvider(
+    private val context: Context
+) : ObservingNotificationProvider {
+    override val notificationId = 7609
 
-    const val NOTIFICATION_ID = 7609
-
-    private const val CHANNEL_ID = "observer"
-    private const val CHANNEL_NAME = "常駐用の通知(非表示にして下さい)"
-
-    private val context by inject<Context>()
-
-    val channel = NotificationChannel(
+    override val channel = NotificationChannel(
         CHANNEL_ID,
         CHANNEL_NAME,
         NotificationManager.IMPORTANCE_LOW
@@ -31,7 +26,7 @@ object ObservingNotification : KoinComponent {
         setShowBadge(false)
     }
 
-    fun get(): Notification {
+    override fun create(): Notification {
         val actionToOpenNotificationSettings = Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS)
             .apply {
                 putExtra(Settings.EXTRA_APP_PACKAGE, "black.bracken.picsorter")
@@ -55,7 +50,7 @@ object ObservingNotification : KoinComponent {
 
         return NotificationCompat.Builder(context, CHANNEL_ID)
             .apply {
-                color = NOTIFICATION_COLOR
+                color = Color.argb(0, 80, 80, 80) // it will be replaced as constant
                 setColorized(true)
                 setOngoing(true)
                 setSmallIcon(R.mipmap.ic_stat_notification_icon)
@@ -64,6 +59,11 @@ object ObservingNotification : KoinComponent {
                 addAction(actionToOpenNotificationSettings)
             }
             .build()
+    }
+
+    companion object {
+        private const val CHANNEL_ID = "observer"
+        private const val CHANNEL_NAME = "常駐用の通知(非表示にして下さい)"
     }
 
 }

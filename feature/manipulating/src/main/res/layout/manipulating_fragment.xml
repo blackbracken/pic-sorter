@@ -8,7 +8,7 @@
 
         <variable
                 name="viewModel"
-                type="black.bracken.picsorter.ui.manipulating.ManipulatingViewModel" />
+                type="black.bracken.picsorter.manipulating.ui.ManipulatingViewModel" />
 
     </data>
 
@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            tools:context=".ui.manipulating.ManipulatingActivity">
+            tools:context=".ui.ManipulatingActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
@@ -26,7 +26,7 @@
                 android:paddingHorizontal="0dp"
                 android:paddingVertical="18dp"
 
-                tools:context=".ui.manipulating.ManipulatingActivity">
+                tools:context=".ui.ManipulatingActivity">
 
             <ImageView
                     android:id="@+id/imageManipulated"
@@ -275,9 +275,9 @@
                     android:padding="10dp"
                     android:text="@string/layout_manipulating_description_delay"
 
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/editDelaySeconds" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

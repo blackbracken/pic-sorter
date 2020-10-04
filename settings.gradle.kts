@@ -1,3 +1,4 @@
+include(":feature:manipulating")
 include(":feature:settings_simple_manipulating_registerer")
 include(":feature:settings_simple_manipulating_top")
 include(":feature:settings_observed_directory")

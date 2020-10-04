@@ -47,6 +47,7 @@ dependencies {
     implementation(project(":feature:settings_observed_directory"))
     implementation(project(":feature:settings_simple_manipulating_top"))
     implementation(project(":feature:settings_simple_manipulating_registerer"))
+    implementation(project(":feature:manipulating"))
 
     testImplementation(Dep.JUnit.core)
     testImplementation(Dep.Truth.core)

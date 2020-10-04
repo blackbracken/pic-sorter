@@ -43,6 +43,19 @@ object Dep {
         AndroidX.testUiAutomator
     )
 
+    val koinPackages = listOf(
+        Koin.core,
+        Koin.coreExt,
+        Koin.android,
+        Koin.androidExt,
+        Koin.androidScope,
+        Koin.androidViewModel,
+        Koin.androidXExt,
+        Koin.androidXScope,
+        Koin.androidXViewModel,
+        Koin.androidXFragment
+    )
+
     object Kotlin {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.0"
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7"

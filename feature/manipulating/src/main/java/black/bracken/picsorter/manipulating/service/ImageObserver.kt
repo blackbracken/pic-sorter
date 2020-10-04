@@ -1,4 +1,4 @@
-package black.bracken.picsorter.service
+package black.bracken.picsorter.manipulating.service
 
 import android.app.Service
 import android.content.Intent
@@ -6,8 +6,8 @@ import android.os.FileObserver
 import android.os.IBinder
 import black.bracken.picsorter.data.repository.SettingsRepository
 import black.bracken.picsorter.feature_common.ext.notificationManager
-import black.bracken.picsorter.notification.DetectionNotification
-import black.bracken.picsorter.notification.ObservingNotification
+import black.bracken.picsorter.manipulating.notification.DetectionNotificationProvider
+import black.bracken.picsorter.manipulating.notification.ObservingNotificationProvider
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -20,6 +20,8 @@ import org.koin.core.inject
 class ImageObserver : Service(), KoinComponent {
 
     private val settingsRepository by inject<SettingsRepository>()
+    private val detectionNotificationProvider by inject<DetectionNotificationProvider>()
+    private val observingNotificationProvider by inject<ObservingNotificationProvider>()
 
     private lateinit var job: Job
 
@@ -46,9 +48,10 @@ class ImageObserver : Service(), KoinComponent {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
 
-        with(ObservingNotification) {
-            startForeground(NOTIFICATION_ID, get())
-        }
+        startForeground(
+            observingNotificationProvider.notificationId,
+            observingNotificationProvider.create()
+        )
 
         job = GlobalScope.launch {
             flowOfAddedFilePaths(settingsRepository.directoryPathList)
@@ -62,19 +65,20 @@ class ImageObserver : Service(), KoinComponent {
     override fun onDestroy() {
         super.onDestroy()
 
-        notificationManager.cancel(ObservingNotification.NOTIFICATION_ID)
+        notificationManager.cancel(observingNotificationProvider.notificationId)
 
         job.cancel()
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
 
-    private fun onDetect(filePath: String) =
-        with(DetectionNotification) {
-            with(notificationManager) {
-                cancel(NOTIFICATION_ID)
-                notify(NOTIFICATION_ID, get(filePath))
-            }
+    private fun onDetect(filePath: String) {
+        val notificationId = detectionNotificationProvider.notificationId
+
+        with(notificationManager) {
+            cancel(notificationId)
+            notify(notificationId, detectionNotificationProvider.create(filePath))
         }
+    }
 
 }

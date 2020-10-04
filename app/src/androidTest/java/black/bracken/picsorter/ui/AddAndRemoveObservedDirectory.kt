@@ -25,7 +25,7 @@ class AddAndRemoveObservedDirectory {
 
     @Rule
     @JvmField
-    var mActivityTestRule = ActivityTestRule(AppActivity::class.java)
+    var mActivityTestRule = ActivityTestRule(SettingsActivity::class.java)
 
     @Rule
     @JvmField

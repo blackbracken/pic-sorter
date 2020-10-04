@@ -5,7 +5,6 @@
         package="black.bracken.picsorter">
 
     <dist:module dist:instant="true" />
-
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -21,8 +20,9 @@
             android:roundIcon="@drawable/app_icon"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
+            tools:node="merge"
             tools:replace="android:theme">
-        <activity android:name=".ui.AppActivity">
+        <activity android:name=".ui.SettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -31,9 +31,9 @@
             </intent-filter>
             <nav-graph android:value="@navigation/nav_graph" />
         </activity>
-        <activity android:name=".ui.manipulating.ManipulatingActivity" />
+        <activity android:name=".ui.ManipulatingActivity" />
 
-        <service android:name=".service.ImageObserver" />
+        <service android:name=".manipulating.service.ImageObserver" />
 
         <receiver
                 android:name=".receiver.BootReceiver"
