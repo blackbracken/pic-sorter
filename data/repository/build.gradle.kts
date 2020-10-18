@@ -1,3 +1,4 @@
+import com.google.protobuf.gradle.*
 import dependencies.Dep
 
 plugins {
@@ -29,4 +30,26 @@ dependencies {
     implementation(Dep.Koin.androidXViewModel)
     implementation(Dep.Koin.androidXFragment)
     testImplementation(Dep.Koin.test)
+
+    implementation("com.google.protobuf:protobuf-lite:3.0.1")
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.10.0"
+    }
+
+    plugins {
+        id("javalite") {
+            artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0"
+        }
+    }
+
+    generateProtoTasks {
+        all().forEach { task ->
+            task.plugins {
+                id("javalite")
+            }
+        }
+    }
 }
