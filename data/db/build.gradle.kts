@@ -13,8 +13,6 @@ dependencies {
     Dep.corePackages.forEach { implementation(it) }
     Dep.androidCorePackages.forEach { implementation(it) }
 
-    implementation(project(":data:model"))
-
     kapt(Dep.AndroidX.roomCompiler)
     implementation(Dep.AndroidX.roomKtx)
     implementation(Dep.AndroidX.roomRuntime)

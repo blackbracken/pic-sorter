@@ -1,5 +1,5 @@
+include(":model")
 include(":data:repository")
-include(":data:model")
 include(":data:entity")
 include(":data:db")
 include(":feature:manipulating")

@@ -3,8 +3,8 @@ package black.bracken.picsorter.settings_simple_manipulating_top
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import black.bracken.picsorter.data.model.SimpleManipulating
 import black.bracken.picsorter.data.repository.SimpleManipulatingRepository
+import black.bracken.picsorter.model.SimpleManipulating
 import kotlinx.coroutines.launch
 
 class SimpleManipulatingTopViewModel(

@@ -2,6 +2,7 @@ package black.bracken.picsorter.service.repository
 
 import android.content.Context
 import android.content.Intent
+import black.bracken.picsorter.manipulating.service.ImageObserver
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -15,7 +16,7 @@ class ImageObserverSwitcher : black.bracken.picsorter.data.repository.ImageObser
         context.startForegroundService(
             Intent(
                 context,
-                black.bracken.picsorter.manipulating.service.ImageObserver::class.java
+                ImageObserver::class.java
             )
         )
     }
@@ -24,7 +25,7 @@ class ImageObserverSwitcher : black.bracken.picsorter.data.repository.ImageObser
         context.stopService(
             Intent(
                 context,
-                black.bracken.picsorter.manipulating.service.ImageObserver::class.java
+                ImageObserver::class.java
             )
         )
     }
@@ -33,7 +34,7 @@ class ImageObserverSwitcher : black.bracken.picsorter.data.repository.ImageObser
         if (!context.stopService(
                 Intent(
                     context,
-                    black.bracken.picsorter.manipulating.service.ImageObserver::class.java
+                    ImageObserver::class.java
                 )
             )
         ) {

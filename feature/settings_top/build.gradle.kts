@@ -11,7 +11,6 @@ apply(from = rootProject.file("gradle/android.gradle"))
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":data:model"))
     implementation(project(":data:repository"))
     implementation(project(":feature:feature_common"))
 

@@ -1,4 +1,4 @@
-package black.bracken.picsorter.data.model
+package black.bracken.picsorter.model
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("black.bracken.picsorter.data.model", appContext.packageName)
+        assertEquals("black.bracken.picsorter.model", appContext.packageName)
     }
 }

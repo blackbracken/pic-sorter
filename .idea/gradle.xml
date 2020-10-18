@@ -16,7 +16,6 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/data/db" />
             <option value="$PROJECT_DIR$/data/entity" />
-            <option value="$PROJECT_DIR$/data/model" />
             <option value="$PROJECT_DIR$/data/repository" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/feature_common" />
@@ -25,6 +24,7 @@
             <option value="$PROJECT_DIR$/feature/settings_simple_manipulating_registerer" />
             <option value="$PROJECT_DIR$/feature/settings_simple_manipulating_top" />
             <option value="$PROJECT_DIR$/feature/settings_top" />
+            <option value="$PROJECT_DIR$/model" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

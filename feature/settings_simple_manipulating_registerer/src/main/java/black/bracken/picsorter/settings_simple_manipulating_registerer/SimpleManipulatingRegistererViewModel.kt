@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import black.bracken.picsorter.data.model.SimpleManipulating
 import black.bracken.picsorter.data.repository.SimpleManipulatingRepository
+import black.bracken.picsorter.model.SimpleManipulating
 import kotlinx.coroutines.launch
 
 class SimpleManipulatingRegistererViewModel(

@@ -12,7 +12,7 @@ apply(from = rootProject.file("gradle/android.gradle"))
 dependencies {
     Dep.corePackages.forEach { implementation(it) }
 
-    implementation(project(":data:model"))
+    implementation(project(":model"))
     implementation(project(":data:db"))
 
     implementation(Dep.Koin.core)

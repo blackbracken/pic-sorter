@@ -11,6 +11,7 @@ import black.bracken.picsorter.feature_common.ext.observeOnce
 import black.bracken.picsorter.feature_common.ext.setOnTextChanged
 import black.bracken.picsorter.manipulating.R
 import black.bracken.picsorter.manipulating.databinding.ManipulatingFragmentBinding
+import black.bracken.picsorter.model.SimpleManipulating
 import coil.api.load
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.files.folderChooser
@@ -81,9 +82,9 @@ class ManipulatingFragment : Fragment() {
 
     private fun close() = activity?.finishAndRemoveTask()
 
-    private fun showDialogToOpenSimpleManipulating(manipulatings: List<black.bracken.picsorter.data.model.SimpleManipulating>) {
+    private fun showDialogToOpenSimpleManipulating(manipulatings: List<SimpleManipulating>) {
         MaterialDialog(requireContext()).show {
-            listItems(items = manipulatings.map(black.bracken.picsorter.data.model.SimpleManipulating::name)) { dialog, _, name ->
+            listItems(items = manipulatings.map(SimpleManipulating::name)) { dialog, _, name ->
                 val manipulating = manipulatings.first { it.name == name }
 
                 viewModel.scheduleTask(manipulating)

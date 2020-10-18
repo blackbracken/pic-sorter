@@ -2,8 +2,8 @@ package black.bracken.picsorter.data.repository.source
 
 import black.bracken.picsorter.data.db.dao.SimpleManipulatingsDao
 import black.bracken.picsorter.data.db.entity.SimpleManipulatingEntity
-import black.bracken.picsorter.data.model.SimpleManipulating
 import black.bracken.picsorter.data.repository.SimpleManipulatingRepository
+import black.bracken.picsorter.model.SimpleManipulating
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
