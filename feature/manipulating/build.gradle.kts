@@ -14,7 +14,8 @@ dependencies {
     Dep.androidCorePackages.forEach { implementation(it) }
     Dep.koinPackages.forEach { implementation(it) }
 
-    implementation(project(":data"))
+    implementation(project(":data:model"))
+    implementation(project(":data:repository"))
     implementation(project(":feature:feature_common"))
 
     implementation(Dep.AndroidX.lifecycleCommonJava8)

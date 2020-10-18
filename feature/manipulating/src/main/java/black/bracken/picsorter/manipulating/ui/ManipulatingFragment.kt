@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import black.bracken.picsorter.data.model.SimpleManipulating
+import androidx.lifecycle.observe
 import black.bracken.picsorter.feature_common.ext.observeOnce
 import black.bracken.picsorter.feature_common.ext.setOnTextChanged
 import black.bracken.picsorter.manipulating.R
@@ -81,9 +81,9 @@ class ManipulatingFragment : Fragment() {
 
     private fun close() = activity?.finishAndRemoveTask()
 
-    private fun showDialogToOpenSimpleManipulating(manipulatings: List<SimpleManipulating>) {
+    private fun showDialogToOpenSimpleManipulating(manipulatings: List<black.bracken.picsorter.data.model.SimpleManipulating>) {
         MaterialDialog(requireContext()).show {
-            listItems(items = manipulatings.map(SimpleManipulating::name)) { dialog, _, name ->
+            listItems(items = manipulatings.map(black.bracken.picsorter.data.model.SimpleManipulating::name)) { dialog, _, name ->
                 val manipulating = manipulatings.first { it.name == name }
 
                 viewModel.scheduleTask(manipulating)

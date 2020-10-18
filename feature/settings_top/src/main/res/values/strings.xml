@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="layout_settings_switch_enable">Enable PicSorter</string>
+    <string name="layout_settings_switch_enables_description">Changes whether to observe the specified directories.
+    </string>
+    <string name="layout_settings_switch_run_on_boot">Run PicSorter on booting</string>
+    <string name="layout_settings_open_chooser">Choose directories are observed</string>
+    <string name="layout_settings_open_simple_manipulating_settings">Open a settings for simple manipulating</string>
+    <string name="layout_settings_description_open_simple_manipulating_settings">To omit manipulations by registering them.</string>
+    <string name="layout_settings_open_notification_settings">Open a standard notification settings shows on taking screenshot</string>
+    <string name="layout_settings_description_open_notification_settings">Advanced: To disable Android standard notification.</string>
+</resources>

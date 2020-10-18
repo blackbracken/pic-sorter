@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="observer_text">下のボタンからこの通知は隠すことができます</string>
-    <string name="layout_settings_switch_enable">PicSorterを有効にする</string>
-    <string name="layout_settings_switch_enables_description">"指定されたディレクトリ内の画像ファイル更新を監視します"</string>
-    <string name="layout_settings_switch_run_on_boot">Android起動時にPicSorterを起動する</string>
     <string name="layout_settings_observed_list_text">監視するディレクトリ一覧</string>
     <string name="layout_settings_observed_list_button_add_description">監視対象となるディレクトリを追加します</string>
     <string name="layout_settings_observed_button_remove_description">監視対象からこのディレクトリを外します</string>
@@ -23,14 +20,9 @@
     <string name="notification_detection_button_manipulate">編集</string>
     <string name="notification_detection_description">画像の更新を検出しました</string>
     <string name="observer_text_sub">更新を監視しています</string>
-    <string name="layout_settings_open_chooser">監視するディレクトリを指定</string>
     <string name="dialog_ok">了解</string>
     <string name="title_copyright">権利表記</string>
-    <string name="layout_settings_open_notification_settings">Android標準のスクリーンショットの通知設定を開く</string>
-    <string name="layout_settings_description_open_notification_settings">高度な設定: Android側のスクリーンショット通知を無効にします</string>
     <string name="layout_simplemanipulatingsettings_title">登録された簡易操作の一覧</string>
-    <string name="layout_settings_open_simple_manipulating_settings">簡易操作の設定</string>
-    <string name="layout_settings_description_open_simple_manipulating_settings">通知から呼び出せる簡易操作を登録できます</string>
     <string name="layout_simple_manipulating_registerer_name">名前:</string>
     <string name="layout_simple_manipulating_registerer_button_register">登録する</string>
     <string name="notification_detection_button_simple_manipulating">簡易操作</string>

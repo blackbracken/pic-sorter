@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import black.bracken.picsorter.feature_common.ext.createIntentForExternalStoragePermission
 import black.bracken.picsorter.feature_common.ext.hasExternalStoragePermission
