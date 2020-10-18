@@ -12,6 +12,8 @@ buildscript {
     }
 }
 
+apply(from = "gradle/dependencyGraph.gradle")
+
 allprojects {
     repositories {
         google()
