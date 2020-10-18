@@ -41,9 +41,7 @@ dependencies {
     implementation(Dep.Kotlin.coroutines)
 
     implementation(project(":core"))
-    implementation(project(":data:db"))
     implementation(project(":data:repository"))
-    implementation(project(":feature:feature_common"))
     implementation(project(":feature:settings_top"))
     implementation(project(":feature:settings_observed_directory"))
     implementation(project(":feature:settings_simple_manipulating_top"))

@@ -2,13 +2,13 @@ package black.bracken.picsorter.service.repository
 
 import android.content.Context
 import android.content.Intent
+import black.bracken.picsorter.data.repository.ImageObserverRepository
 import black.bracken.picsorter.manipulating.service.ImageObserver
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
 // TODO: consider whether switch should be repository
-class ImageObserverSwitcher : black.bracken.picsorter.data.repository.ImageObserverRepository,
-    KoinComponent {
+class ImageObserverSwitcher : ImageObserverRepository, KoinComponent {
 
     private val context by inject<Context>()
 

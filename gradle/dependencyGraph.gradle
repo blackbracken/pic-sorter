@@ -95,13 +95,15 @@ task projectDependencyGraph {
         dot << '}\n'
 
         dot << '\n  # Dependencies\n\n'
-        dependencies.forEach { key, traits ->
-            dot << "  \"${key.first.path}\" -> \"${key.second.path}\""
-            if (!traits.isEmpty()) {
-                dot << " [${traits.join(", ")}]"
-            }
-            dot << '\n'
-        }
+        dependencies
+                .findAll { key, _ -> key.first.path != key.second.path }
+                .forEach { key, traits ->
+                    dot << "  \"${key.first.path}\" -> \"${key.second.path}\""
+                    if (!traits.isEmpty()) {
+                        dot << " [${traits.join(", ")}]"
+                    }
+                    dot << '\n'
+                }
 
         dot << '}\n'
 
