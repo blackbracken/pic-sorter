@@ -5,6 +5,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("com.google.protobuf")
 }
 
 apply(from = rootProject.file("gradle/android.gradle"))
@@ -14,6 +15,8 @@ dependencies {
 
     implementation(project(":model"))
     implementation(project(":data:db"))
+
+    implementation(Dep.AndroidX.dataStoreCore)
 
     implementation(Dep.Koin.core)
     implementation(Dep.Koin.coreExt)
