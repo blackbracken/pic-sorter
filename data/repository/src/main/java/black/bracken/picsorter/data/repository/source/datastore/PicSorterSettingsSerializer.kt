@@ -7,7 +7,7 @@ import com.google.protobuf.InvalidProtocolBufferException
 import java.io.InputStream
 import java.io.OutputStream
 
-object SettingsSerializer : Serializer<PicSorterSettings> {
+internal object PicSorterSettingsSerializer : Serializer<PicSorterSettings> {
 
     override fun readFrom(input: InputStream): PicSorterSettings {
         try {

@@ -1,10 +1,18 @@
 package black.bracken.picsorter.data.repository
 
-import black.bracken.picsorter.data.repository.source.SettingsPreferences
+import android.content.Context
+import androidx.datastore.createDataStore
+import black.bracken.picsorter.data.repository.source.SettingsDataStore
 import black.bracken.picsorter.data.repository.source.SimpleManipulatingDatabase
+import black.bracken.picsorter.data.repository.source.datastore.PicSorterSettingsSerializer
 import org.koin.dsl.module
 
 val koinRepositoryModule = module {
-    single<SettingsRepository> { SettingsPreferences(get()) }
+    single<SettingsRepository> {
+        SettingsDataStore(
+            get(),
+            get<Context>().createDataStore("pic_sorter_settings.pb", PicSorterSettingsSerializer)
+        )
+    }
     single<SimpleManipulatingRepository> { SimpleManipulatingDatabase() }
 }
