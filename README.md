@@ -9,9 +9,9 @@
 現在リリースされているバージョンのコードはmasterブランチを参照してください.
 
 # 技術概要
-アーキテクチャはMVVM, ライブラリは[build.gradle.kts](https://github.com/blackbracken/PicSorter/blob/develop/app/build.gradle.kts)を参照してください.
+アーキテクチャはMVVM, 使用ライブラリは[Dep.kt](https://github.com/blackbracken/PicSorter/blob/develop/buildSrc/src/main/java/dependencies/Dep.kt)を参照してください.
 
-このプロジェクトはマルチモジュールで, モジュール間の依存グラフは以下の通りです.
+このプロジェクトはマルチモジュール構成で, モジュール間の依存グラフは以下の通りです.
 
 <img src="https://raw.githubusercontent.com/blackbracken/PicSorter/develop/dependency-graph.png" width="70%" height="70%">
 
