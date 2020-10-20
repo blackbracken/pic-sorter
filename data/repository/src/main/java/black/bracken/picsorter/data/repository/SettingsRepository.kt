@@ -1,15 +1,17 @@
 package black.bracken.picsorter.data.repository
 
+import kotlinx.coroutines.flow.Flow
+
 interface SettingsRepository {
 
-    var shouldRunOnBoot: Boolean
+    val shouldRunOnBootFlow: Flow<Boolean>
 
-    val directoryPathList: List<String>
+    val directoryPathListFlow: Flow<List<String>>
 
-    fun addDirectoryPath(path: String)
+    suspend fun toggleWhetherRunOnBoot(shouldRuns: Boolean)
 
-    fun removeDirectoryPath(path: String)
+    suspend fun addObservedDirectoryPath(path: String)
 
-    fun containsDirectoryPath(path: String): Boolean
+    suspend fun removeObservedDirectoryPath(path: String)
 
 }

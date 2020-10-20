@@ -91,6 +91,8 @@ object Dep {
         const val roomRuntime = "androidx.room:room-runtime:2.2.5"
         const val roomKtx = "androidx.room:room-ktx:2.2.5"
         const val roomCompiler = "androidx.room:room-compiler:2.2.5"
+
+        const val dataStoreCore = "androidx.datastore:datastore-core:1.0.0-alpha01"
     }
 
     object AndroidSupport {

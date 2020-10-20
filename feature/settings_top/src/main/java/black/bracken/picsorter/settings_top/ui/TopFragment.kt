@@ -7,6 +7,7 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -30,8 +31,7 @@ class TopFragment : Fragment() {
     }
 
     private val requestPermissionToRunOnBootIntent = createIntentForExternalStoragePermission {
-        viewModel.runsOnBoot.postValue(true)
-        viewModel.switchToRunOnBoot(true)
+        viewModel.toggleWhetherRunOnBoot(true)
     }
 
     override fun onCreateView(
@@ -61,14 +61,19 @@ class TopFragment : Fragment() {
             }
         }
 
-        viewModel.runsOnBoot.observe(viewLifecycleOwner) { isChecked ->
-            if (isChecked && !hasExternalStoragePermission()) {
-                viewModel.runsOnBoot.value = false
+        val switchRunOnBootListener = { _: CompoundButton, isChecked: Boolean ->
+            switchRunOnBoot.isChecked = !isChecked
+            if (!hasExternalStoragePermission()) {
                 requestPermissionToRunOnBootIntent.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             } else {
-                viewModel.switchToRunOnBoot(isChecked)
+                viewModel.toggleWhetherRunOnBoot(isChecked)
             }
-            viewModel.switchToRunOnBoot(isChecked)
+        }
+        switchRunOnBoot.setOnCheckedChangeListener(switchRunOnBootListener)
+        viewModel.runsOnBoot.observe(viewLifecycleOwner) { shouldRunOnBoot ->
+            switchRunOnBoot.setOnCheckedChangeListener(null)
+            switchRunOnBoot.isChecked = shouldRunOnBoot
+            switchRunOnBoot.setOnCheckedChangeListener(switchRunOnBootListener)
         }
 
         fun navigateDirChooser() =
