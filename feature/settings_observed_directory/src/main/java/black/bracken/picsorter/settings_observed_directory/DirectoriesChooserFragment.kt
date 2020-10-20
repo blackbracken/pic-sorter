@@ -64,7 +64,7 @@ class DirectoriesChooserFragment : Fragment() {
             with(groupAdapter) {
                 clear()
                 addAll(pathList.map { path ->
-                    black.bracken.picsorter.settings_observed_directory.DirectoryItem(
+                    DirectoryItem(
                         path
                     ) { showConfirmationToRemoveDirectory(path) }
                 })

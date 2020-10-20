@@ -2,8 +2,11 @@ package black.bracken.picsorter.settings_top.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import black.bracken.picsorter.data.repository.ImageObserverRepository
 import black.bracken.picsorter.data.repository.SettingsRepository
+import kotlinx.coroutines.launch
 
 class TopViewModel(
     private val imageObserverRepository: ImageObserverRepository,
@@ -11,7 +14,7 @@ class TopViewModel(
 ) : ViewModel() {
 
     val enablesObserver by lazy { MutableLiveData(imageObserverRepository.verifyWhetherToRun()) }
-    val runsOnBoot by lazy { MutableLiveData(settingsRepository.shouldRunOnBoot) }
+    val runsOnBoot = settingsRepository.shouldRunOnBootFlow.asLiveData()
 
     fun switchToEnableImageObserver(isEnabled: Boolean) {
         if (isEnabled) {
@@ -21,8 +24,10 @@ class TopViewModel(
         }
     }
 
-    fun switchToRunOnBoot(isEnabled: Boolean) {
-        settingsRepository.shouldRunOnBoot = isEnabled
+    fun toggleWhetherRunOnBoot(isEnabled: Boolean) {
+        viewModelScope.launch {
+            settingsRepository.toggleWhetherRunOnBoot(isEnabled)
+        }
     }
 
 }

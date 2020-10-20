@@ -10,7 +10,6 @@ import org.koin.dsl.module
 val koinRepositoryModule = module {
     single<SettingsRepository> {
         SettingsDataStore(
-            get(),
             get<Context>().createDataStore("pic_sorter_settings.pb", PicSorterSettingsSerializer)
         )
     }

@@ -10,10 +10,7 @@ import black.bracken.picsorter.manipulating.notification.DetectionNotificationPr
 import black.bracken.picsorter.manipulating.notification.ObservingNotificationProvider
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.channelFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -54,7 +51,9 @@ class ImageObserver : Service(), KoinComponent {
         )
 
         job = GlobalScope.launch {
-            flowOfAddedFilePaths(settingsRepository.directoryPathList)
+            val directoryPathList = settingsRepository.directoryPathListFlow.toList().last()
+
+            flowOfAddedFilePaths(directoryPathList)
                 .flowOn(Dispatchers.IO)
                 .collect { path -> onDetect(path) }
         }
