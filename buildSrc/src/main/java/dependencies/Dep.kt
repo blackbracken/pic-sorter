@@ -42,7 +42,10 @@ object Dep {
         AndroidX.testRunner,
         AndroidX.testRules,
         AndroidX.testEspresso,
-        AndroidX.testUiAutomator
+        AndroidX.testUiAutomator,
+        AndroidX.testArchCore,
+        AndroidX.testJUnitExt,
+        AndroidX.testTruthExt
     )
 
     val koinPackages = listOf(
@@ -69,6 +72,10 @@ object Dep {
         const val testRules = "androidx.test:rules:1.3.0"
         const val testEspresso = "androidx.test.espresso:espresso-core:3.3.0"
         const val testUiAutomator = "androidx.test.uiautomator:uiautomator:2.2.0"
+        const val testArchCore = "androidx.arch.core:core-testing:2.1.0"
+
+        const val testJUnitExt = "androidx.test.ext:junit:1.0.0"
+        const val testTruthExt = "androidx.test.ext:truth:1.0.0"
 
         const val appCompat = "androidx.appcompat:appcompat:1.3.0-alpha02"
 

@@ -13,6 +13,9 @@ dependencies {
     Dep.corePackages.forEach { implementation(it) }
     Dep.androidCorePackages.forEach { implementation(it) }
 
+    Dep.testPackages.forEach { testImplementation(it) }
+    Dep.androidTestPackages.forEach { androidTestImplementation(it) }
+
     implementation(Dep.MaterialDialogs.core)
 }
 
