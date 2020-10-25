@@ -24,6 +24,7 @@ object Dep {
     val testPackages = listOf(
         JUnit.core,
         Truth.core,
+        Mockk.unit,
         Robolectric.core,
         Hamcrest.core,
         AndroidX.testCore,
@@ -36,6 +37,7 @@ object Dep {
     val androidTestPackages = listOf(
         JUnit.core,
         Truth.core,
+        Mockk.instrumented,
         AndroidX.testCore,
         AndroidX.testRunner,
         AndroidX.testRules,
@@ -106,6 +108,12 @@ object Dep {
 
     object Truth {
         const val core = "com.google.truth:truth:1.0.1"
+    }
+
+    object Mockk {
+        private const val VERSION = "1.10.2"
+        const val unit = "io.mockk:mockk:$VERSION"
+        const val instrumented = "io.mockk:mockk-android:$VERSION"
     }
 
     object Robolectric {
